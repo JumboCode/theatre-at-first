@@ -8,6 +8,7 @@
 ## React
 - [React Reference](https://react.dev/reference/react)
 - [React Tutorial](https://react.dev/learn)
+- [Next.js Docs](https://nextjs.org/docs)
 
 ## CSS
 - [Flexbox Froggy](https://flexboxfroggy.com/)
