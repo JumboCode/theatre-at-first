@@ -26,3 +26,5 @@ can get it [here](https://github.com/nvm-sh/nvm#installing-and-updating)
 - To manage node packages, we will be using `pnpm`, which you can install by running `npm
 i -g pnpm`. `i` is short for install, and the `-g` flag installs it globally rather than
 on a per-project basis.
+
+liam was here
