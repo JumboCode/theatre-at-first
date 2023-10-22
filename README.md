@@ -1,6 +1,6 @@
 # Theatre@First
 Below are instructions on how to run our codebase on your machine. Check out
-`resources.md` for more general info and tutorials on some of the technologies
+[`resources.md`](./resources.md) for more general info and tutorials on some of the technologies
 we'll be using this year.
 
 ## Running the Dev Server
