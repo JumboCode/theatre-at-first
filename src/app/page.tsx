@@ -11,7 +11,7 @@ export default function Home() {
         <Button2 />
         <Button3 />
         <Button4 />
-        <Button5 />
+        <Button5 label="Hello, World!"/>
     </main>
   )
 }
