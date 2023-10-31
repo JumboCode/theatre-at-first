@@ -11,7 +11,7 @@ export default function Home() {
         <Button2 />
         <Button3 />
         <Button4 />
-        <Button5 label="SHOW ME THE WEATHER!!"/>
+        <Button5 label="please, god... don't let it be rain :("/>
     </main>
   )
 }
