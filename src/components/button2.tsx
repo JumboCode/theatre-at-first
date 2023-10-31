@@ -5,7 +5,13 @@
 //(label is the key which maps to a string). 
 export default function Button2(props: {label: string}) {
     const handleClick = () => {
-        console.log("Clicked!");
+        //fetching from a weather api 
+        fetch("https://api.weather.gov/gridpoints/BOX/69,92/forecast")
+        .then(response => response.json())
+        .then((json) => {
+            console.log(json);
+        });
+        // console.log("Clicked!");
     }
 
 
@@ -17,3 +23,4 @@ export default function Button2(props: {label: string}) {
         </div>
     );
 }
+
