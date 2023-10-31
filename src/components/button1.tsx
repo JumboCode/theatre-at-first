@@ -6,23 +6,21 @@ export default function Button1(label: string) {
     
     label = "Sidrah and Oliver";
 
-    const [temp, setTemp] = useState();
-    const [tempUnit, setTempUnit] = useState();
+    const [tempTotal, setTempTotal] = useState("");
     const [shortForecast, setShortForecast] = useState();
     
     const handleClick = () => {
         fetch("https://api.weather.gov/gridpoints/BOX/69,92/forecast")
             .then((res) => res.json())
             .then((json) => {
-                setTemp(json.properties.periods[0].temperature);
-                setTempUnit(json.properties.periods[0].temperatureUnit);
+                setTempTotal("Current temperature: " + json.properties.periods[0].temperature + json.properties.periods[0].temperatureUnit);
                 setShortForecast(json.properties.periods[0].shortForecast);
             });
     };
 
    
     return (
-        <div className="flex flex-col gap-4 justify-center">
+        <div className="flex flex-col gap-4 justify-center items-center">
             <button 
                 type="button" 
                 onClick={handleClick} 
@@ -31,7 +29,7 @@ export default function Button1(label: string) {
                 {label}
             </button>
             <p>
-                Current temperature: {temp} {tempUnit} 
+                {tempTotal} 
             </p>
             <p>
                 {shortForecast}
