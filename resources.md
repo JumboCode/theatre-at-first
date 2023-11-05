@@ -18,6 +18,9 @@
 - [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
     - Another good place to learn the ins and outs of a given property
 
+## VS Code Extensions
+- something
+
 ## Installing Node and `npm`
 - We are going to use NVM (node version manager) to deal with node installations. You
 can get it [here](https://github.com/nvm-sh/nvm#installing-and-updating)
