@@ -7,7 +7,7 @@ interface prop {
 
 
 export default function Button5(props: prop) {
-    const [weather, setWeather] = useState<{probabilityOfPrecipitation:[]} | null>(null);
+    const [weather, setWeather] = useState<{probabilityOfPrecipitation: number} | null>(null);
 
     const getWeather = () => {
         fetch(`https://api.weather.gov/gridpoints/BOX/71,90/forecast`)
