@@ -9,7 +9,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <Button1 />
         <Button2 label="Click here xx"/>
-        <Button3 />
+        <Button3 name = "PUSH THE BUTTON."/>
         <Button4 />
         <Button5 />
     </main>
