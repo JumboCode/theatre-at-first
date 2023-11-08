@@ -1,10 +1,3 @@
-
-interface itemDetailProps {
-  name: string,
-  tags: string[],
-  description: string,
-}
-
 export default function itemDetailTest(name: string, tags: string[], description: string) {
 
   name = "Item Name";
@@ -24,9 +17,7 @@ export default function itemDetailTest(name: string, tags: string[], description
             </div>
           ))}
         </div>
-        <div className="bg-black w-[100%] h-px border-2 border-black">
-          
-        </div>
+        <hr style={{ borderTop: '1px solid #888888' }} />
         <div>
           <div className="text-xl font-bold mb-5">
             Description
