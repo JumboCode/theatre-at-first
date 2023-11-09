@@ -19,7 +19,14 @@
     - Another good place to learn the ins and outs of a given property
 
 ## VS Code Extensions
-- something
+- [Typescript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+The typescript extension provides VS Code the tools it needs to analyze typescript code and
+give you accurate type errors (most of you probably already have this installed). ESLint
+and Prettier are used to enforce code style/practice, and will make sure all the code in our
+codebase follows certain guidelines.
 
 ## Installing Node and `npm`
 - We are going to use NVM (node version manager) to deal with node installations. You
