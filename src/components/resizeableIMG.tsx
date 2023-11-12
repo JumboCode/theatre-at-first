@@ -12,6 +12,7 @@ export default function ResizeableIMG(
           height: `${props.height}px`,
           overflow: "hidden",
           objectFit: "cover",
+          borderRadius: "10px",
         }}
       />
     </div>

@@ -21,6 +21,26 @@ export default function Home() {
       (prevIndex) => (prevIndex - 1 + imageList.length) % imageList.length
     );
   };
+  const leftButtonStyle = {
+    position: "absolute",
+    top: "50%",
+    transform: "translate(0, -50%)",
+    fontSize: "45px",
+    color: "#fff",
+    zIndex: 1,
+    cursor: "pointer",
+    left: "2px",
+  };
+  const rightButtonStyle = {
+    position: "absolute",
+    top: "50%",
+    transform: "translate(0, -50%)",
+    fontSize: "45px",
+    color: "#fff",
+    zIndex: 1,
+    cursor: "pointer",
+    right: "2px",
+  };
   //   return (
   //     <main className="flex min-h-screen flex-col items-center justify-between p-24">
   //       {imageList.map((v) => (
@@ -34,15 +54,16 @@ export default function Home() {
   //     </main>
   //   );
   // }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="image-slider" style={{ position: "relative" }}>
         <button
+          style={leftButtonStyle}
           className="slider-button"
           onClick={prevImage}
-          style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
         >
-          Prev
+          《
         </button>
         <ResizeableIMG
           width={600}
@@ -51,11 +72,11 @@ export default function Home() {
           alt="pics of cookies"
         />
         <button
+          style={rightButtonStyle}
           className="slider-button"
-          onClick={prevImage}
-          style={{ left: 0, top: "50%", transform: "translateY(-50%)" }}
+          onClick={nextImage}
         >
-          Next
+          》
         </button>
       </div>
     </main>
