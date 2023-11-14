@@ -6,6 +6,7 @@
 */
 
 import { serial, integer, date, text, pgTableCreator, pgEnum } from "drizzle-orm/pg-core";
+import { InferSelectModel, InferInsertModel } from "drizzle-orm"
 
 /*
 * Prepends "inventory_" to all our table names so that if theatre-at-first
@@ -59,3 +60,15 @@ export const items = inventoryPostgresTable("items", {
     imageUrl: text("image_url"),
     status: text("status"),
 });
+
+export type InsertUser = InferInsertModel<typeof users>;
+export type SelectUser = InferSelectModel<typeof users>;
+
+export type InsertComment = InferInsertModel<typeof comments>;
+export type SelectComment = InferSelectModel<typeof comments>;
+
+export type InsertUpdate = InferInsertModel<typeof updates>;
+export type SelectUpdate = InferSelectModel<typeof updates>;
+
+export type InsertItem = InferInsertModel<typeof items>;
+export type SelectItem = InferSelectModel<typeof items>;

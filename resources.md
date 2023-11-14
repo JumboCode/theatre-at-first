@@ -10,6 +10,11 @@
 - [React Tutorial](https://react.dev/learn)
 - [Next.js Docs](https://nextjs.org/docs)
 
+## NextJS
+### App Router
++ [Official Documentation](https://nextjs.org/docs/app/building-your-application/routing) (Can be a little tricky to understand at times)
++ [Amitav's Blurb on Routing (WIP)](https://www.eecs.tufts.edu/~anott01/jumbocode/routing.html)
+
 ## CSS
 - [Flexbox Froggy](https://flexboxfroggy.com/)
 - [Tailwind Docs](https://tailwindcss.com/docs/installation)
