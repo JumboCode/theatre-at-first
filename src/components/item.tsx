@@ -1,13 +1,13 @@
 'use client';
 
-interface prop {
+interface Prop {
     title: string;
     image: string;
     status: string;
 }
 
 
-export default function Item(props: prop){
+export default function Item(props: Prop){
     return (
         <div className="h-1/3 w-60 bg-white rounded-xl">
                 <div className="h-full flex flex-col">
