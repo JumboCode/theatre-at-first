@@ -17,31 +17,17 @@ export default function ImageCarousel(props: { imageList: StaticImageData[] }) {
     };
 
     const leftButtonStyle = {
-        position: "absolute",
-        top: "50%",
-        transform: "translate(0, -50%)",
-        fontSize: "45px",
-        color: "#fff",
-        zIndex: 1,
-        cursor: "pointer",
-        left: "2px",
+        transform: "translate(0, -50%)"
     };
     const rightButtonStyle = {
-        position: "absolute",
-        top: "50%",
-        transform: "translate(0, -50%)",
-        fontSize: "45px",
-        color: "#fff",
-        zIndex: 1,
-        cursor: "pointer",
-        right: "2px",
+        transform: "translate(0, -50%)"
     };
     
     return (
         <div>
             <button
           style={leftButtonStyle}
-          className="slider-button"
+          className="slider-button absolute text-5xl z-1 cursor-pointer left-0.5 top-1/2 text-white"
           onClick={prevImage}
         >
           《
@@ -54,7 +40,7 @@ export default function ImageCarousel(props: { imageList: StaticImageData[] }) {
         />
         <button
           style={rightButtonStyle}
-          className="slider-button"
+          className="slider-button absolute text-5xl z-1 cursor-pointer right-0.5 top-1/2 text-white"
           onClick={nextImage}
         >
           》

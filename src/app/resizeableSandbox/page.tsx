@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import ResizeableIMG from "../../components/resizeableIMG";
 import ImageCarousel from "../../components/imageCarousel";
 import CuteDog1 from "../../../public/images/cute_dog1.jpg";
 import CuteDog2 from "../../../public/images/cute_dog2.jpg";
@@ -11,20 +10,6 @@ import CuteDog5 from "../../../public/images/cute_dog5.jpg";
 const imageList = [CuteDog1, CuteDog2, CuteDog3, CuteDog4, CuteDog5];
 
 export default function Home() {
-  
-  //   return (
-  //     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-  //       {imageList.map((v) => (
-  //         <ResizeableIMG
-  //           width={600}
-  //           height={400}
-  //           src={v.src}
-  //           alt="pics of cookies"
-  //         />
-  //       ))}
-  //     </main>
-  //   );
-  // }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
