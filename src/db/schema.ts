@@ -23,7 +23,7 @@ export const accessLevel = pgEnum("access_level", ["admin", "user", "viewer"]);
 export const updateType = pgEnum("update_type", ["location", "other"]);
 
 /*
-* Definig the shape of the `users` table, which holds all the info about users:
+* Defining the shape of the `users` table, which holds all the info about users:
 * Their name, emmil, and what type of user they are. The `.notNull()` function
 * indicates that this value must be assigned (it can't be what you might think
 * of as an empty cell in the table).
