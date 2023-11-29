@@ -10,12 +10,11 @@ import CuteDog5 from "../../../public/images/cute_dog5.jpg";
 const imageList = [CuteDog1, CuteDog2, CuteDog3, CuteDog4, CuteDog5];
 
 export default function Home() {
-
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="image-slider" style={{ position: "relative" }}>
-        <ImageCarousel imageList={imageList}/>
-      </div>
-    </main>
-  );
+    return (
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <div className="image-slider" style={{ position: "relative" }}>
+                <ImageCarousel imageList={imageList} />
+            </div>
+        </main>
+    );
 }
