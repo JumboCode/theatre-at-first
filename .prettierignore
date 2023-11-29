@@ -1,0 +1,8 @@
+node_modules
+dist
+*.md
+*.yaml
+*.json
+*config*.js
+*config*.ts
+*.css
