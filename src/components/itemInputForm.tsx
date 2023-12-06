@@ -1,28 +1,28 @@
 "use client";
 import { useState } from 'react';
 
-interface Prop {
+interface Props {
     
 }
 
-export default function ItemInput(props: Prop) {
+export default function ItemInput(props: Props) {
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderlined, setIsUnderlined] = useState(false);
 
-  const handleBoldClick = (e) => {
+  const handleBoldClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsBold(!isBold);
   };
 
-  const handleItalicClick = (e) => {
+  const handleItalicClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsItalic(!isItalic);
   };
 
-  const handleUnderlineClick = (e) => {
+  const handleUnderlineClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsUnderlined(!isUnderlined);
   };
@@ -49,7 +49,7 @@ export default function ItemInput(props: Prop) {
                     </button>
                 </div>
 
-                <textarea className="text-gray-950 rounded rounded border-2" 
+                <textarea className="text-gray-950 rounded border-2" 
                           value={description} 
                           onChange={(e) => setDescription(e.target.value)}
                           style={{
