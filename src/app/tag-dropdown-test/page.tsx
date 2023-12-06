@@ -2,7 +2,7 @@ import TagDropdown from "@/components/TagDropdown";
 
 export default function testPage() {
 
-    const allTags = ["one", "two", "three", "four", "five", "six", "seven"];
+    const allTags = ["one", "two", "three", "four", "five", "six", "seven", "oneone"];
     
     return (
         <main>

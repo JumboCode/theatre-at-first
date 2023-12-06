@@ -2,7 +2,7 @@
 // Allows user to select (and create) tags to apply to a new item.
 
 "use client";
-import { useState } from "react";
+import { ReactEventHandler, useState } from "react";
 
 // You are responsible for creating the component that allows a user to select what
 //  tags to apply to a new item. The component will receive a list of possible tags
@@ -35,10 +35,26 @@ interface TagDropdownProps {
 
 export default function TagDropdown(props: TagDropdownProps) {
     const [display, setDisplay] = useState(false);
-    //?? What is a good name for a variable that tracks whether or not at least one tag is selected?
+    //?? What is a good name for a variable that tracks whether or not at least 
+    //one tag is selected?
     const [select, setSelect] = useState(false);
     // const [selectIndividual, setSelectIndividual] = useState(false);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const [searchInput, setSearchInput] = useState("");
+    const [filteredTags, setFilteredTags] = useState(props.tags);
+
+    // ?? What does event do?
+    const handleSearch = (event) => {
+        event.preventDefault();
+        setSearchInput(event.target.value);
+        // console.log(searchInput);
+        if (searchInput.length > 0) {
+            setFilteredTags(props.tags.filter((tag) => { return tag.match(searchInput) }));
+        } else {
+            // console.log("logging at " + searchInput);
+            setFilteredTags(props.tags);
+        }
+    };
     
     // Controls display of dropdown
     const handleClick = () => {
@@ -90,15 +106,11 @@ export default function TagDropdown(props: TagDropdownProps) {
     
     return (
         <div className="flex flex-col p-4 gap-[10px]">
-            <div onClick={handleClick} className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px]">
-                <p className="">
-                    Category name
-                </p>
-            </div>
+            <input onClick={handleClick} onChange={handleSearch} value={searchInput} placeholder="tag name" className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px]" />
             {
                 display && (
                     <div className="border-2 h-[144px] rounded-xl overflow-auto">
-                        {props.tags.map((tag) => (
+                        {filteredTags.map((tag) => (
                             <div key={tag} onClick={() => handleSelectedTags(tag)} className="pl-2 hover:bg-violet-600 hover:font-bold active:bg-violet-700 py-2">
                                 <p>{tag}</p>
                             </div>
