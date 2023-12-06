@@ -1,19 +1,33 @@
 import { NextResponse } from "next/server"
 
-// route handler
-//Next.js convention
+//GET request
+export async function GET(request: Request, { params }: { params: { filepath: string}}) {
+  let r2response: {
+    status: number,
+    object?: string,
+  } = await fetch(`https://r2-ex.amitavnott.workers.dev/${params.filepath}`, {
+    method: "GET",
+  }).then(res => res.json());
 
-// get method
-export async function GET(request: Request, { params }) {
-  const filepath = params.filepath
-  const res = (await fetch(filepath)).json()
-  //do we need to use middleware like multer for file uploading?
-
-  return NextResponse.json({ response : res })
+  if (r2response.status === 0) {
+    return Response.json({status: r2response.status, object: r2response.object})
+  } else if (r2response.status === 1) {
+    return Response.json({status: r2response.status, errorMessage: "ERROR: Failure to retrieve R2 info"})
+  } else {
+    return Response.json({status: 2, errorMessage: "ERROR: No return value to client"})
+  }
 }
 
-// post method
-export async function POST(request: Request) {
+//POST request -- utilize insomnia
+export async function POST(request: Request, { params }: { params: { filepath: string}}) {
+  let json = await request.json();
+  let r2response: {
+    status: number
+  } = await fetch(`https://r2-ex.amitavnott.workers.dev/${params.filepath}`, {
+      method: "PUT",
+      body: json.filecontents,
+  })
+  .then(res => res.json());
 
-  return NextResponse.json({ response : 'This is a post request' })
+  return Response.json({ status: r2response.status, successMessage: "Successful post request" });
 }
