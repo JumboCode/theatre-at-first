@@ -1,12 +1,5 @@
-// TAG DROPDOWN COMPONENT
-// Allows user to select (and create) tags to apply to a new item.
-
 "use client";
 import { ReactEventHandler, useState } from "react";
-
-// You are responsible for creating the component that allows a user to select what
-//  tags to apply to a new item. The component will receive a list of possible tags
-//  , and must update some data structure with what tags are selected.
 
 //DROPDOWN:
 //Compenent recieves a list of tags (which is the prop)
@@ -15,19 +8,9 @@ import { ReactEventHandler, useState } from "react";
 //Once you click on a tag, it should be added to the product's description or
 //smth
 
-// ??: Keep selected tag highlighted in scrolly list??
-
-//TODO figure out behavior if there are a lot of tags
-//TODO implement user-entered tag - should this be in the 'Category name' box?
-// should the list be filtered as a user types?
-
-//We either create a tag or pick one that already exsits 
-
-//?? When the tags are selected, they should be sent back to the schema to be stored in the item's "tags" array? 
-
-//Props is an array of all the tags possible to be added to an item  
-
-//TO DO: When selected on the list, stay highlighted 
+//Needs to be added: 
+//1. Item stays highlighted when selected
+//2. When user is deleting word, filtered list goes back to normal
 
 interface TagDropdownProps {
     tags: string[]
@@ -43,7 +26,6 @@ export default function TagDropdown(props: TagDropdownProps) {
     const [searchInput, setSearchInput] = useState("");
     const [filteredTags, setFilteredTags] = useState(props.tags);
 
-    // ?? What does event do?
     const handleSearch = (event) => {
         event.preventDefault();
         setSearchInput(event.target.value);
