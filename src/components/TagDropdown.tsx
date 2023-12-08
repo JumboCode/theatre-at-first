@@ -1,5 +1,5 @@
 "use client";
-import { ReactEventHandler, useState } from "react";
+import { useState } from "react";
 
 //DROPDOWN:
 //Compenent recieves a list of tags (which is the prop)
@@ -26,14 +26,13 @@ export default function TagDropdown(props: TagDropdownProps) {
     const [searchInput, setSearchInput] = useState("");
     const [filteredTags, setFilteredTags] = useState(props.tags);
 
-    const handleSearch = (event) => {
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const input_text: string = event.target.value;
         event.preventDefault();
-        setSearchInput(event.target.value);
-        // console.log(searchInput);
-        if (searchInput.length > 0) {
-            setFilteredTags(props.tags.filter((tag) => { return tag.match(searchInput) }));
+        setSearchInput(input_text);
+        if (input_text.length > 0) {
+            setFilteredTags(props.tags.filter((tag) => { return tag.match(input_text) }));
         } else {
-            // console.log("logging at " + searchInput);
             setFilteredTags(props.tags);
         }
     };
@@ -88,7 +87,7 @@ export default function TagDropdown(props: TagDropdownProps) {
     
     return (
         <div className="flex flex-col p-4 gap-[10px]">
-            <input onClick={handleClick} onChange={handleSearch} value={searchInput} placeholder="tag name" className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px]" />
+            <input onClick={handleClick} onInput={handleSearch} value={searchInput} placeholder="tag name" className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] text-black" />
             {
                 display && (
                     <div className="border-2 h-[144px] rounded-xl overflow-auto">
