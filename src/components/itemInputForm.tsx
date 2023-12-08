@@ -28,12 +28,12 @@ export default function ItemInput(props: Prop) {
   };
 
     return (
-        <div className="outer-box bg-white rounded-xl">
-            <form className="m-5">
-                <div className="text-gray-400 font-bold">Product Name</div>
+        <div className="outer-box bg-white rounded-xl p-5">
+            <form className="flex flex-col w-full flex flex-col gap-2">
+                <div className="text-gray-600 font-bold">Product Name</div>
                 <input className="text-gray-950 rounded border-2" style={{width: "450px"}} 
                         value={productName} onChange={(e) => setProductName(e.target.value)} />
-                <div className="text-gray-400 font-bold">Product Description</div>
+                <div className="text-gray-600 font-bold">Product Description</div>
                 <div className="text-gray-950">
                     <button onClick={handleBoldClick} 
                             style={{ fontWeight: isBold ? 'bold' : 'normal', marginRight: '8px',}}>
@@ -59,11 +59,15 @@ export default function ItemInput(props: Prop) {
                               fontStyle: isItalic ? 'italic' : 'normal',
                               textDecoration: isUnderlined ? 'underline' : 'none',
                           }}/>
-                <div className="text-gray-950">
-                  <h2>Entered Values</h2>
+
+                <button className="w-full rounded-md bg-slate-500 hover:bg-slate-700 h-10">Add Photo</button>
+                <button className="w-full rounded-md bg-blue-500 hover:bg-blue-700 h-10">Create Item</button>
+
+                {/* <div className="text-gray-950">
+                  <h2 className="text-gray-600 font-bold">Entered Values</h2>
                   <p>Product Name: {productName}</p>
                   <p>Product Description: {description}</p>
-                </div>
+                </div> */}
             </form>
         </div>
       );

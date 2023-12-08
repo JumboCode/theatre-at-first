@@ -7,7 +7,7 @@ export default function ImageCapture() {
     // width to the value defined here, but the height will be
     // calculated based on the aspect ratio of the input stream.
   
-    var width = 700;    // We will scale the photo width to this
+    var width = 600;    // We will scale the photo width to this
     var height = 0;     // This will be computed based on the input stream
   
     // |streaming| indicates whether or not we're currently streaming
@@ -112,8 +112,8 @@ export default function ImageCapture() {
 
   return (
     <div className="camera">
-    <video id="video">Video stream not available.</video>
-    <button id="startbutton">Take photo</button>
-  </div>
+        <video id="video">Video stream not available.</video>
+        <button className="mt-3 w-full rounded-md bg-blue-500 hover:bg-blue-700 h-10">Take Photo</button>
+    </div>
   )
 }
