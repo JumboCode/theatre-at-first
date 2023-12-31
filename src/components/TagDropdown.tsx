@@ -103,7 +103,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                         <div
                             key={tag}
                             onClick={() => handleSelectedTags(tag)}
-                            className={`pl-2 py-2 hover:font-bold hover:bg-violet-600 active:bg-violet-600 ${selectedTags.includes(tag) && 'bg-violet-600'}`}
+                            className={`pl-2 py-2 hover:font-bold hover:bg-violet-600 active:bg-violet-600 ${selectedTags.includes(tag) && 'bg-violet-600 font-bold'}`}
                         >
                             <p>{tag}</p>
                         </div>
