@@ -9,7 +9,8 @@ import { useState, KeyboardEvent, KeyboardEventHandler } from "react";
 //smth
 
 //Needs to be added:
-//2. When user is deleting word, filtered list goes back to normal
+//1. When user is deleting word, filtered list goes back to normal
+//2. Input text field goes over "Add tag" if the tag is really really long
 
 interface TagDropdownProps {
     tags: string[];
@@ -41,6 +42,10 @@ export default function TagDropdown(props: TagDropdownProps) {
         if (key_event.key == "Enter") {
             addTag(searchInput);
         }
+    }
+
+    const handleAdd = () => {
+        addTag(searchInput);
     }
 
     // Controls display of dropdown
@@ -88,15 +93,23 @@ export default function TagDropdown(props: TagDropdownProps) {
 
     return (
         <div className="flex flex-col p-4 gap-[10px]">
-            
-            <input
-                onClick={handleClick}
-                onInput={handleSearch}
-                onKeyUp={handleEnter}
-                value={searchInput}
-                placeholder="tag name"
-                className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] text-black"
-            />
+            <div className="border-2 relative">
+                {searchInput != "" && (
+                    <button 
+                        onClick={handleAdd}
+                        className="absolute right-0 py-3 px-4"
+                    >
+                        Add tag
+                    </button>)}
+                <input
+                    onClick={handleClick}
+                    onInput={handleSearch}
+                    onKeyUp={handleEnter}
+                    value={searchInput}
+                    placeholder="tag name"
+                    className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] w-[100%] text-black"
+                />
+            </div>
             {display && (
                 <div className="border-2 h-[144px] rounded-xl overflow-auto">
                     {filteredTags.map((tag) => (
