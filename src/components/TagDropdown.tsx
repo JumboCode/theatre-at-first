@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, KeyboardEvent, KeyboardEventHandler } from "react";
 
 //DROPDOWN:
 //Compenent recieves a list of tags (which is the prop)
@@ -9,7 +9,6 @@ import { useState } from "react";
 //smth
 
 //Needs to be added:
-//1. Item stays highlighted when selected
 //2. When user is deleting word, filtered list goes back to normal
 
 interface TagDropdownProps {
@@ -18,10 +17,6 @@ interface TagDropdownProps {
 
 export default function TagDropdown(props: TagDropdownProps) {
     const [display, setDisplay] = useState(false);
-    //?? What is a good name for a variable that tracks whether or not at least
-    //one tag is selected?
-    const [select, setSelect] = useState(false);
-    // const [selectIndividual, setSelectIndividual] = useState(false);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [searchInput, setSearchInput] = useState("");
     const [filteredTags, setFilteredTags] = useState(props.tags);
@@ -41,50 +36,32 @@ export default function TagDropdown(props: TagDropdownProps) {
         }
     };
 
+    // Handles actions when 'Enter' key is pressed
+    const handleEnter = (key_event: React.KeyboardEvent) => {
+        if (key_event.key == "Enter") {
+            addTag(searchInput);
+        }
+    }
+
     // Controls display of dropdown
     const handleClick = () => {
-        if (display) {
-            setDisplay(false);
-        } else {
+        if (!display) {
             setDisplay(true);
-        }
-    };
-
-    const handleSelect = () => {
-        if (select) {
-            setSelect(false);
-        } else {
-            setSelect(true);
         }
     };
 
     // Controls tag selection
     function handleSelectedTags(tag: string) {
-        // console.log("length start of func " + selectedTags.length);
-        // console.log(selectedTags);
-        // console.log("individual: " + selectIndividual);
-        // console.log("overall: " + select);
+        // if tag is already selected, deselect it and remove from selectedTags
         if (selectedTags.includes(tag)) {
-            // console.log("removing " + tag);
-            //// setSelectIndividual(false);
             const toRemove = selectedTags.indexOf(tag);
-            // console.log(toRemove);
             setSelectedTags(() => [
                 ...selectedTags.slice(0, toRemove),
                 ...selectedTags.slice(toRemove + 1),
             ]);
-            // if (selectedTags.length == 0) {
-            //     console.log("no tags selected");
-            //     setSelect(false);
-            // }
         } else {
-            // console.log("adding " + tag);
-            //// setSelectIndividual(true);
-            // setSelect(true);
             setSelectedTags([...selectedTags, tag]);
         }
-        // console.log("new length: " + selectedTags.length);
-        // console.log("new array: " + selectedTags);
     }
 
     function deselectTag(tag: string) {
@@ -95,11 +72,27 @@ export default function TagDropdown(props: TagDropdownProps) {
         ]);
     }
 
+    function addTag(tag: string) {
+        // If tag is in props.tags, add tag to selectedTags array
+        // Else (new tag), add tag to props.tags (large tag array), probably requires request to db, then add tag to selectedTags
+        // ?? QUESTION: do we actually want a New tag to be added every time someone hits enter
+        if (!props.tags.includes(tag)) {
+            props.tags.push(tag);
+            // console.log("pushed tag");
+            // console.log(props.tags);
+        } 
+        setSelectedTags([...selectedTags, tag]);
+        // clear search bar
+        setSearchInput("");
+    }
+
     return (
         <div className="flex flex-col p-4 gap-[10px]">
+            
             <input
                 onClick={handleClick}
                 onInput={handleSearch}
+                onKeyUp={handleEnter}
                 value={searchInput}
                 placeholder="tag name"
                 className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] text-black"
@@ -110,7 +103,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                         <div
                             key={tag}
                             onClick={() => handleSelectedTags(tag)}
-                            className="pl-2 hover:bg-violet-600 hover:font-bold active:bg-violet-700 py-2"
+                            className={`pl-2 py-2 hover:font-bold hover:bg-violet-600 active:bg-violet-600 ${selectedTags.includes(tag) && 'bg-violet-600'}`}
                         >
                             <p>{tag}</p>
                         </div>
