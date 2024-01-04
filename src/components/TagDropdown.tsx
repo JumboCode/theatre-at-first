@@ -112,7 +112,7 @@ export default function TagDropdown(props: TagDropdownProps) {
             </div>
             {display && (
                 <div className="border-2 h-[144px] rounded-xl overflow-auto">
-                    {filteredTags.map((tag) => (
+                    {(!searchInput ? props.tags : filteredTags).map((tag) => (
                         <div
                             key={tag}
                             onClick={() => handleSelectedTags(tag)}
