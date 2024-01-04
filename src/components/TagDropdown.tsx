@@ -93,7 +93,7 @@ export default function TagDropdown(props: TagDropdownProps) {
 
     return (
         <div className="flex flex-col p-4 gap-[10px]">
-            <div className="border-2 relative">
+            <div className="relative">
                 {searchInput != "" && (
                     <button 
                         onClick={handleAdd}

@@ -15,7 +15,7 @@ export default function testPage() {
     return (
         <main>
             <div className="bg-purple-400 flex flex-col justify-center">
-                <div className="w-[588px] border-2 border-black">
+                <div className="w-[588px]">
                     <TagDropdown tags={allTags}></TagDropdown>
                 </div>
             </div>
