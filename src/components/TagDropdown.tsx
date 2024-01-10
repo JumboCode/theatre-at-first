@@ -99,14 +99,7 @@ export default function TagDropdown(props: TagDropdownProps) {
 
     return (
         <div className="flex flex-col p-4 gap-[10px]">
-            <div className="relative">
-                {searchInput != "" && (
-                    <button 
-                        onClick={handleAdd}
-                        className="text-blue-600 absolute right-0 py-3 px-4"
-                    >
-                        Add tag
-                    </button>)}
+            <div className="flex flex-row gap-1 align-middle"> 
                 <input
                     onClick={handleClick}
                     onInput={handleSearch}
@@ -115,6 +108,13 @@ export default function TagDropdown(props: TagDropdownProps) {
                     placeholder="tag name"
                     className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] w-[100%] text-black"
                 />
+                {searchInput != "" && (
+                    <button 
+                        onClick={handleAdd}
+                        className="text-blue-600 bg-white rounded-lg py-2 px-3 min-w-min whitespace-nowrap"
+                    >
+                        Add tag
+                    </button>)}
             </div>
             {display && (
                 <div 
@@ -134,7 +134,7 @@ export default function TagDropdown(props: TagDropdownProps) {
             )}
             {/* if at least one tag is selected, show the div*/}
             {selectedTags.length > 0 && (
-                <div className="flex flex-row gap-2 justify-start">
+                <div className="flex flex-row gap-2 justify-start flex-wrap">
                     {selectedTags.map((selectedTag) => (
                         <div
                             key={selectedTag}
