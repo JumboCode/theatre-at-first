@@ -97,7 +97,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                 {searchInput != "" && (
                     <button 
                         onClick={handleAdd}
-                        className="absolute right-0 py-3 px-4"
+                        className="text-blue-600 absolute right-0 py-3 px-4"
                     >
                         Add tag
                     </button>)}
