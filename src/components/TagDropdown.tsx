@@ -52,10 +52,12 @@ export default function TagDropdown(props: TagDropdownProps) {
     const handleClick = () => {
         if (!display) {
             setDisplay(true);
-        } else {
-            setDisplay(false);
         }
     };
+
+    const handleMouseLeave = () => {
+        setDisplay(false);
+    }
 
     // Controls tag selection
     function handleSelectedTags(tag: string) {
@@ -113,7 +115,10 @@ export default function TagDropdown(props: TagDropdownProps) {
                 />
             </div>
             {display && (
-                <div className="border-2 h-[144px] rounded-xl overflow-auto">
+                <div 
+                    className="border-2 h-[144px] rounded-xl overflow-auto"
+                    onMouseLeave={handleMouseLeave}
+                >
                     {(!searchInput ? props.tags : filteredTags).map((tag) => (
                         <div
                             key={tag}
@@ -125,7 +130,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                     ))}
                 </div>
             )}
-            {/* if display==true AND at least one tag is selected, show the div*/}
+            {/* if at least one tag is selected, show the div*/}
             {selectedTags.length > 0 && (
                 <div className="flex flex-row gap-2 justify-start">
                     {selectedTags.map((selectedTag) => (
