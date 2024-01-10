@@ -52,6 +52,8 @@ export default function TagDropdown(props: TagDropdownProps) {
     const handleClick = () => {
         if (!display) {
             setDisplay(true);
+        } else {
+            setDisplay(false);
         }
     };
 
