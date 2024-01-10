@@ -52,6 +52,8 @@ export default function TagDropdown(props: TagDropdownProps) {
     const handleClick = () => {
         if (!display) {
             setDisplay(true);
+        } else {
+            setDisplay(false);
         }
     };
 
@@ -124,7 +126,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                 </div>
             )}
             {/* if display==true AND at least one tag is selected, show the div*/}
-            {display && selectedTags.length > 0 && (
+            {selectedTags.length > 0 && (
                 <div className="flex flex-row gap-2 justify-start">
                     {selectedTags.map((selectedTag) => (
                         <div
