@@ -42,11 +42,11 @@ export default function TagDropdown(props: TagDropdownProps) {
         if (key_event.key == "Enter") {
             addTag(searchInput);
         }
-    }
+    };
 
     const handleAdd = () => {
         addTag(searchInput);
-    }
+    };
 
     // Controls display of dropdown
     const handleClick = () => {
@@ -59,7 +59,7 @@ export default function TagDropdown(props: TagDropdownProps) {
 
     const handleMouseLeave = () => {
         setDisplay(false);
-    }
+    };
 
     // Controls tag selection
     function handleSelectedTags(tag: string) {
@@ -91,7 +91,7 @@ export default function TagDropdown(props: TagDropdownProps) {
             props.tags.push(tag);
             // console.log("pushed tag");
             // console.log(props.tags);
-        } 
+        }
         setSelectedTags([...selectedTags, tag]);
         // clear search bar
         setSearchInput("");
@@ -99,7 +99,7 @@ export default function TagDropdown(props: TagDropdownProps) {
 
     return (
         <div className="flex flex-col p-4 gap-[10px]">
-            <div className="flex flex-row gap-1 align-middle"> 
+            <div className="flex flex-row gap-1 align-middle">
                 <input
                     onClick={handleClick}
                     onInput={handleSearch}
@@ -109,15 +109,16 @@ export default function TagDropdown(props: TagDropdownProps) {
                     className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] w-[100%] text-black"
                 />
                 {searchInput != "" && (
-                    <button 
+                    <button
                         onClick={handleAdd}
                         className="text-blue-600 bg-white rounded-lg py-2 px-3 min-w-min whitespace-nowrap"
                     >
                         Add tag
-                    </button>)}
+                    </button>
+                )}
             </div>
             {display && (
-                <div 
+                <div
                     className="border-2 h-[144px] rounded-xl overflow-auto"
                     onMouseLeave={handleMouseLeave}
                 >
@@ -125,7 +126,10 @@ export default function TagDropdown(props: TagDropdownProps) {
                         <div
                             key={tag}
                             onClick={() => handleSelectedTags(tag)}
-                            className={`pl-2 py-2 hover:font-bold hover:bg-violet-600 active:bg-violet-600 ${selectedTags.includes(tag) && 'bg-violet-600 font-bold'}`}
+                            className={`pl-2 py-2 hover:font-bold hover:bg-violet-600 active:bg-violet-600 ${
+                                selectedTags.includes(tag) &&
+                                "bg-violet-600 font-bold"
+                            }`}
                         >
                             <p>{tag}</p>
                         </div>
