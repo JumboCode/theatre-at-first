@@ -7,11 +7,11 @@ interface SearchBarProps {
 }
 
 export default function SearchBar({inputText, setInput}: SearchBarProps) {
- 
+
     return (
         <div>
         <input 
-            className="text-white"
+            className="rounded-full px-3 py-2 text-black"
             type="text"
             value={inputText}
             onChange={(e) => setInput(e.target.value)}
