@@ -1,4 +1,5 @@
 import UserSummary from "../../components/user-summary";
+import CuteDog1 from "../../../public/images/cute_dog4.jpg";
 import { SelectUser } from "@/db/schema";
 
 // const user = {
@@ -11,10 +12,10 @@ import { SelectUser } from "@/db/schema";
 
 export default function UserSum() {
     const id = 1;
-    const access = "admin";
-    const firstname = "First";
-    const lastname = "Last";
-    const image = "image";
+    const access = "Drip King";
+    const firstname = "My";
+    const lastname = "Dawg";
+    const image = CuteDog1;
 
     return (
         <main className="justify-between p-24">
@@ -48,9 +49,6 @@ export default function testPage() {
         </main>
     );
 } */
-
-
-
 
 // const dummyComment1 = {
 //     id: 1,
