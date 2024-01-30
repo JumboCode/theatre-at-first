@@ -16,10 +16,7 @@ interface UserProps {
 export default function UserSummary(props: UserProps) {
 
     return (
-        // <div>
-            <div className="flex flex-col gap-10 items-left p-20 m-10 bg-white w-[50%] text-black">
-            <div className="text-4xl font-bold">{props.firstname} {props.lastname}
-            <div className="text-4xl font-bold">{props.access}
+        <div className="flex flex-row items-center gap-10 p-5 bg-white w-[35%] text-black">
             <ResizeableIMG
                 width={125}
                 height={125}
@@ -35,12 +32,15 @@ export default function UserSummary(props: UserProps) {
                 ring-1
                 ring-gray-400	
                 backdrop-blur-lg
-                bg-center
                 outline-[8px]
                 "
                 src={props.image.src}
-                alt="pics of puppies"
             />
-        </div></div></div>
+            <div>
+                <p className="text-3xl font-bold max-w-3 line-clamp-1">{props.firstname} {props.lastname}</p>
+                <p className="text-2xl text-gray-400 max-w-3 line-clamp-1">{props.access}</p>
+            </div>
+            
+        </div>
     );
 }
