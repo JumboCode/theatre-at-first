@@ -4,7 +4,6 @@ import DisplayComponent from "../../components/collectionViewFilter/displayCompo
 import { useState } from "react";
 
 // TODO 
-// - fix empty tag that shows when page loads
 // - when searchinput doesn't match any of the tags, setDisplay(false)
 // - add a dropdown arrow and hook it up to setDisplay
 
@@ -12,7 +11,7 @@ export default function TestPage() {
     
     const [locationTags, setLocationTags] = useState(["loc1", "loc2", "loc3", "loc4", "loc5", "loc6"]);
     const [nonLocationTags, setNonLocationTags] = useState(["blue", "green", "red", "orange", "purple", "yellow"]);
-    const [selectedTags, setSelectedTags] = useState([""]);
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     console.log("page: " + selectedTags.length)
 

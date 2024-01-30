@@ -20,6 +20,7 @@ export default function SelectionComponent(props: SelectionProps) {
         event.preventDefault();
         setSearchInput(input_text);
         if (input_text.length > 0) {
+            setDisplay(true);
             setFilteredTags(
                 props.tags.filter((tag) => {
                     return tag.match(input_text);
@@ -32,12 +33,8 @@ export default function SelectionComponent(props: SelectionProps) {
     // Handles actions when 'Enter' key is pressed
     const handleEnter = (key_event: React.KeyboardEvent) => {
         if (key_event.key == "Enter") {
-            addTag(searchInput);
+            // TODO 
         }
-    };
-
-    const handleAdd = () => {
-        addTag(searchInput);
     };
 
     // Controls display of dropdown
@@ -68,38 +65,17 @@ export default function SelectionComponent(props: SelectionProps) {
         }
     }
 
-    function addTag(tag: string) {
-        // If tag is in props.tags, add tag to selectedTags array
-        // Else (new tag), add tag to props.tags (large tag array), probably requires request to db, then add tag to selectedTags
-        if (!props.tags.includes(tag)) {
-            props.tags.push(tag);
-            // console.log("pushed tag");
-            // console.log(props.tags);
-        }
-        props.setSelectedTags([...props.selectedTags, tag]);
-        // clear search bar
-        setSearchInput("");
-    }
-
     return (
         <div className="flex flex-col p-4 gap-[10px]">
-            <div className="flex flex-row gap-1 align-middle">
+            <div className="flex flex-row gap-1 align-middle bg-white rounded-lg">
                 <input
-                    onClick={handleClick}
                     onInput={handleSearch}
                     onKeyUp={handleEnter}
                     value={searchInput}
                     placeholder={"Filter by " + props.category}
                     className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] w-[100%] text-black"
                 />
-                {searchInput != "" && (
-                    <button
-                        onClick={handleAdd}
-                        className="text-blue-600 bg-white rounded-lg py-2 px-3 min-w-min whitespace-nowrap"
-                    >
-                        Add {props.category}
-                    </button>
-                )}
+                <p onClick={handleClick} className="text-black bg-white rounded-lg p-2">v</p>
             </div>
             {display && (
                 <div
