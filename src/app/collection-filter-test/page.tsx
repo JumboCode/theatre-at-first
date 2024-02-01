@@ -3,17 +3,12 @@ import SelectionComponent from "../../components/collectionViewFilter/selectionC
 import DisplayComponent from "../../components/collectionViewFilter/displayComponent"
 import { useState } from "react";
 
-// TODO 
-// - when searchinput doesn't match any of the tags, setDisplay(false)
-// - add a dropdown arrow and hook it up to setDisplay
-
 export default function TestPage() {
     
     const [locationTags, setLocationTags] = useState(["loc1", "loc2", "loc3", "loc4", "loc5", "loc6"]);
     const [nonLocationTags, setNonLocationTags] = useState(["blue", "green", "red", "orange", "purple", "yellow"]);
+    const [nonLocationTags2, setNonLocationTags2] = useState(["wood", "plastic", "metal", "cotton"]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
-
-    console.log("page: " + selectedTags.length)
 
     return (
         <main>
@@ -24,6 +19,9 @@ export default function TestPage() {
                     </div>
                     <div className="w-[300px]">
                         <SelectionComponent tags={nonLocationTags} setTags={setNonLocationTags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} category="color"></SelectionComponent>
+                    </div>
+                    <div className="w-[300px]">
+                        <SelectionComponent tags={nonLocationTags2} setTags={setNonLocationTags2} selectedTags={selectedTags} setSelectedTags={setSelectedTags} category="material"></SelectionComponent>
                     </div>
                 </div>
                 <div className="p-4">
