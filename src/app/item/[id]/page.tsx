@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageCarousel from "../../../components/imageCarousel";  
 import ItemDetailTest from "@/components/ItemDetailTest";
 import CommentComp from "../../../components/comment-comp-single-view";  
@@ -17,6 +17,10 @@ import CuteDog5 from "../../../../public/images/cute_dog5.jpg";
 
 import { SelectComment } from "@/db/schema";
 import { SelectItem } from "@/db/schema";
+
+interface prop {
+    label: string;
+}
 
 //Questions to ask:
 //Is there a filter component? --> no
@@ -46,12 +50,66 @@ import { SelectItem } from "@/db/schema";
 
 const imageList = [CuteDog1, CuteDog2, CuteDog3, CuteDog4, CuteDog5];
 
+    // export function ItemDescription(props: prop) {
+    //     const [description, setDescription] = useState<SelectItem | null>(null);
+
+    //     const getItemDetails = () => {
+    //         fetch(`/items`)
+    //             .then((res) => res.json())
+    //             .then((res) => {
+    //             setDescription({
+    //                 id: res.id,
+    //                 name: res.name,
+    //                 desc: res.desc,
+    //                 tags: res.tags,
+    //                 imageUrl: res.imageUrl,
+    //                 status: res.status
+    //                 })
+    //             });
+    //     };
+    // }
+
+
 export default function Page({ params }: { params: { id: string } }) {
     // const posts = await fetch('/api/route/user/id').then((res) => res.json())
 
     // return posts.map((post) => ({
     //     IDBCursor: post.id,
     // }))
+
+    const [description, setDescription] = useState<SelectItem | null>(null);
+
+        const getItemDetails = () => {
+            // fetch(`/items`)
+            //     .then((res) => res.json())
+            //     .then((res) => {
+            //     setDescription({
+            //         id: res.id,
+            //         name: res.name,
+            //         desc: res.desc,
+            //         tags: res.tags,
+            //         // imageUrl: res.imageUrl,
+            //         // status: res.status
+            //         })
+            //     });
+
+            setDescription({
+                id: 112,
+                name: "Name of item --> Nehir",
+                desc: "is awesome",
+                tags: ["hi", "hey"],
+                imageUrl: null,
+                status: null,
+            })
+        };
+
+        //What this code is basically saying, run the code inside 
+        //(getItemDetails), and then never again; we do this bc we want to 
+        //populate the items 
+        useEffect(() => {
+            getItemDetails();
+        }, [])
+
     
     const dummyComment1 = {
         id: 1,
@@ -71,12 +129,12 @@ export default function Page({ params }: { params: { id: string } }) {
 
     return  (
         <main>
-            <h1>Page Id: {params.id}</h1>
+            {/* <h1>Page Id: {params.id}</h1> */}
              <div className="text-align: center indent-[1.5%]">
-                 Item Name
+              {description == null ? "some placeholder" : description.name}
              </div>
              
-            
+                
             <div> 
                 <ImageCarousel imageList={imageList} />
             </div>
@@ -86,16 +144,9 @@ export default function Page({ params }: { params: { id: string } }) {
              </div>
             
          </main>
-
-    
-
     );
-    
-    
-
-
-
 }
+
 
 
 
@@ -164,4 +215,3 @@ export default function Page({ params }: { params: { id: string } }) {
 //         </main>
 //     );
 // }
-
