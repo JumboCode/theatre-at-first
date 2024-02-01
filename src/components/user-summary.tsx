@@ -14,13 +14,11 @@ interface UserProps {
 }
 
 export default function UserSummary(props: UserProps) {
-
     return (
         <div className="flex flex-row items-center gap-10 p-5 bg-white w-[35%] text-black">
             <ResizeableIMG
                 width={125}
                 height={125}
-                // className="rounded-full ... border-black"
                 className="
                 rounded-full ...
                 border-4
@@ -37,10 +35,9 @@ export default function UserSummary(props: UserProps) {
                 src={props.image.src}
             />
             <div>
-                <p className="text-3xl font-bold max-w-3 line-clamp-1">{props.firstname} {props.lastname}</p>
-                <p className="text-2xl text-gray-400 max-w-3 line-clamp-1">{props.access}</p>
+                <p className="text-3xl font-bold max-w-3 line-clamp-1 truncate text-overflow: ellipsis;">{props.firstname} {props.lastname}</p>
+                <p className="text-2xl text-gray-400 max-w-3 line-clamp-1 text-overflow: ellipsis;">{props.access}</p>
             </div>
-            
         </div>
     );
 }
