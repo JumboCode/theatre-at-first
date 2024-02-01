@@ -16,10 +16,16 @@ export default function SelectionComponent(props: SelectionProps) {
     const [filteredTags, setFilteredTags] = useState(props.tags);
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        
         const input_text: string = event.target.value;
         event.preventDefault();
         setSearchInput(input_text);
-        if (input_text.length > 0) {
+        
+        const arr: string[] = props.tags.filter((tag) => { return tag.match(input_text);})
+
+        if (arr.length == 0) {
+            setDisplay(false);
+        } else if (input_text.length > 0) {
             setDisplay(true);
             setFilteredTags(
                 props.tags.filter((tag) => {
@@ -60,7 +66,6 @@ export default function SelectionComponent(props: SelectionProps) {
                 ...props.selectedTags.slice(toRemove + 1),
             ]);
         } else {
-            console.log("HERE");
             props.setSelectedTags([...props.selectedTags, tag]);
         }
     }
@@ -73,9 +78,9 @@ export default function SelectionComponent(props: SelectionProps) {
                     onKeyUp={handleEnter}
                     value={searchInput}
                     placeholder={"Filter by " + props.category}
-                    className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] w-[100%] text-black"
+                    className="flex flex-col justify-center pl-2 rounded-lg h-[46px] w-[100%] text-black focus:outline-none"
                 />
-                <p onClick={handleClick} className="text-black bg-white rounded-lg p-2">v</p>
+                {display ? (<p onClick={handleClick} className="text-black bg-white rounded-lg p-2">^</p>) : (<p onClick={handleClick} className="text-black bg-white rounded-lg p-2">v</p>)}
             </div>
             {display && (
                 <div
