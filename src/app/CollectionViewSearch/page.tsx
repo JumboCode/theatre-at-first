@@ -1,5 +1,5 @@
 "use client"
-import {useState} from "react";
+import { useState } from "react";
 import SearchBar from "../../components/CollectionViewSearch";
 
 export default function Preview() {
@@ -9,6 +9,7 @@ export default function Preview() {
     return (
         <main>
             <SearchBar inputText={input} setInput={setInput} />
+            <p> {input} </p>
         </main>
     );
 }
