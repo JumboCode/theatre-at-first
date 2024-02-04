@@ -76,8 +76,10 @@ export default function Page({ params }: { params: { id: string } }) {
     // return posts.map((post) => ({
     //     IDBCursor: post.id,
     // }))
+    
 
     const [description, setDescription] = useState<SelectItem | null>(null);
+    const [comment, setComment] = useState<SelectComment | null>(null);
 
         const getItemDetails = () => {
             // fetch(`/items`)
@@ -95,12 +97,21 @@ export default function Page({ params }: { params: { id: string } }) {
 
             setDescription({
                 id: 112,
-                name: "Name of item --> Nehir",
-                desc: "is awesome",
+                name: "Item Name",
+                desc: "He was aware there were numerous wonders of this world including the unexplained creations of humankind that showed the wonder of our ingenuity. There are huge heads on Easter Island. There are the Egyptian pyramids. There’s Stonehenge. But he now stood in front of a newly discovered monument that simply didn't make any sense and he wondered how he was ever going to be able to explain it.",
                 tags: ["hi", "hey"],
                 imageUrl: null,
                 status: null,
+            });
+
+            setComment({
+                id: 1,
+                userId: 123,
+                timestamp: "2023-11-18 at 10:00:00",
+                message: "This is a test comment",
+                itemId: 456, 
             })
+
         };
 
         //What this code is basically saying, run the code inside 
@@ -109,6 +120,7 @@ export default function Page({ params }: { params: { id: string } }) {
         useEffect(() => {
             getItemDetails();
         }, [])
+
 
     
     const dummyComment1 = {
@@ -128,20 +140,50 @@ export default function Page({ params }: { params: { id: string } }) {
     };
 
     return  (
-        <main>
+        <main className="bg-white">
             {/* <h1>Page Id: {params.id}</h1> */}
-             <div className="text-align: center indent-[1.5%]">
-              {description == null ? "some placeholder" : description.name}
-             </div>
-             
-                
-            <div> 
-                <ImageCarousel imageList={imageList} />
+            <div className="grid grid-cols-2 pt-6">
+                <div className="content-center left-0 pl-8 pb-4 pr-20 bg-blue"> 
+                    <ImageCarousel imageList={imageList}/>
+                </div>
+                <div className="text-black bg-red font-sans font-semibold text-[40px]">
+                    {description == null ? "Loading item name..." : description.name}
+                    <div className="pt-10 pb-3 text-[24px] font-semibold">
+                        Description
+                    </div>
+                    <div className="text-[18px] text-left text-align-left font-normal">
+                        <p>
+                        {description == null ? "loading description..." : description.desc}
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div className="text-black">
+                {/* <hr>
+                    <p className="text-gray-500 dark:text-gray-400">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
+                    <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                    <p className="text-gray-500 dark:text-gray-400">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease, with a complete audit trail for every change.</p>
+                </hr> */}
+            {/* <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+                <div className="flex-items-center">
+                </div> */}
             </div>
 
-             <div className="h-screen flex items-center justify-center space-x-4">
+            <div className="h-screen flex pl-8 justify-left space-x-4">
                 <CommentComp itemId={456} />
-             </div>
+            </div>
+            <div className="text-black bg-red font-sans font-semibold text-[40px]">
+                {comment == null ? "Loading comments..." : comment.message}
+                <div className="pt-10 pb-3 text-[24px] font-semibold">
+                    Comments!!
+                </div>
+                <div className="text-[18px] text-left text-align-left font-normal">
+                        <p>
+                        {description == null ? "loading description..." : description.desc}
+                        </p>
+                </div>
+            </div>
             
          </main>
     );
