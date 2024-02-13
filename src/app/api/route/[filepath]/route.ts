@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 //GET request
 export async function GET(
     request: Request,
