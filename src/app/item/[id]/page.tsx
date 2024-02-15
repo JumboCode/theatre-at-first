@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ImageCarousel from "../../../components/imageCarousel";  
 import ItemDetailTest from "@/components/ItemDetailTest";
 import CommentComp from "../../../components/comment-comp-single-view";  
-import ResizeableIMG from "../../../components/resizeableIMG";
+// import ResizeableIMG from "../../../components/resizeableIMG";
 
 import CuteDog1 from "../../../../public/images/cute_dog1.jpg";
 import CuteDog2 from "../../../../public/images/cute_dog2.jpg";
@@ -15,9 +15,9 @@ import CuteDog5 from "../../../../public/images/cute_dog5.jpg";
 import { SelectComment } from "@/db/schema";
 import { SelectItem } from "@/db/schema";
 
-interface prop {
-    label: string;
-}
+// interface prop {
+//     label: string;
+// }
 
 const imageList = [CuteDog1, CuteDog2, CuteDog3, CuteDog4, CuteDog5];
 
@@ -46,7 +46,6 @@ export default function Page({ params }: { params: { id: string } }) {
                 message: "This is a test comment",
                 itemId: 456, 
             })
-
         };
 
         useEffect(() => {
@@ -54,36 +53,21 @@ export default function Page({ params }: { params: { id: string } }) {
         }, [])
 
     return  (
+        //for some reason the image isnt in main when using inspect????lol
         <main className="bg-white">
-            <div className="grid grid-cols-2 pt-6">
-                <div className="content-center left-0 pl-8 pb-4 pr-20 bg-blue"> 
-                    <ImageCarousel imageList={imageList}/>
-                </div>
+            <div className="flex flex-row justify-between">
+                <ImageCarousel imageList={imageList}/>
                 { description &&
                 <ItemDetailTest
                 name={description.name}
                 tags={description.tags}
                 description={description.desc}
                 status={description.status}
-            ></ItemDetailTest> }
+                ></ItemDetailTest> }
             </div>
-            <div className="text-black"> </div>
-
-            <div className="h-screen flex pl-8 justify-left space-x-4">
+            <div className="flex pl-8 justify-left space-x-4">
                 <CommentComp itemId={456} />
             </div>
-            <div className="text-black bg-red font-sans font-semibold text-[40px]">
-                {comment == null ? "Loading comments..." : comment.message}
-                <div className="pt-10 pb-3 text-[24px] font-semibold">
-                    Comments!!
-                </div>
-                <div className="text-[18px] text-left text-align-left font-normal">
-                        <p>
-                        {description == null ? "loading description..." : description.desc}
-                        </p>
-                </div>
-            </div>
-            
          </main>
     );
 }
