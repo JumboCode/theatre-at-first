@@ -19,7 +19,7 @@ export async function GET(
     { params }: { params: { query: string, tags: string } }
 ) {
     // let params = {
-    //     string_query: "wizard"
+    //     string_query: "crown"
     // }
 
     // let results = await db.query.items.findMany();
