@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import ImageCarousel from "../../../components/imageCarousel";  
 import ItemDetailTest from "@/components/ItemDetailTest";
 import CommentComp from "../../../components/comment-comp-single-view";  
-// import ResizeableIMG from "../../../components/resizeableIMG";
 
 import CuteDog1 from "../../../../public/images/cute_dog1.jpg";
 import CuteDog2 from "../../../../public/images/cute_dog2.jpg";
@@ -14,10 +13,6 @@ import CuteDog5 from "../../../../public/images/cute_dog5.jpg";
 
 import { SelectComment } from "@/db/schema";
 import { SelectItem } from "@/db/schema";
-
-// interface prop {
-//     label: string;
-// }
 
 const imageList = [CuteDog1, CuteDog2, CuteDog3, CuteDog4, CuteDog5];
 

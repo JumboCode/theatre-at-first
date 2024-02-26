@@ -42,21 +42,23 @@ export default function CommentComp({ itemId }: CommentCompProps) {
 
     return (
         <>
-            <hr className="h-px bg-neutral-700 border-0"></hr>
-            <p className="text-left text-3xl text-neutral-700 font-bold">
-                Comments
-            </p>
-            <hr className="h-px bg-neutral-700 border-0"></hr>
-
-            {itemComments &&
-                itemComments.map((comment) => (
-                    <div key={comment.id}>
-                        <p className="font-bold text-black">{comment.userId}</p>
-                        <p className="font-thin text-black">{comment.timestamp}</p>
-                        <br></br>
-                        <p className="text-black">{comment.message}</p>
+            <div className="content-start">
+                <hr className="h-px bg-neutral-700 border-0"></hr>
+                    <div className="text-left text-3xl text-neutral-700 font-bold">
+                        Comments
                     </div>
-                ))}
+                <hr className="h-px bg-neutral-700 border-0"></hr>
+                
+                    {itemComments &&
+                        itemComments.map((comment) => (
+                            <div key={comment.id}>
+                                <p className="font-bold text-black">{comment.userId}</p>
+                                <p className="font-thin text-black">{comment.timestamp}</p>
+                                <br></br>
+                                <p className="text-black">{comment.message}</p>
+                            </div>
+                        ))}
+            </div>
         </>
     );
 }
