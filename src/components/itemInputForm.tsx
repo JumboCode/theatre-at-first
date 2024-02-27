@@ -1,11 +1,15 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { useEffect } from "react";
 
-interface Props {}
+interface Props {
+    productName: string,
+    setProductName: Dispatch<SetStateAction<string>>,
+    description: string,
+    setDescription: Dispatch<SetStateAction<string>>
+}
 
 export default function ItemInput(props: Props) {
-    const [productName, setProductName] = useState("");
-    const [description, setDescription] = useState("");
     const [isBold, setIsBold] = useState(false);
     const [isItalic, setIsItalic] = useState(false);
     const [isUnderlined, setIsUnderlined] = useState(false);
@@ -32,8 +36,8 @@ export default function ItemInput(props: Props) {
                 <input
                     className="text-gray-950 rounded border-2"
                     style={{ width: "450px" }}
-                    value={productName}
-                    onChange={(e) => setProductName(e.target.value)}
+                    value={props.productName}
+                    onChange={(e) => props.setProductName(e.target.value)}
                 />
                 <div className="text-gray-400 font-bold">
                     Product Description
@@ -70,8 +74,8 @@ export default function ItemInput(props: Props) {
 
                 <textarea
                     className="text-gray-950 rounded border-2"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={props.description}
+                    onChange={(e) => props.setDescription(e.target.value)}
                     style={{
                         height: "200px",
                         width: "450px",
@@ -82,8 +86,8 @@ export default function ItemInput(props: Props) {
                 />
                 <div className="text-gray-950">
                     <h2>Entered Values</h2>
-                    <p>Product Name: {productName}</p>
-                    <p>Product Description: {description}</p>
+                    <p>Product Name: {props.productName}</p>
+                    <p>Product Description: {props.description}</p>
                 </div>
             </form>
         </div>
