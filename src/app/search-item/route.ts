@@ -28,6 +28,7 @@ export async function GET(
 
     let results = await db.query.items.findMany({
          columns: {
+             id: true,
              name: true,
              desc: true,
              tags: true,

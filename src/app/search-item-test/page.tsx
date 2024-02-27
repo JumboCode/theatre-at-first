@@ -14,9 +14,9 @@ const getMyData = async (setResults: (value: SelectItem[]) => void) => {
 
 const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
     const data = arr.filter((result: SelectItem): boolean => {
-        const text: string = result.name + " " + result.desc + " " 
-                                         + result.tags.reduce((acc, tag) => acc + " " + tag)
-        return text.match(searchText) != null
+        const text: string = result.name.toLowerCase() + " " + result.desc.toLowerCase() + " " 
+                                         + result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase())
+        return text.match(searchText.toLowerCase()) != null
     })
     return data
 }
@@ -24,8 +24,8 @@ const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
 export default function Home() {
 
     const [searchInput, setSearchInput] = useState("");
-    const [unfiltered, setUnfiltered] = useState([]);
-    const [filteredResults, setFilteredResults] = useState([]);
+    const [unfiltered, setUnfiltered] = useState<SelectItem[]>([]);
+    const [filteredResults, setFilteredResults] = useState<SelectItem[]>([]);
 
     
     useEffect(
@@ -54,14 +54,26 @@ export default function Home() {
 
     return (
         <div>
-        <input
-            onInput={handleSearch}
-            value={searchInput}
-            placeholder="Search"
-            className="text-black"
-        >
-        </input>
+            <div className="p-4">
+                <input
+                    onInput={handleSearch}
+                    value={searchInput}
+                    placeholder="Search"
+                    className="text-black mb-4"
+                >
+                </input>
+            </div>
+        <div>{
+            filteredResults.map((result) => (
+                <div key={result.id} className="pb-3">
+                    <p className="font-bold">{result.name}</p>
+                    <p>{result.desc}</p>
+                    <p className="font-style: italic">Tags: {result.tags}</p>
+                    <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                </div>
+            ))
+        }
         </div>
-        // Map over filteredResults
+        </div>
     );
 }
