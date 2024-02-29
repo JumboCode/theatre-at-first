@@ -11,7 +11,7 @@ interface ItemDetailTestProps {
 // make request to API to get list of updates
 const updates: string[] = ["Update One", "Update Two", "Update Three"];
 
-export default function ItemDetailTest(props: ItemDetailTestProps) {
+export default function ItemDetail(props: ItemDetailTestProps) {
     const [display, setDisplay] = useState(false);
 
     const handleMouseEnter = () => {

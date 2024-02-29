@@ -1,10 +1,8 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import ImageCarousel from "../../../components/imageCarousel";  
-import ItemDetailTest from "@/components/ItemDetailTest";
+import ItemDetail from "@/components/ItemDetail";
 import CommentComp from "../../../components/comment-comp-single-view";
-import { NextResponse } from "next/server";
-// import GET from "../api";
 
 //how do we import our get and post handlers
 //and allow the image carousel image data to be pulled from the schem
@@ -55,21 +53,64 @@ export default function Page({ params }: { params: { id: string } }) {
         }, [])
 
     return  (
-        //for some reason the image isnt in main when using inspect????lol
+       // for some reason the image isnt in main when using inspect????lol
+        // <main className="bg-white">
+        //     <div className="flex flex-row justify-between">
+        //         <ImageCarousel imageList={imageList}/>
+        //         { description &&
+        //         <ItemDetail
+        //         name={description.name}
+        //         tags={description.tags}
+        //         description={description.desc}
+        //         status={description.status}
+        //         ></ItemDetail> }
+        //     </div>
+        //     <div className="flex pl-8 justify-left space-x-4">
+        //         <CommentComp itemId={456} />
+        //     </div>
+        //  </main>
+
+
         <main className="bg-white">
-            <div className="flex flex-row justify-between">
+        {/* <div className="flex justify-between w-screen h-screen">
+            <ImageCarousel imageList={imageList}/>
+            { description &&
+            <ItemDetail
+            name={description.name}
+            tags={description.tags}
+            description={description.desc}
+            status={description.status}
+            ></ItemDetail> }
+        </div>
+        <div className="flex pl-8 justify-left space-x-4">
+            <CommentComp itemId={456} />
+        </div> */}
+            <div>
+                <h1> Hello? </h1>
                 <ImageCarousel imageList={imageList}/>
-                { description &&
-                <ItemDetailTest
-                name={description.name}
-                tags={description.tags}
-                description={description.desc}
-                status={description.status}
-                ></ItemDetailTest> }
-            </div>
-            <div className="flex pl-8 justify-left space-x-4">
-                <CommentComp itemId={456} />
-            </div>
-         </main>
+            </div>  
+        </main>
+    
+        // <main className="bg-white">
+        //     <div className="flex flex-row justify-between">
+        //         <ImageCarousel imageList={imageList}/>
+        //     </div>
+
+        //     <div>
+        //         { description &&
+        //         <ItemDetail
+        //         name={description.name}
+        //         tags={description.tags}
+        //         description={description.desc}
+        //         status={description.status}
+        //         ></ItemDetail> }
+        //     </div>
+
+        //     <div className="flex pl-8 justify-left space-x-4">
+        //         <CommentComp itemId={456} />
+        //     </div>
+        //  </main>
+
+        
     );
 }
