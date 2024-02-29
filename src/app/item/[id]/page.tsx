@@ -2,19 +2,29 @@
 import React, { useEffect, useState } from "react";
 import ImageCarousel from "../../../components/imageCarousel";  
 import ItemDetailTest from "@/components/ItemDetailTest";
-import CommentComp from "../../../components/comment-comp-single-view";  
+import CommentComp from "../../../components/comment-comp-single-view";
+import { NextResponse } from "next/server";
+// import GET from "../api";
+
+//how do we import our get and post handlers
+//and allow the image carousel image data to be pulled from the schem
+//(potentially using image api routes)
+
+
+
 
 import CuteDog1 from "../../../../public/images/cute_dog1.jpg";
 import CuteDog2 from "../../../../public/images/cute_dog2.jpg";
 import CuteDog3 from "../../../../public/images/cute_dog3.jpg";
 import CuteDog4 from "../../../../public/images/cute_dog4.jpg";
 import CuteDog5 from "../../../../public/images/cute_dog5.jpg";
+import IllegalCat from "../../../../public/images/IllegalCat.jpeg";
 
 
 import { SelectComment } from "@/db/schema";
 import { SelectItem } from "@/db/schema";
 
-const imageList = [CuteDog1, CuteDog2, CuteDog3, CuteDog4, CuteDog5];
+const imageList = [CuteDog1, CuteDog2, CuteDog3, CuteDog4, CuteDog5, IllegalCat];
 
 
 export default function Page({ params }: { params: { id: string } }) {
