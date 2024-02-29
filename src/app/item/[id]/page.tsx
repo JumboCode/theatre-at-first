@@ -10,9 +10,6 @@ import { NextResponse } from "next/server";
 //and allow the image carousel image data to be pulled from the schem
 //(potentially using image api routes)
 
-//
-
-
 import CuteDog1 from "../../../../public/images/cute_dog1.jpg";
 import CuteDog2 from "../../../../public/images/cute_dog2.jpg";
 import CuteDog3 from "../../../../public/images/cute_dog3.jpg";
