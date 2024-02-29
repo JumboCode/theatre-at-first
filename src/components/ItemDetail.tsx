@@ -23,8 +23,7 @@ export default function ItemDetail(props: ItemDetailTestProps) {
     };
 
     return (
-        <main className="">
-            <div className="flex flex-col gap-10 items-left p-20 m-10 bg-white w-[50%] text-black">
+            <div className="flex flex-col gap-10 items-left p-20 bg-white w-[50%] text-black">
                 <div className="text-4xl font-bold">{props.name}</div>
                 <div
                     onMouseEnter={handleMouseEnter}
@@ -59,6 +58,5 @@ export default function ItemDetail(props: ItemDetailTestProps) {
                     {props.description}
                 </div>
             </div>
-        </main>
     );
 }

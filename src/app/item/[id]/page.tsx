@@ -85,10 +85,19 @@ export default function Page({ params }: { params: { id: string } }) {
         <div className="flex pl-8 justify-left space-x-4">
             <CommentComp itemId={456} />
         </div> */}
-            <div>
-                <h1> Hello? </h1>
+            <div className="w-full h-full flex">
                 <ImageCarousel imageList={imageList}/>
+                { description &&
+                <ItemDetail
+                name={description.name}
+                tags={description.tags}
+                description={description.desc}
+                status={description.status}
+                ></ItemDetail> }
             </div>  
+            <div className="flex pl-8 justify-left space-x-4">
+                <CommentComp itemId={456} />
+            </div>
         </main>
     
         // <main className="bg-white">
