@@ -53,39 +53,8 @@ export default function Page({ params }: { params: { id: string } }) {
         }, [])
 
     return  (
-       // for some reason the image isnt in main when using inspect????lol
-        // <main className="bg-white">
-        //     <div className="flex flex-row justify-between">
-        //         <ImageCarousel imageList={imageList}/>
-        //         { description &&
-        //         <ItemDetail
-        //         name={description.name}
-        //         tags={description.tags}
-        //         description={description.desc}
-        //         status={description.status}
-        //         ></ItemDetail> }
-        //     </div>
-        //     <div className="flex pl-8 justify-left space-x-4">
-        //         <CommentComp itemId={456} />
-        //     </div>
-        //  </main>
-
-
         <main className="bg-white">
-        {/* <div className="flex justify-between w-screen h-screen">
-            <ImageCarousel imageList={imageList}/>
-            { description &&
-            <ItemDetail
-            name={description.name}
-            tags={description.tags}
-            description={description.desc}
-            status={description.status}
-            ></ItemDetail> }
-        </div>
-        <div className="flex pl-8 justify-left space-x-4">
-            <CommentComp itemId={456} />
-        </div> */}
-            <div className="w-full h-full flex">
+            <div className="p-8 w-full h-full flex">
                 <ImageCarousel imageList={imageList}/>
                 { description &&
                 <ItemDetail
@@ -95,31 +64,9 @@ export default function Page({ params }: { params: { id: string } }) {
                 status={description.status}
                 ></ItemDetail> }
             </div>  
-            <div className="flex pl-8 justify-left space-x-4">
+            <div className="flex p-8 justify-left space-x-4">
                 <CommentComp itemId={456} />
             </div>
         </main>
-    
-        // <main className="bg-white">
-        //     <div className="flex flex-row justify-between">
-        //         <ImageCarousel imageList={imageList}/>
-        //     </div>
-
-        //     <div>
-        //         { description &&
-        //         <ItemDetail
-        //         name={description.name}
-        //         tags={description.tags}
-        //         description={description.desc}
-        //         status={description.status}
-        //         ></ItemDetail> }
-        //     </div>
-
-        //     <div className="flex pl-8 justify-left space-x-4">
-        //         <CommentComp itemId={456} />
-        //     </div>
-        //  </main>
-
-        
     );
 }
