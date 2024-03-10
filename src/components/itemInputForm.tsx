@@ -30,16 +30,16 @@ export default function ItemInput(props: Props) {
     };
 
     return (
-        <div className="outer-box bg-white rounded-xl">
-            <form className="m-5">
+        <div className="bg-white rounded-xl">
+            <form className="m-5 w-[600px]">
                 <div className="text-gray-400 font-bold">Product Name</div>
                 <input
                     className="text-gray-950 rounded border-2"
-                    style={{ width: "450px" }}
+                    style={{ width: "550px" }}
                     value={props.productName}
                     onChange={(e) => props.setProductName(e.target.value)}
                 />
-                <div className="text-gray-400 font-bold">
+                <div className="mt-4 text-gray-400 font-bold">
                     Product Description
                 </div>
                 <div className="text-gray-950">
@@ -77,18 +77,19 @@ export default function ItemInput(props: Props) {
                     value={props.description}
                     onChange={(e) => props.setDescription(e.target.value)}
                     style={{
+                        maxHeight: "200px",
                         height: "200px",
-                        width: "450px",
+                        width: "550px",
                         fontWeight: isBold ? "bold" : "normal",
                         fontStyle: isItalic ? "italic" : "normal",
                         textDecoration: isUnderlined ? "underline" : "none",
                     }}
                 />
-                <div className="text-gray-950">
+                {/* <div className="text-gray-950">
                     <h2>Entered Values</h2>
                     <p>Product Name: {props.productName}</p>
                     <p>Product Description: {props.description}</p>
-                </div>
+                </div> */}
             </form>
         </div>
     );

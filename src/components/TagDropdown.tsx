@@ -1,5 +1,5 @@
 "use client";
-import { useState, KeyboardEvent, KeyboardEventHandler } from "react";
+import { Dispatch, SetStateAction, useState, KeyboardEvent, KeyboardEventHandler } from "react";
 
 //DROPDOWN:
 //Compenent recieves a list of tags (which is the prop)
@@ -13,12 +13,13 @@ import { useState, KeyboardEvent, KeyboardEventHandler } from "react";
 //2. Input text field goes over "Add tag" if the tag is really really long
 
 interface TagDropdownProps {
-    tags: string[];
+    tags: string[],
+    selectedTags: string[],
+    setSelectedTags: Dispatch<SetStateAction<string[]>>
 }
 
 export default function TagDropdown(props: TagDropdownProps) {
     const [display, setDisplay] = useState(false);
-    const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [searchInput, setSearchInput] = useState("");
     const [filteredTags, setFilteredTags] = useState(props.tags);
 
@@ -64,22 +65,22 @@ export default function TagDropdown(props: TagDropdownProps) {
     // Controls tag selection
     function handleSelectedTags(tag: string) {
         // if tag is already selected, deselect it and remove from selectedTags
-        if (selectedTags.includes(tag)) {
-            const toRemove = selectedTags.indexOf(tag);
-            setSelectedTags(() => [
-                ...selectedTags.slice(0, toRemove),
-                ...selectedTags.slice(toRemove + 1),
+        if (props.selectedTags.includes(tag)) {
+            const toRemove = props.selectedTags.indexOf(tag);
+            props.setSelectedTags(() => [
+                ...props.selectedTags.slice(0, toRemove),
+                ...props.selectedTags.slice(toRemove + 1),
             ]);
         } else {
-            setSelectedTags([...selectedTags, tag]);
+            props.setSelectedTags([...props.selectedTags, tag]);
         }
     }
 
     function deselectTag(tag: string) {
-        const toRemove = selectedTags.indexOf(tag);
-        setSelectedTags(() => [
-            ...selectedTags.slice(0, toRemove),
-            ...selectedTags.slice(toRemove + 1),
+        const toRemove = props.selectedTags.indexOf(tag);
+        props.setSelectedTags(() => [
+            ...props.selectedTags.slice(0, toRemove),
+            ...props.selectedTags.slice(toRemove + 1),
         ]);
     }
 
@@ -92,7 +93,7 @@ export default function TagDropdown(props: TagDropdownProps) {
             // console.log("pushed tag");
             // console.log(props.tags);
         }
-        setSelectedTags([...selectedTags, tag]);
+        props.setSelectedTags([...props.selectedTags, tag]);
         // clear search bar
         setSearchInput("");
     }
@@ -119,16 +120,16 @@ export default function TagDropdown(props: TagDropdownProps) {
             </div>
             {display && (
                 <div
-                    className="border-2 h-[144px] rounded-xl overflow-auto"
+                    className="border-2 h-[144px] rounded-xl overflow-auto text-black"
                     onMouseLeave={handleMouseLeave}
                 >
                     {(!searchInput ? props.tags : filteredTags).map((tag) => (
                         <div
                             key={tag}
                             onClick={() => handleSelectedTags(tag)}
-                            className={`pl-2 py-2 hover:font-bold hover:bg-violet-600 active:bg-violet-600 ${
-                                selectedTags.includes(tag) &&
-                                "bg-violet-600 font-bold"
+                            className={`pl-2 py-2 hover:font-bold hover:bg-gray-100 ${
+                                props.selectedTags.includes(tag) &&
+                                "bg-gray-100 font-bold"
                             }`}
                         >
                             <p>{tag}</p>
@@ -137,12 +138,12 @@ export default function TagDropdown(props: TagDropdownProps) {
                 </div>
             )}
             {/* if at least one tag is selected, show the div*/}
-            {selectedTags.length > 0 && (
+            {props.selectedTags.length > 0 && (
                 <div className="flex flex-row gap-2 justify-start flex-wrap">
-                    {selectedTags.map((selectedTag) => (
+                    {props.selectedTags.map((selectedTag) => (
                         <div
                             key={selectedTag}
-                            className="border-2 rounded-lg p-2 w-auto flex flex-row gap-2 items-center"
+                            className="border-2 rounded-lg p-2 w-auto flex flex-row gap-2 items-center text-black"
                         >
                             <p>{selectedTag}</p>
                             <svg

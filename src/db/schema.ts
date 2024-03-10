@@ -66,7 +66,7 @@ export const updates = inventoryPostgresTable("updates", {
 export const items = inventoryPostgresTable("items", {
     id: serial("id").primaryKey(),
     name: text("name").notNull(),
-    desc: text("desc").notNull(),
+    desc: text("description").notNull(),
     tags: text("tags").array().notNull(),
     imageUrl: text("image_url"),
     status: text("status"),
