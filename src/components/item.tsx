@@ -8,7 +8,7 @@ interface Prop {
 
 export default function Item(props: Prop) {
     return (
-        <div className="h-1/3 w-60 bg-white rounded-xl">
+        <div className="h-80 w-60 bg-white rounded-xl shadow-md">
             <div className="h-full flex flex-col">
                 <div className="h-4/5 bg-slate-500 rounded-t-xl"></div>
                 <div className="p-3">
