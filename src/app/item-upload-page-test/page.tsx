@@ -1,8 +1,6 @@
 import ItemUpload from "@/components/itemUploadPage";
 
 export default function testPage() {
-    // const cancel = "Cancel";
-    // const product = "Add Product";
 
     const allTags = [
         "one",
@@ -18,8 +16,6 @@ export default function testPage() {
     return (
         <main>
             <ItemUpload
-                // cancel={cancel}
-                // product={product}
                 tags={allTags}
             ></ItemUpload>
         </main>

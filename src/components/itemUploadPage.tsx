@@ -2,8 +2,8 @@
 import { useState } from "react";
 import ItemInput from "./itemInputForm";
 import TagDropdown from "./TagDropdown";
-import { InsertItem, items } from "@/db/schema";
-// import ImageCapture from "./"
+import { InsertItem } from "@/db/schema";
+// import "@/components/ImageCapture"
 
 interface UploadProps {
     tags: string[];
@@ -14,7 +14,6 @@ export default function ItemUpload(props: UploadProps) {
     const [productName, setProductName] = useState("");
     const [description, setDescription] = useState("");
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
-    const [clearForm, setClearForm] = useState(false);
 
     //info need to store: name, desc, tags, imageUrl (get from components)
 
@@ -40,7 +39,7 @@ export default function ItemUpload(props: UploadProps) {
             name: productName,
             desc: description,
             tags: selectedTags,
-            imageUrl: " ",
+            imageUrl: "",
             status: "active"
         };
 
@@ -94,7 +93,6 @@ export default function ItemUpload(props: UploadProps) {
 
             <div className="mt-4 ml-20 w-[1280px] h-[370px]">
                 <div className="border-2 rounded-lg border-solid border-gray-200 w-full">
-                    /////
                 </div>
             </div>
 

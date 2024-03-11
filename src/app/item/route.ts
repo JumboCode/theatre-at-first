@@ -28,13 +28,15 @@ export async function POST(req: Request) {
             }
         );
     } else {
-        let result = await db.insert(items).values({
+        let item: InsertItem = {
             name,
             desc,
             tags,
-            imageUrl,
             status,
-        })
+            imageUrl,
+        }
+
+        let result = await db.insert(items).values(item)
         .returning();
         return NextResponse.json(
             {
