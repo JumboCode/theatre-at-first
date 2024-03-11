@@ -6,12 +6,13 @@ export default function ResizeableIMG(
     return (
         <div>
             <Image
-                className="overflow-hidden object-cover rounded-lg"
+                className={`overflow-hidden object-cover rounded-lg ${props.className}`}
                 {...props}
                 style={{
                     width: `${props.width}px`,
                     height: `${props.height}px`,
                 }}
+                alt={props.alt || ""}
             />
         </div>
     );

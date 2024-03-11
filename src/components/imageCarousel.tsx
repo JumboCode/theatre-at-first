@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ResizeableIMG from "./resizeableIMG";
 import { StaticImageData } from "next/image";
 
+
 export default function ImageCarousel(props: { imageList: StaticImageData[] }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -20,22 +21,12 @@ export default function ImageCarousel(props: { imageList: StaticImageData[] }) {
         );
     };
 
-    const leftButtonStyle = {
-        transform: "translate(0, -50%)",
-    };
-    const rightButtonStyle = {
-        transform: "translate(0, -50%)",
-    };
-
-
-    
-
     return (
-    <div className="slider-container">
+    <div className="slider-container flex flex-row items-center">
         <button
-            className="absolute cursor-pointer text-white"
+            className=" cursor-pointer text-white translate-x-16"
             onClick={prevImage}
-            style={{top: '30%', transform: 'translateY(-40%)' }}
+            style={{translate: "-10 0"}}
         >
             {<svg className="h-12 w-12 text-black-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="12" r="9" />  <line x1="8" y1="12" x2="16" y2="12" />  <line x1="8" y1="12" x2="12" y2="16" />  <line x1="8" y1="12" x2="12" y2="8" /></svg>}
         </button>
@@ -46,9 +37,8 @@ export default function ImageCarousel(props: { imageList: StaticImageData[] }) {
             alt="pics of cookies"
         />
         <button
-            className="absolute cursor-pointer top-1/2 text-white"
+            className=" cursor-pointer top-1/2 text-white right-0 -translate-x-16"
             onClick={nextImage}
-            style={{top: '28%', transform: 'translateX(1130%)'}}
         >
             {<svg className="h-12 w-12 text-black-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="12" r="9" />  <line x1="16" y1="12" x2="8" y2="12" />  <line x1="16" y1="12" x2="12" y2="16" />  <line x1="16" y1="12" x2="12" y2="8" /></svg>}
         </button>
