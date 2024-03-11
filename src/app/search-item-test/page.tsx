@@ -2,17 +2,16 @@
 import { useState, useEffect } from "react";
 import {SelectItem} from "@/db/schema";
 
-const getMyData = async (setResults: (value: SelectItem[]) => void) => {
+async function getMyData() {
     console.log("getting data")
     return await fetch("/search-item", {
         method: "GET",
     })
     .then((response) => response.json())
-    .then((json) => json.results)
-    .then((data) => setResults(data));
+    .then((json) => json.results);
 }
 
-const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
+function filterData(arr: SelectItem[], searchText: string): SelectItem[] {
     const data = arr.filter((result: SelectItem): boolean => {
         const text: string = result.name.toLowerCase() + " " + result.desc.toLowerCase() + " " 
                                          + result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase())
@@ -30,12 +29,9 @@ export default function Home() {
     
     useEffect(
         () => { 
-            getMyData(setUnfiltered).then(() => {
-                if (searchInput.length > 0) {
-                    setFilteredResults(filterData(unfiltered, input_text))
-                } else {
-                    setFilteredResults(unfiltered)
-                }
+            getMyData().then((data) => {
+                setUnfiltered(data);
+                setFilteredResults(data);
             })
         },
         []
@@ -63,17 +59,17 @@ export default function Home() {
                 >
                 </input>
             </div>
-        <div>{
-            filteredResults.map((result) => (
-                <div key={result.id} className="pb-3">
-                    <p className="font-bold">{result.name}</p>
-                    <p>{result.desc}</p>
-                    <p className="font-style: italic">Tags: {result.tags}</p>
-                    <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-                </div>
-            ))
-        }
-        </div>
+            <div>{
+                filteredResults.map((result) => (
+                    <div key={result.id} className="pb-3">
+                        <p className="font-bold">{result.name}</p>
+                        <p>{result.desc}</p>
+                        <p className="font-style: italic">Tags: {result.tags}</p>
+                        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                    </div>
+                ))
+            }
+            </div>
         </div>
     );
 }
