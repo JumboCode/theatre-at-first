@@ -11,7 +11,7 @@ interface ItemDetailTestProps {
 // make request to API to get list of updates
 const updates: string[] = ["Update One", "Update Two", "Update Three"];
 
-export default function ItemDetailTest(props: ItemDetailTestProps) {
+export default function ItemDetail(props: ItemDetailTestProps) {
     const [display, setDisplay] = useState(false);
 
     const handleMouseEnter = () => {
@@ -23,8 +23,7 @@ export default function ItemDetailTest(props: ItemDetailTestProps) {
     };
 
     return (
-        <main className="">
-            <div className="flex flex-col gap-10 items-left p-20 m-10 bg-white w-[50%] text-black">
+            <div className="flex flex-col gap-10 items-left p-10 bg-white w-[50%] text-black">
                 <div className="text-4xl font-bold">{props.name}</div>
                 <div
                     onMouseEnter={handleMouseEnter}
@@ -59,6 +58,5 @@ export default function ItemDetailTest(props: ItemDetailTestProps) {
                     {props.description}
                 </div>
             </div>
-        </main>
     );
 }
