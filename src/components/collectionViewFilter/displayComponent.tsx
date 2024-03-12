@@ -22,7 +22,7 @@ export default function DisplayComponent(props: DisplayProps) {
                 {props.selectedTags.map((selectedTag) => (
                     <div
                         key={selectedTag}
-                        className="border-2 rounded-lg p-2 w-auto flex flex-row gap-2 items-center"
+                        className="border-gray-900 border-[1px] bg-gray-100 rounded-lg p-2 w-auto flex flex-row gap-2 items-center"
                     >
                         <p>{selectedTag}</p>
                         <svg
