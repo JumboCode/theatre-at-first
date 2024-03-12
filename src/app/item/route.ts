@@ -54,19 +54,19 @@ export async function GET(req: Request) {
     const id = req_data.item_id;
     const result = await db.query.items.findFirst({
         with: {
-            id: id
-        }
+            id: id,
+        },
     });
 
     if (result) {
         return NextResponse.json(
             {
-                message: result
+                message: result,
             },
             {
-                status: 200
+                status: 200,
             }
-        )
+        );
     } else {
         return NextResponse.json(
             {
@@ -75,6 +75,6 @@ export async function GET(req: Request) {
             {
                 status: 400,
             }
-        )
+        );
     }
 }

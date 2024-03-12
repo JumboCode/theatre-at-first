@@ -16,7 +16,7 @@ import { NextResponse } from "next/server";
 //GET request - search-items
 export async function GET(
     request: Request,
-    { params }: { params: { query: string, tags: string } }
+    { params }: { params: { query: string; tags: string } }
 ) {
     // let params = {
     //     string_query: "crown"
@@ -27,34 +27,34 @@ export async function GET(
     // const lowerName: string = item_name.toLowerCase();
 
     let results = await db.query.items.findMany({
-         columns: {
-             id: true,
-             name: true,
-             desc: true,
-             tags: true,
-         },
+        columns: {
+            id: true,
+            name: true,
+            desc: true,
+            tags: true,
+        },
 
         // where: (or(
-        //     like(items.name, ("%" + params.string_query.toLowerCase() + "%")), 
+        //     like(items.name, ("%" + params.string_query.toLowerCase() + "%")),
         //     like(items.desc, ("%" + params.string_query.toLowerCase() + "%")),
         // ))
     });
 
-        // where: (or(
-        //     like(items.name, params.string_query), 
-        //     like(items.desc, params.string_query),
-        // ))
+    // where: (or(
+    //     like(items.name, params.string_query),
+    //     like(items.desc, params.string_query),
+    // ))
 
-        // where: {
-        //         like(items.name, string_query),
-        //         like(items.desc, string_query),
-        //         eq(items.tags, filter_query),
-        // }
+    // where: {
+    //         like(items.name, string_query),
+    //         like(items.desc, string_query),
+    //         eq(items.tags, filter_query),
+    // }
 
     // });
 
     return Response.json({
-        results: results
+        results: results,
     });
 }
 
