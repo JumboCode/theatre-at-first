@@ -10,7 +10,7 @@ interface Props {
 
 export default function ItemInput(props: Props) {
     return (
-        <div className="bg-white rounded-xl">
+        <div className="bg-orange-50 rounded-xl">
             <form className="m-5 w-[600px]">
                 <div className="text-gray-400 font-bold">Product Name</div>
                 <input
