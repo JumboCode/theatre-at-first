@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, MutableRefObject } from "react";
 import Webcam from "react-webcam";
 
 interface ImageCaptureProps {
@@ -13,10 +13,13 @@ export default function ImageCapture({ imageCallback }: ImageCaptureProps) {
         facingMode: "environment",
     };
 
-    const webcamRef = useRef(null);
+    const webcamRef: MutableRefObject<Webcam | null> = useRef(null);
     const capture = useCallback(() => {
-        const imageData = webcamRef.current.getScreenshot();
-        imageCallback(new Blob([imageData], { type: "image/jpeg"}));
+
+        // imageData is base64 encoded jpeg
+        const imageData = webcamRef.current?.getScreenshot()!;
+        const imgBlob = new Blob([imageData], {type: "image/jpeg"});
+        imageCallback(imgBlob);
     }, [webcamRef, imageCallback]);
     return (
         <div>
