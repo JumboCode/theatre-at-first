@@ -1,4 +1,4 @@
-import ItemDetailTest from "@/components/ItemDetailTest";
+import ItemDetailTest from "@/components/ItemDetail";
 
 export default function testPage() {
     const name = "Item Name";
