@@ -63,7 +63,9 @@ export default function CommentComp({ itemId }: CommentCompProps) {
                             <br></br>
                             <p className="text-black">{comment.message}</p>
                             <br></br>
+                            <hr className="h-px bg-neutral-700 border-0"></hr>
                         </div>
+
                     ))}
             </div>
         </>
