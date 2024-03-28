@@ -3,6 +3,7 @@ import { useState } from "react";
 import ItemInput from "./itemInputForm";
 import TagDropdown from "./TagDropdown";
 import { InsertItem } from "@/db/schema";
+import ImageCapture from "./image-capture-and-upload-component"; 
 // import "@/components/ImageCapture"
 
 interface UploadProps {
@@ -94,6 +95,14 @@ export default function ItemUpload(props: UploadProps) {
             <div className="mt-4 ml-20 w-[1280px] h-[370px]">
                 <div className="border-2 rounded-lg border-solid border-gray-200 w-full">
                 </div>
+            </div>
+            
+            <div>
+                <button
+                onClick={() => function_name}
+                className="">
+                    <ImageCapture imageCallback={(_: Blob) => {}}/>
+                </button>
             </div>
 
             <div className="flex mt-16 mb-20 ml-[610px]">
