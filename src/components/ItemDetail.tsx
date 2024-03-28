@@ -23,7 +23,7 @@ export default function ItemDetail(props: ItemDetailTestProps) {
     };
 
     return (
-        <div className="flex flex-col gap-5 items-left p-10 bg-white w-[50%] text-black">
+        <div className="flex flex-col gap-5 items-left text-black">
             <div className="text-4xl font-bold">{props.name}</div>
             <div>
                 {display && (
