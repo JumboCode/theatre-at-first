@@ -3,8 +3,12 @@ import SelectionComponent from "../../components/collectionViewFilter/selectionC
 import DisplayComponent from "../../components/collectionViewFilter/displayComponent";
 import Item from "../../components/item";
 import Grid from "../../components/grid";
+import UserSummary from "@/components/user-summary";
 import { useState, useEffect } from "react";
 import { SelectItem } from "@/db/schema";
+import CuteDog1 from "../../../public/images/cute_dog4.jpg";
+import { StaticImageData } from "next/image";
+
 
 async function getMyData() {
     console.log("getting data");
@@ -95,12 +99,12 @@ export default function Home() {
     return (
         <main className="min-h-max bg-white">
             <div className="p-4">
-                <h1 className="text-4xl font-bold pb-12">Inventory Viewing</h1>
+                <h1 className="text-4xl font-bold pb-12 text-black">Inventory Viewing</h1>
 
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="currentColor"
+                    fill="#fb923c"
                     className="w-6 h-6 absolute m-2 ml-4"
                 >
                     <path
@@ -112,8 +116,8 @@ export default function Home() {
                 <input
                     onInput={handleSearch}
                     value={searchInput}
-                    placeholder="Search"
-                    className="bg-gray-300 placeholder-gray-700 pl-12 p-2 rounded-3xl"
+                    placeholder="Search for an item"
+                    className="bg-gray-100 placeholder-gray-500 pl-12 p-2 outline outline-2px outline-gray-500 rounded-3xl text-black"
                 ></input>
             </div>
             <div className="flex flex-col">
@@ -146,7 +150,7 @@ export default function Home() {
                         ></SelectionComponent>
                     </div>
                 </div>
-                <div className="p-4">
+                <div className="p-4 border-zinc-950">
                     <DisplayComponent
                         selectedTags={selectedTags}
                         setSelectedTags={setSelectedTags}
@@ -154,16 +158,34 @@ export default function Home() {
                 </div>
             </div>
 
-            <Grid
-                components={filteredResults.map((result) => (
-                    <Item
-                        title={result.name}
-                        status={result.desc + " " + result.tags}
-                        image="Image1.png"
-                        key={result.id}
-                    />
-                ))}
-            />
+            <div>
+                <UserSummary
+                    id={1}
+                    access="Admin"
+                    firstname="First"
+                    lastname="Last"
+                    image={CuteDog1}
+                ></UserSummary>
+                {/* <Grid 
+                    components={<UserSummary
+                        id={1}
+                        access="Admin"
+                        firstname="First"
+                        lastname="Last"
+                        image={CuteDog1}
+                    ></UserSummary>}
+                /> */}
+                <Grid
+                    components={filteredResults.map((result) => (
+                            <Item
+                                title={result.name}
+                                status={result.desc + " " + result.tags}
+                                image="Image1.png"
+                                key={result.id}
+                            />
+                    ))}
+                />
+            </div>
         </main>
     );
 }

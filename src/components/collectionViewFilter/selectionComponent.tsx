@@ -69,8 +69,8 @@ export default function SelectionComponent(props: SelectionProps) {
     }
 
     return (
-        <div className="flex flex-col p-4 gap-[10px]">
-            <div className="flex flex-row gap-1 align-middle bg-white border-gray-900 border-[1px]">
+        <div className="flex flex-col p-4 gap-[10px] bg-white">
+            <div className="flex flex-row gap-1 align-middle bg-orange-100 rounded-md">
                 <input
                     onInput={handleSearch}
                     onKeyUp={handleEnter}
@@ -79,12 +79,12 @@ export default function SelectionComponent(props: SelectionProps) {
                         props.category.charAt(0).toUpperCase() +
                         props.category.slice(1)
                     }
-                    className="flex flex-col justify-center pl-2 h-[46px] w-[100%] text-black focus:outline-none"
+                    className="flex flex-col justify-center pl-2 h-[46px] w-[100%] text-black focus:outline-none bg-orange-100 rounded-lg"
                 />
                 {display ? (
                     <p
                         onClick={handleClick}
-                        className="text-black bg-white rounded-lg p-2"
+                        className="text-black bg-orange-100 rounded-lg p-2"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ export default function SelectionComponent(props: SelectionProps) {
                 ) : (
                     <p
                         onClick={handleClick}
-                        className="text-black bg-white rounded-lg p-2"
+                        className="text-black bg-orange-100 rounded-lg p-2"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -121,16 +121,16 @@ export default function SelectionComponent(props: SelectionProps) {
             </div>
             {display && (
                 <div
-                    className="border-gray-900 border-[1px] h-44 overflow-auto"
+                    className="rounded-lg border-[1px] border-gray-500 h-44 overflow-auto"
                     onMouseLeave={handleMouseLeave}
                 >
                     {(!searchInput ? props.tags : filteredTags).map((tag) => (
                         <div
                             key={tag}
                             onClick={() => handleSelectedTags(tag)}
-                            className={`pl-2 py-2 hover:font-bold hover:bg-gray-400 active:bg-gray-400 ${
+                            className={`pl-2 py-2 hover:font-bold hover:bg-[#d8ede8] active:bg-[#d8ede8] text-black ${
                                 props.selectedTags.includes(tag) &&
-                                "bg-violet-600 font-bold"
+                                "bg-white text-black font-bold"
                             }`}
                         >
                             <p>{tag}</p>
