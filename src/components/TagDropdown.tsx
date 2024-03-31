@@ -100,15 +100,22 @@ export default function TagDropdown(props: TagDropdownProps) {
 
     return (
         <div className="flex flex-col p-4 gap-[10px]">
-            <div className="flex flex-row gap-1 align-middle">
+            <div className="flex flex-col gap-1 align-middle text-xs font-light">
+                <div className="mt-2 text-amber-700 font-bold mb-2 text-sm">
+                    Product Description
+                </div>
                 <input
                     onClick={handleClick}
                     onInput={handleSearch}
                     onKeyUp={handleEnter}
                     value={searchInput}
-                    placeholder="tag name"
-                    className="flex flex-col justify-center pl-2 border-2 rounded-lg h-[46px] w-[100%] text-black"
-                />
+                    placeholder="Category Name"
+                    className="relative flex flex-col justify-center pl-3 border border-amber-500 rounded-lg h-[46px] w-[100%] text-black focus:outline-none focus:border-amber-400 focus:placeholder-gray-800"
+                    style={{
+                        backgroundImage: 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="orange" width="24" height="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 10l4 4 4-4H8z"/></svg>\')',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'right 8px center'
+                    }}/>
                 {searchInput != "" && (
                     <button
                         onClick={handleAdd}
@@ -119,22 +126,24 @@ export default function TagDropdown(props: TagDropdownProps) {
                 )}
             </div>
             {display && (
-                <div
-                    className="border-2 h-[144px] rounded-xl overflow-auto text-black"
-                    onMouseLeave={handleMouseLeave}
-                >
-                    {(!searchInput ? props.tags : filteredTags).map((tag) => (
-                        <div
-                            key={tag}
-                            onClick={() => handleSelectedTags(tag)}
-                            className={`pl-2 py-2 hover:font-bold hover:bg-gray-100 ${
-                                props.selectedTags.includes(tag) &&
-                                "bg-gray-100 font-bold"
-                            }`}
-                        >
-                            <p>{tag}</p>
-                        </div>
-                    ))}
+                <div>
+                    <div
+                        className="border h-[144px] rounded-xl overflow-auto text-black border-solid border-amber-400 scrollbar-webkit"
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        {(!searchInput ? props.tags : filteredTags).map((tag) => (
+                            <div
+                                key={tag}
+                                onClick={() => handleSelectedTags(tag)}
+                                className={`py-2 bg-white hover:bg-selected_tag text-xs pl-3 ${
+                                    props.selectedTags.includes(tag) &&
+                                    "bg-selected_tag font-bold"
+                                }`}
+                            >
+                                <p>{tag}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
             {/* if at least one tag is selected, show the div*/}
