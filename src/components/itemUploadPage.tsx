@@ -73,18 +73,20 @@ export default function ItemUpload(props: UploadProps) {
             <div className="py-10 first:pt-0 text-left text-4xl text-neutral-700 font-bold mt-8">
                 Add New Product
             </div>
-            <div className="py-8 last:pb-0 flex w-full text-xl text-neutral-700 font-bold">
+            <div className="py-8 last:pb-0 flex w-full text-neutral-700 font-extrabold">
                 Description
-                <div className="ml-[570px]">Category</div>
+                <div className="ml-[550px]">
+                    Category
+                </div>
             </div>
             </div>
             
 
-            <div className="flex w-full mt-4 ml-20 mr-20 h-[370px]">
-                <div className="bg-orange-50 border-2 rounded-lg border-solid border-gray-200 w-[600px]">
+            <div className="flex w-full mt-2 ml-20">
+                <div className="bg-orange-50 border rounded-2xl border-solid border-amber-500 w-[600px] h-[370px]">
                     <ItemInput productName={productName} setProductName={setProductName} description={description} setDescription={setDescription}></ItemInput>
                 </div>
-                <div className="bg-orange-50 ml-20 border-2 rounded-lg border-solid border-gray-200 w-[600px]">
+                <div className="bg-orange-50 border ml-10 mt-6 rounded-2xl border-solid border-amber-500 w-[600px] h-[320px]">
                     <TagDropdown tags={props.tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags}></TagDropdown>
                 </div>
             </div>
