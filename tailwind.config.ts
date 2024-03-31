@@ -34,7 +34,7 @@ const config: Config = {
             borderRadius: "20px",
           },
           "&::-webkit-scrollbar-thumb" : {
-            background: "orange",
+            background: "#FFA000",
             borderRadius: "20px",
             height: "1px",
           }
