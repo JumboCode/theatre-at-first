@@ -102,7 +102,7 @@ export default function TagDropdown(props: TagDropdownProps) {
         <div className="flex flex-col p-4 gap-[10px]">
             <div className="flex flex-col gap-1 align-middle text-xs font-light">
                 <div className="mt-2 text-amber-700 font-bold mb-2 text-sm">
-                    Product Description
+                    Product Category
                 </div>
                 <input
                     onClick={handleClick}

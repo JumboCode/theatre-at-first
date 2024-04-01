@@ -3,17 +3,12 @@ import { useState } from "react";
 import ItemInput from "./itemInputForm";
 import TagDropdown from "./TagDropdown";
 import { InsertItem } from "@/db/schema";
-<<<<<<< HEAD
 import { ChevronLeft } from "./Button-Graphics";
 import { Image } from "./Button-Graphics";
 
 import ImageCapture from "./image-capture-and-upload-component";
 
  // import "@/components/ImageCapture"
-=======
-import ImageCapture from "./image-capture-and-upload-component"; 
-// import "@/components/ImageCapture"
->>>>>>> acf4c9398375cd932d379b8c24d307add9bed522
 
 interface UploadProps {
     tags: string[];
@@ -102,17 +97,17 @@ export default function ItemUpload(props: UploadProps) {
             <div className="py-8 last:pb-0 flex w-full text-neutral-700 font-extrabold">
                 Description
                 <div className="ml-[550px]">
-                    Category
+                Category
                 </div>
             </div>
-            </div>
+        </div>
             
 
             <div className="flex w-full mt-4 ml-20 mr-20 h-[370px]">
-                <div className="border-2 rounded-lg border-solid border-gray-200 w-[600px]">
+                <div className="border rounded-lg border-solid border-amber-500 w-[600px] bg-orange-50">
                     <ItemInput productName={productName} setProductName={setProductName} description={description} setDescription={setDescription}></ItemInput>
                 </div>
-                <div className="ml-20 border-2 rounded-lg border-solid border-gray-200 w-[600px]">
+                <div className="ml-10 border rounded-lg border-solid border-amber-500 w-[600px] bg-orange-50">
                     <TagDropdown tags={props.tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags}></TagDropdown>
                 </div>
             </div>
@@ -122,8 +117,12 @@ export default function ItemUpload(props: UploadProps) {
             </div>
 
             <div>
-                { props.show_camera ? <ImageCapture></ImageCapture> : <button className="border-dashed border-2 font-bold ml-20 w-[1240px] h-[500px] bg-orange-50 rounded-2xl border-amber-500 flex flex-col justify-center items-center"
+                { props.show_camera ? (<ImageCapture imageCallback={(blob) => {}}></ImageCapture>) : 
+                    (<button className="border-dashed border-2 font-bold ml-20 w-[1240px] h-[500px] bg-orange-50 rounded-2xl border-amber-500 flex flex-col justify-center items-center"
                         onClick={handleImageFile}>
+                    <div>
+                        <Image/>
+                    </div>
                     <div className="flex flex-row mt-1">
                         <div className="text-amber-700 pr-1">
                             Upload a file 
@@ -132,24 +131,18 @@ export default function ItemUpload(props: UploadProps) {
                             or drag and drop
                         </div>
                     </div>
-                <div className="text-brown_color font-light flex flex-col 2 mt-1">
-                        PNG, JPG, GIF files are allowed
-                </div>
-                </button>}
+                    <div className="text-brown_color font-light flex flex-col 2 mt-1">
+                            PNG, JPG, GIF files are allowed
+                    </div>
+                    </button>
+                )
+                }
             </div>
 
 
             <div className="mt-4 ml-20 w-[1280px] h-[370px]">
                 <div className="border-2 rounded-lg border-solid border-gray-200 w-full">
                 </div>
-            </div>
-            
-            <div>
-                <button
-                onClick={() => function_name}
-                className="">
-                    <ImageCapture imageCallback={(_: Blob) => {}}/>
-                </button>
             </div>
 
             <div className="flex mt-16 mb-20 ml-[610px]">
