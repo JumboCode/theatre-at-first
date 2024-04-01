@@ -25,30 +25,28 @@ const userDetail3 = {
 };
 
 export default function Page() {
-
     return (
         <main className="bg-white h-screen flex content-center place-content-evenly pt-20">
-
             <img className="w-20 h-20" src={CuteDog1.src} alt="CuteDog1" />
             <UserDetail
-            firstname = {userDetail1.firstname}
-            lastname ={userDetail1.lastname}
-            access = {userDetail1.access}
-            email = {userDetail1.email}
+                firstname={userDetail1.firstname}
+                lastname={userDetail1.lastname}
+                access={userDetail1.access}
+                email={userDetail1.email}
             ></UserDetail>
             <img className="w-20 h-20" src={CuteDog2.src} alt="CuteDog2" />
             <UserDetail
-            firstname = {userDetail2.firstname}
-            lastname ={userDetail2.lastname}
-            access = {userDetail2.access}
-            email = {userDetail2.email}
+                firstname={userDetail2.firstname}
+                lastname={userDetail2.lastname}
+                access={userDetail2.access}
+                email={userDetail2.email}
             ></UserDetail>
             <img className="w-20 h-20" src={CuteDog3.src} alt="CuteDog3" />
             <UserDetail
-            firstname = {userDetail3.firstname}
-            lastname ={userDetail3.lastname}
-            access = {userDetail3.access}
-            email = {userDetail3.email}
+                firstname={userDetail3.firstname}
+                lastname={userDetail3.lastname}
+                access={userDetail3.access}
+                email={userDetail3.email}
             ></UserDetail>
         </main>
     );

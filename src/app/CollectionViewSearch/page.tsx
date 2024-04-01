@@ -1,9 +1,8 @@
-"use client"
+"use client";
 import { useState } from "react";
 import SearchBar from "../../components/CollectionViewSearch";
 
 export default function Preview() {
-
     let [input, setInput] = useState("");
 
     return (

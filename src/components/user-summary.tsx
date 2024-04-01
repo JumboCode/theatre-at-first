@@ -1,9 +1,8 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Image from "next/image";
 import ResizeableIMG from "./resizeableIMG";
 import { StaticImageData } from "next/image";
-
 
 interface UserProps {
     id: number;
@@ -35,10 +34,10 @@ export default function UserSummary(props: UserProps) {
                 src={props.image.src}
             /> */}
             <div>
-                <p className="text-18px text-amber-500 font-bold max-w-3 line-clamp-1 truncate text-overflow: ellipsis;">
+                <p className="text-3xl font-bold max-w-3 line-clamp-1 truncate text-overflow: ellipsis;">
                     {props.firstname} {props.lastname}
                 </p>
-                <p className="text-16px text-stone-400 max-w-3 line-clamp-1 text-overflow: ellipsis;">
+                <p className="text-2xl text-gray-400 max-w-3 line-clamp-1 text-overflow: ellipsis;">
                     {props.access}
                 </p>
             </div>

@@ -1,4 +1,4 @@
-import { InsertComment, SelectComment,comments } from "@/db/schema";
+import { InsertComment, SelectComment, comments } from "@/db/schema";
 import db from "@/db/drizzle";
 import { NextResponse } from "next/server";
 
@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
     const data = await req.json();
     console.log(data);
-    
+
     //check for missing fields
     if (
         data.timestamp == undefined ||
@@ -28,9 +28,8 @@ export async function POST(req: Request) {
             message: data.message,
             userId: data.userId,
             itemId: data.itemId,
-        }
-        let result = await db.insert(comments).values(insert_data)
-        .returning();
+        };
+        let result = await db.insert(comments).values(insert_data).returning();
         return NextResponse.json(
             {
                 message: `Comment added to the database: ${result.toString()}`,
@@ -45,28 +44,28 @@ export async function POST(req: Request) {
 // get-comments (GET)
 export async function GET(req: Request) {
     const req_data = await req.json();
-    
+
     const itemId = req_data.itemId;
     const text = req_data.message;
     const userId = req_data.user;
     const id = req_data.id;
     const timestamp = req_data.timestamp;
-    
+
     const result = await db.query.comments.findFirst({
         with: {
-            id: id
-        }
+            id: id,
+        },
     });
 
     if (result) {
         return NextResponse.json(
             {
-                message: result
+                message: result,
             },
             {
                 status: 200,
             }
-        )
+        );
     } else {
         return NextResponse.json(
             {
@@ -75,6 +74,6 @@ export async function GET(req: Request) {
             {
                 status: 400,
             }
-        )
+        );
     }
 }
