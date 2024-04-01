@@ -10,7 +10,11 @@ interface Props {
 
 export default function ItemInput(props: Props) {
     return (
+<<<<<<< HEAD
+        <div className="bg-orange-50 rounded-xl">
+=======
         <div className="bg-orange-50">
+>>>>>>> 75535debf3e8221ba74283db3bf1905d12b17d3a
             <form className="m-5 w-[600px]">
                 <div className="text-amber-700 font-bold mb-3 text-sm">
                     Product Name

@@ -3,12 +3,17 @@ import { useState } from "react";
 import ItemInput from "./itemInputForm";
 import TagDropdown from "./TagDropdown";
 import { InsertItem } from "@/db/schema";
+<<<<<<< HEAD
 import { ChevronLeft } from "./Button-Graphics";
 import { Image } from "./Button-Graphics";
 
 import ImageCapture from "./image-capture-and-upload-component";
 
  // import "@/components/ImageCapture"
+=======
+import ImageCapture from "./image-capture-and-upload-component"; 
+// import "@/components/ImageCapture"
+>>>>>>> acf4c9398375cd932d379b8c24d307add9bed522
 
 interface UploadProps {
     tags: string[];
@@ -103,11 +108,11 @@ export default function ItemUpload(props: UploadProps) {
             </div>
             
 
-            <div className="flex w-full mt-2 ml-20">
-                <div className="bg-orange-50 border rounded-2xl border-solid border-amber-500 w-[600px] h-[370px]">
+            <div className="flex w-full mt-4 ml-20 mr-20 h-[370px]">
+                <div className="border-2 rounded-lg border-solid border-gray-200 w-[600px]">
                     <ItemInput productName={productName} setProductName={setProductName} description={description} setDescription={setDescription}></ItemInput>
                 </div>
-                <div className="bg-orange-50 border ml-10 mt-6 rounded-2xl border-solid border-amber-500 w-[600px] h-[320px]">
+                <div className="ml-20 border-2 rounded-lg border-solid border-gray-200 w-[600px]">
                     <TagDropdown tags={props.tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags}></TagDropdown>
                 </div>
             </div>
@@ -137,6 +142,14 @@ export default function ItemUpload(props: UploadProps) {
             <div className="mt-4 ml-20 w-[1280px] h-[370px]">
                 <div className="border-2 rounded-lg border-solid border-gray-200 w-full">
                 </div>
+            </div>
+            
+            <div>
+                <button
+                onClick={() => function_name}
+                className="">
+                    <ImageCapture imageCallback={(_: Blob) => {}}/>
+                </button>
             </div>
 
             <div className="flex mt-16 mb-20 ml-[610px]">
