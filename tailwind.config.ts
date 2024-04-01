@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
           selected_tag: '#C8ECE5',
+          brown_color: '#592C07',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

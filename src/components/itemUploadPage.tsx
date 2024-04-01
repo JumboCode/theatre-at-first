@@ -3,10 +3,17 @@ import { useState } from "react";
 import ItemInput from "./itemInputForm";
 import TagDropdown from "./TagDropdown";
 import { InsertItem } from "@/db/schema";
-// import "@/components/ImageCapture"
+import { ChevronLeft } from "./Button-Graphics";
+import { Image } from "./Button-Graphics";
+
+import ImageCapture from "./image-capture-and-upload-component";
+
+ // import "@/components/ImageCapture"
 
 interface UploadProps {
     tags: string[];
+    show_camera: boolean;
+    
 }
 
 export default function ItemUpload(props: UploadProps) {
@@ -20,6 +27,10 @@ export default function ItemUpload(props: UploadProps) {
     // const handleChangeName = (name: string) => {
     //     setProductName(name);
     // };
+
+    const handleImageFile = () => {
+        props.show_camera = true;
+    }
 
     // const handleChangeDescription = (desc: string) => {
     //     setDescription(desc);
@@ -70,9 +81,19 @@ export default function ItemUpload(props: UploadProps) {
     return (
         <div className="bg-white h-24 overflow-auto overscroll-y-auto overscroll-x-auto min-h-screen">
             <div className="grid grid-cols divide-y-2 ml-20 mr-20">
-            <div className="py-10 first:pt-0 text-left text-4xl text-neutral-700 font-bold mt-8">
-                Add New Product
-            </div>
+                <div className="py-10 flex flex-row">
+                    <div>
+                        <button className="flex items-center justify-center rounded-full h-10 w-10 bg-transparent">
+                            <ChevronLeft></ChevronLeft>
+                        </button>
+                    </div>
+                    <div className="first:pt-0 text-left text-sm text-neutral-700">
+                        Back to inventory list
+                        <div className="first:pt-0 text-left text-4xl text-neutral-700 font-bold">
+                            Add New Product
+                        </div>
+                    </div>
+                </div>
             <div className="py-8 last:pb-0 flex w-full text-neutral-700 font-extrabold">
                 Description
                 <div className="ml-[550px]">
@@ -91,9 +112,27 @@ export default function ItemUpload(props: UploadProps) {
                 </div>
             </div>
 
-            <div className="ml-20 text-neutral-700 font-extrabold py-8 last:pb-0 flex w-full">
+            <div className="ml-20 text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full">
                 Product Image
             </div>
+
+            <div>
+                { props.show_camera ? <ImageCapture></ImageCapture> : <button className="border-dashed border-2 font-bold ml-20 w-[1240px] h-[500px] bg-orange-50 rounded-2xl border-amber-500 flex flex-col justify-center items-center"
+                        onClick={handleImageFile}>
+                    <div className="flex flex-row mt-1">
+                        <div className="text-amber-700 pr-1">
+                            Upload a file 
+                        </div>
+                        <div className="text-brown_color">
+                            or drag and drop
+                        </div>
+                    </div>
+                <div className="text-brown_color font-light flex flex-col 2 mt-1">
+                        PNG, JPG, GIF files are allowed
+                </div>
+                </button>}
+            </div>
+
 
             <div className="mt-4 ml-20 w-[1280px] h-[370px]">
                 <div className="border-2 rounded-lg border-solid border-gray-200 w-full">
