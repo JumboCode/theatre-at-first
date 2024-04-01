@@ -6,7 +6,7 @@ import { InsertItem } from "@/db/schema";
 import { ChevronLeft } from "./Button-Graphics";
 import { Image } from "./Button-Graphics";
 
-import ImageCapture from "./image-capture-and-upload-component";
+//import ImageCapture from "./image-capture-and-upload-component";
 
  // import "@/components/ImageCapture"
 
@@ -117,7 +117,7 @@ export default function ItemUpload(props: UploadProps) {
             </div>
 
             <div>
-                { props.show_camera ? <ImageCapture></ImageCapture> : <button className="border-dashed border-2 font-bold ml-20 w-[1240px] h-[500px] bg-orange-50 rounded-2xl border-amber-500 flex flex-col justify-center items-center"
+                { props.show_camera ? <div></div> : <button className="border-dashed border-2 font-bold ml-20 w-[1240px] h-[500px] bg-orange-50 rounded-2xl border-amber-500 flex flex-col justify-center items-center"
                         onClick={handleImageFile}>
                     <div className="flex flex-row mt-1">
                         <div className="text-amber-700 pr-1">
@@ -137,14 +137,6 @@ export default function ItemUpload(props: UploadProps) {
             <div className="mt-4 ml-20 w-[1280px] h-[370px]">
                 <div className="border-2 rounded-lg border-solid border-gray-200 w-full">
                 </div>
-            </div>
-            
-            <div>
-                <button
-                onClick={() => function_name}
-                className="">
-                    <ImageCapture imageCallback={(_: Blob) => {}}/>
-                </button>
             </div>
 
             <div className="flex mt-16 mb-20 ml-[610px]">
