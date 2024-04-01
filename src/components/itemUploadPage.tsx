@@ -3,17 +3,12 @@ import { useState } from "react";
 import ItemInput from "./itemInputForm";
 import TagDropdown from "./TagDropdown";
 import { InsertItem } from "@/db/schema";
-<<<<<<< HEAD
 import { ChevronLeft } from "./Button-Graphics";
 import { Image } from "./Button-Graphics";
 
 import ImageCapture from "./image-capture-and-upload-component";
 
  // import "@/components/ImageCapture"
-=======
-import ImageCapture from "./image-capture-and-upload-component"; 
-// import "@/components/ImageCapture"
->>>>>>> acf4c9398375cd932d379b8c24d307add9bed522
 
 interface UploadProps {
     tags: string[];
