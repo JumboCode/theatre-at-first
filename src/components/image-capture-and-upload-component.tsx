@@ -16,10 +16,9 @@ export default function ImageCapture({ imageCallback }: ImageCaptureProps) {
 
     const webcamRef: MutableRefObject<Webcam | null> = useRef(null);
     const capture = useCallback(() => {
-
         // imageData is base64 encoded jpeg
         const imageData = webcamRef.current?.getScreenshot()!;
-        const imgBlob = new Blob([imageData], {type: "image/jpeg"});
+        const imgBlob = new Blob([imageData], { type: "image/jpeg" });
         imageCallback(imgBlob);
     }, [webcamRef, imageCallback]);
     return (
@@ -32,7 +31,10 @@ export default function ImageCapture({ imageCallback }: ImageCaptureProps) {
                 width={1240}
                 videoConstraints={videoConstraints}
             ></Webcam>
-            <button onClick={capture} className="mt-2 py-3 pr-3 pl-3 rounded-3xl text-gray-600 bg-gray-100 border-4 border-amber-700 hover:bg-gray-600 hover:text-gray-100">
+            <button
+                onClick={capture}
+                className="mt-2 py-3 pr-3 pl-3 rounded-3xl text-gray-600 bg-gray-100 border-4 border-amber-700 hover:bg-gray-600 hover:text-gray-100"
+            >
                 <Camera></Camera>
             </button>
         </div>
