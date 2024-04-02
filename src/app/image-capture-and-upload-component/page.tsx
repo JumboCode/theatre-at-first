@@ -13,7 +13,7 @@ export default function Home() {
                         if (imgParent) {
                             imgParent.innerHTML = `<img src="${imgData}"></img>`;
                         }
-                    })
+                    });
                 }}
             />
         </main>

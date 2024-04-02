@@ -1,5 +1,11 @@
 "use client";
-import { Dispatch, SetStateAction, useState, KeyboardEvent, KeyboardEventHandler } from "react";
+import {
+    Dispatch,
+    SetStateAction,
+    useState,
+    KeyboardEvent,
+    KeyboardEventHandler,
+} from "react";
 
 //DROPDOWN:
 //Compenent recieves a list of tags (which is the prop)
@@ -13,9 +19,9 @@ import { Dispatch, SetStateAction, useState, KeyboardEvent, KeyboardEventHandler
 //2. Input text field goes over "Add tag" if the tag is really really long
 
 interface TagDropdownProps {
-    tags: string[],
-    selectedTags: string[],
-    setSelectedTags: Dispatch<SetStateAction<string[]>>
+    tags: string[];
+    selectedTags: string[];
+    setSelectedTags: Dispatch<SetStateAction<string[]>>;
 }
 
 export default function TagDropdown(props: TagDropdownProps) {
