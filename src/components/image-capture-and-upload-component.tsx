@@ -15,10 +15,9 @@ export default function ImageCapture({ imageCallback }: ImageCaptureProps) {
 
     const webcamRef: MutableRefObject<Webcam | null> = useRef(null);
     const capture = useCallback(() => {
-
         // imageData is base64 encoded jpeg
         const imageData = webcamRef.current?.getScreenshot()!;
-        const imgBlob = new Blob([imageData], {type: "image/jpeg"});
+        const imgBlob = new Blob([imageData], { type: "image/jpeg" });
         imageCallback(imgBlob);
     }, [webcamRef, imageCallback]);
     return (

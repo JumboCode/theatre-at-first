@@ -34,10 +34,9 @@ export async function POST(req: Request) {
             tags,
             status,
             imageUrl,
-        }
+        };
 
-        let result = await db.insert(items).values(item)
-        .returning();
+        let result = await db.insert(items).values(item).returning();
         return NextResponse.json(
             {
                 message: `Item added to the database: ${result.toString()}`,

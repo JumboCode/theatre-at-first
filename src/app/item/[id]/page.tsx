@@ -4,7 +4,7 @@ import ImageCarousel from "../../../components/imageCarousel";
 import ItemDetail from "@/components/ItemDetail";
 import CommentComp from "../../../components/comment-comp-single-view";
 
-import { Edit2 }from "../../../components/Button-Graphics";
+import { Edit2 } from "../../../components/Button-Graphics";
 import { PlusCircle } from "../../../components/Button-Graphics";
 import { ArrowLeftCircle } from "../../../components/Button-Graphics";
 
@@ -63,18 +63,14 @@ export default function Page({ params }: { params: { id: string } }) {
             <div className="p-8 w-full h-full flex flex-col lg:flex-row justify-center items-center">
                 <ImageCarousel imageList={imageList} />
                 <div className="py-10 lg:px-10 bg-white lg:w-[50%] space-y-5">
-                    <div className="flex flex-row justify-between"> 
-                        <button className="text-black flex shrink-0"> 
-                            <ArrowLeftCircle/>
-                            <div className="pl-2">
-                                Back to inventory list
-                            </div>
+                    <div className="flex flex-row justify-between">
+                        <button className="text-black flex shrink-0">
+                            <ArrowLeftCircle />
+                            <div className="pl-2">Back to inventory list</div>
                         </button>
-                        <button className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg"> 
-                            <Edit2/>
-                            <div className="pl-1">
-                                Edit
-                            </div>
+                        <button className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg">
+                            <Edit2 />
+                            <div className="pl-1">Edit</div>
                         </button>
                     </div>
                     {description && (
@@ -86,7 +82,6 @@ export default function Page({ params }: { params: { id: string } }) {
                         ></ItemDetail>
                     )}
                 </div>
-                
             </div>
             <div className="flex p-8 justify-left space-x-4">
                 <CommentComp itemId={456} />

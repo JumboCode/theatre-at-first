@@ -46,14 +46,12 @@ export default function CommentComp({ itemId }: CommentCompProps) {
         <>
             <div className="content-start w-full">
                 <hr className="h-px bg-neutral-700 border-0"></hr>
-                
+
                 <div className="text-left text-3xl text-neutral-700 font-bold p-3 flex flex-row justify-between">
                     Comments
-                    <button className="text-orange-400 text-sm font-normal flex border-orange-400 border-2 p-2 rounded-lg"> 
-                        <PlusCircle/>
-                        <div className="pl-1 pt-0.5">
-                            Add Comment
-                        </div>
+                    <button className="text-orange-400 text-sm font-normal flex border-orange-400 border-2 p-2 rounded-lg">
+                        <PlusCircle />
+                        <div className="pl-1 pt-0.5">Add Comment</div>
                     </button>
                 </div>
 
@@ -74,7 +72,6 @@ export default function CommentComp({ itemId }: CommentCompProps) {
                             <br></br>
                             <hr className="h-px bg-neutral-700 border-0"></hr>
                         </div>
-
                     ))}
             </div>
         </>

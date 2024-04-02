@@ -2,10 +2,10 @@
 import { Dispatch, SetStateAction } from "react";
 
 interface Props {
-    productName: string,
-    setProductName: Dispatch<SetStateAction<string>>,
-    description: string,
-    setDescription: Dispatch<SetStateAction<string>>
+    productName: string;
+    setProductName: Dispatch<SetStateAction<string>>;
+    description: string;
+    setDescription: Dispatch<SetStateAction<string>>;
 }
 
 export default function ItemInput(props: Props) {
