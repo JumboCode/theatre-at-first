@@ -1,5 +1,11 @@
 "use client";
-import { Dispatch, SetStateAction, useState, KeyboardEvent, KeyboardEventHandler } from "react";
+import {
+    Dispatch,
+    SetStateAction,
+    useState,
+    KeyboardEvent,
+    KeyboardEventHandler,
+} from "react";
 
 //DROPDOWN:
 //Compenent recieves a list of tags (which is the prop)
@@ -13,9 +19,9 @@ import { Dispatch, SetStateAction, useState, KeyboardEvent, KeyboardEventHandler
 //2. Input text field goes over "Add tag" if the tag is really really long
 
 interface TagDropdownProps {
-    tags: string[],
-    selectedTags: string[],
-    setSelectedTags: Dispatch<SetStateAction<string[]>>
+    tags: string[];
+    selectedTags: string[];
+    setSelectedTags: Dispatch<SetStateAction<string[]>>;
 }
 
 export default function TagDropdown(props: TagDropdownProps) {
@@ -112,10 +118,12 @@ export default function TagDropdown(props: TagDropdownProps) {
                     placeholder="Category Name"
                     className="relative flex flex-col justify-center pl-3 border border-amber-500 rounded-lg h-[46px] w-[100%] text-black focus:outline-none focus:border-amber-400 focus:placeholder-gray-800"
                     style={{
-                        backgroundImage: 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="orange" width="24" height="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 10l4 4 4-4H8z"/></svg>\')',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'right 8px center'
-                    }}/>
+                        backgroundImage:
+                            'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="orange" width="24" height="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 10l4 4 4-4H8z"/></svg>\')',
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "right 8px center",
+                    }}
+                />
                 {searchInput != "" && (
                     <button
                         onClick={handleAdd}
@@ -131,18 +139,20 @@ export default function TagDropdown(props: TagDropdownProps) {
                         className="border h-[144px] rounded-xl overflow-auto text-black border-solid border-amber-400 scrollbar-webkit"
                         onMouseLeave={handleMouseLeave}
                     >
-                        {(!searchInput ? props.tags : filteredTags).map((tag) => (
-                            <div
-                                key={tag}
-                                onClick={() => handleSelectedTags(tag)}
-                                className={`py-2 bg-white hover:bg-selected_tag text-xs pl-3 ${
-                                    props.selectedTags.includes(tag) &&
-                                    "bg-selected_tag font-bold"
-                                }`}
-                            >
-                                <p>{tag}</p>
-                            </div>
-                        ))}
+                        {(!searchInput ? props.tags : filteredTags).map(
+                            (tag) => (
+                                <div
+                                    key={tag}
+                                    onClick={() => handleSelectedTags(tag)}
+                                    className={`py-2 bg-white hover:bg-selected_tag text-xs pl-3 ${
+                                        props.selectedTags.includes(tag) &&
+                                        "bg-selected_tag font-bold"
+                                    }`}
+                                >
+                                    <p>{tag}</p>
+                                </div>
+                            )
+                        )}
                     </div>
                 </div>
             )}
