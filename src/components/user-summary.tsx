@@ -1,6 +1,4 @@
 "use client";
-import { useState } from "react";
-import Image from "next/image";
 import ResizeableIMG from "./resizeableIMG";
 import { StaticImageData } from "next/image";
 
@@ -9,13 +7,13 @@ interface UserProps {
     firstname: string;
     lastname: string;
     access: string;
-    // image: StaticImageData;
+    image: StaticImageData;
 }
 
 export default function UserSummary(props: UserProps) {
     return (
         <div className="flex flex-row items-center gap-4 p-5 text-black">
-            {/* <ResizeableIMG
+            <ResizeableIMG
                 width={50}
                 height={50}
                 className="
@@ -32,7 +30,7 @@ export default function UserSummary(props: UserProps) {
                 outline-[8px]
                 "
                 src={props.image.src}
-            /> */}
+            />
             <div>
                 <p className="text-3xl font-bold max-w-3 line-clamp-1 truncate text-overflow: ellipsis;">
                     {props.firstname} {props.lastname}
