@@ -11,19 +11,19 @@ interface Props {
 export default function ItemInput(props: Props) {
     return (
         <div className="bg-orange-50 rounded-xl">
-            <form className="m-5 w-[600px]">
+            <form className="m-5">
                 <div className="text-amber-700 font-bold mb-3 text-sm">
-                    Product Name
+                    Name
                 </div>
                 <input
                     className="text-gray-950 rounded-lg border border-amber-400 text-xs font-light pl-3 pr-3 py-3 focus:placeholder-gray-800 focus:outline-none"
-                    style={{ width: "550px" }}
+                    style={{ width: "100%" }}
                     placeholder="Enter Text Here..."
                     value={props.productName}
                     onChange={(e) => props.setProductName(e.target.value)}
                 />
                 <div className="mt-4 text-amber-700 font-bold mb-3 text-sm">
-                    Product Description
+                    Description
                 </div>
 
                 <textarea
@@ -33,7 +33,7 @@ export default function ItemInput(props: Props) {
                     style={{
                         maxHeight: "200px",
                         height: "200px",
-                        width: "550px",
+                        width: "100%",
                     }}
                     placeholder="Enter Text Here..."
                 />

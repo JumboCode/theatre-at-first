@@ -88,18 +88,17 @@ export default function ItemUpload(props: UploadProps) {
                     <div className="first:pt-0 text-left text-sm text-neutral-700">
                         Back to inventory list
                         <div className="first:pt-0 text-left text-4xl text-neutral-700 font-bold">
-                            Add New Product
+                            Add New Item
                         </div>
                     </div>
                 </div>
-                <div className="py-8 last:pb-0 flex w-full text-neutral-700 font-extrabold">
-                    Description
-                    <div className="ml-[550px]">Category</div>
+                <div className=" py-8 last:pb-0 flex w-full text-neutral-700 font-extrabold">
+                    Item Information
                 </div>
             </div>
 
-            <div className="flex w-full mt-2 ml-20 mr-20 h-[370px]">
-                <div className="border rounded-xl border-solid border-amber-500 w-[600px] bg-orange-50 shadow-xl">
+            <div className="flex w-full mt-4 ml-20 mr-20 h-[370px] pe-5">
+                <div className="border rounded-xl border-solid border-amber-500 w-[400px] bg-orange-50 shadow-xl">
                     <ItemInput
                         productName={productName}
                         setProductName={setProductName}
@@ -107,7 +106,7 @@ export default function ItemUpload(props: UploadProps) {
                         setDescription={setDescription}
                     ></ItemInput>
                 </div>
-                <div className="ml-10 mt-6 border rounded-xl border-solid border-amber-500 w-[600px] bg-orange-50 h-[320px] shadow-xl">
+                <div className="ml-10 border rounded-xl border-solid border-amber-500 w-[400px] bg-orange-50 h-[370px] shadow-xl">
                     <TagDropdown
                         tags={props.tags}
                         selectedTags={selectedTags}
@@ -117,15 +116,15 @@ export default function ItemUpload(props: UploadProps) {
             </div>
 
             <div className="ml-20 text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full">
-                Product Image
+                Item Image
             </div>
 
-            <div className="flex justify-start ml-20">
+            <div className="flex justify-start ml-20 pe-5">
                 {props.show_camera ? (
                     <ImageCapture imageCallback={(blob) => {}}></ImageCapture>
                 ) : (
                     <button
-                        className="border-dashed border-2 font-bold w-[1240px] h-[500px] bg-orange-50 rounded-2xl border-amber-500 shadow-xl flex flex-col justify-center items-center"
+                        className="border-dashed border-2 font-bold w-[840px] h-[500px] bg-orange-50 rounded-2xl border-amber-500 shadow-xl flex flex-col justify-center items-center "
                         onClick={handleImageFile}
                     >
                         <div>
