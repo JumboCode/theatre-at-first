@@ -1,9 +1,7 @@
-import Header from "@/components/header";
-import UserSummary from "@/components/user-summary";
+import UserSummary from "../../components/user-summary";
 import CuteDog1 from "../../../public/images/cute_dog4.jpg";
 
-export default function testPage() {
-    const status = "Most Recent Status";
+export default function UserSum() {
     const id = 1;
     const access = "Drip King";
     const firstname = "My";
@@ -11,15 +9,14 @@ export default function testPage() {
     const image = CuteDog1;
 
     return (
-        <main>
-            <Header
+        <main className="justify-between p-24">
+            <UserSummary
                 id={id}
-                status={status}
                 access={access}
                 firstname={firstname}
                 lastname={lastname}
                 image={image}
-            ></Header>
+            ></UserSummary>
         </main>
     );
 }

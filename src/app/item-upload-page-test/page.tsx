@@ -1,7 +1,6 @@
 import ItemUpload from "@/components/itemUploadPage";
 
 export default function testPage() {
-
     const allTags = [
         "one",
         "two",
@@ -15,9 +14,7 @@ export default function testPage() {
 
     return (
         <main>
-            <ItemUpload
-                tags={allTags}
-            ></ItemUpload>
+            <ItemUpload tags={allTags}></ItemUpload>
         </main>
     );
 }

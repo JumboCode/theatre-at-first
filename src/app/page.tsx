@@ -2,11 +2,10 @@
 //public and requires no authentication or signing in if you go to local host
 import { UserButton } from "@clerk/nextjs";
 
- 
 export default function Home() {
-  return (
-    <div className="h-screen">
-      <UserButton />
-    </div>
-  )
+    return (
+        <div className="h-screen">
+            <UserButton />
+        </div>
+    );
 }
