@@ -97,7 +97,7 @@ export default function Home() {
     }, [selectedTags, searchInput]);
 
     return (
-        <main className="min-h-max bg-white">
+        <main className="min-h-max bg-white p-10 flex flex-col">
             <div className="p-4">
                 <h1 className="text-4xl font-bold pb-12 text-black">Inventory Viewing</h1>
 
@@ -158,23 +158,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div>
-                <UserSummary
-                    id={1}
-                    access="Admin"
-                    firstname="First"
-                    lastname="Last"
-                    image={CuteDog1}
-                ></UserSummary>
-                {/* <Grid 
-                    components={<UserSummary
-                        id={1}
-                        access="Admin"
-                        firstname="First"
-                        lastname="Last"
-                        image={CuteDog1}
-                    ></UserSummary>}
-                /> */}
+            <div className="px-4">
                 <Grid
                     components={filteredResults.map((result) => (
                             <Item
