@@ -43,10 +43,20 @@ export function ChevronLeft(props) {
 // https://feathericons.dev/?search=image&iconset=feather&format=strict-jsx
 export function Image(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="main-grid-item-icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" class="main-grid-item-icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" {...props}>
       <rect height="18" rx="2" ry="2" width="18" x="3" y="3" stroke="#592C07"/>
       <circle cx="8.5" cy="8.5" r="1.5" stroke="#592C07"/>
       <polyline points="21 15 16 10 5 21" stroke="#592C07"/>
+    </svg>
+  );
+}
+
+// https://feathericons.dev/?search=camera&iconset=feather&format=strict-jsx
+export function Camera(props) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" class="main-grid-item-icon" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" {...props}>
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+      <circle cx="12" cy="13" r="4" />
     </svg>
   );
 }

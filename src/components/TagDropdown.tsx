@@ -102,7 +102,7 @@ export default function TagDropdown(props: TagDropdownProps) {
         <div className="flex flex-col p-4 gap-[10px]">
             <div className="flex flex-col gap-1 align-middle text-xs font-light">
                 <div className="mt-2 text-amber-700 font-bold mb-2 text-sm">
-                    Product Description
+                    Product Category
                 </div>
                 <input
                     onClick={handleClick}
@@ -119,7 +119,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                 {searchInput != "" && (
                     <button
                         onClick={handleAdd}
-                        className="text-blue-600 bg-white rounded-lg py-2 px-3 min-w-min whitespace-nowrap"
+                        className="text-teal-800 font-bold bg-gray-200 rounded-lg py-2 px-3 min-w-min whitespace-nowrap hover:bg-gray-300 hover:text-teal-900"
                     >
                         Add tag
                     </button>
