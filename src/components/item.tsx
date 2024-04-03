@@ -12,11 +12,14 @@ export default function Item(props: Prop) {
             <div className="h-full flex flex-col">
                 <div className="h-4/5 bg-slate-500 rounded-t-xl"></div>
                 <div className="p-3">
-                    <p className="text-gray-950 font-bold text-base">
+                    <p className="text-[#496767] font-bold text-base mb-2">
                         {props.title}
                     </p>
-
-                    <p className="text-gray-500 text-sm">{props.status}</p>
+                    {(props.status == "In Stock") ? (
+                        <p className="text-sm text-[#11763D] border-[#11763D] border-2 w-fit px-2 rounded-lg">In Stock</p>
+                    ) : (
+                        <p className="text-sm text-[#DF1642] border-[#DF1642] border-2 w-fit px-2 rounded-lg">Out of Stock</p>
+                    )}
                 </div>
             </div>
         </div>

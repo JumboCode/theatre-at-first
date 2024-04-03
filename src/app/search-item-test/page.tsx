@@ -98,78 +98,81 @@ export default function Home() {
     }, [selectedTags, searchInput]);
 
     return (
-        <main className="min-h-max bg-white p-10 flex flex-col">
-            <div className="p-4">
-                <h1 className="text-4xl font-bold pb-12 text-black">Inventory Viewing</h1>
-
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="#fb923c"
-                    className="w-6 h-6 absolute m-2 ml-4"
-                >
-                    <path
-                        fillRule="evenodd"
-                        d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
-                        clipRule="evenodd"
+        <main className="min-h-max bg-white flex flex-col">
+            <div className="px-10 pt-10">
+                <div className="p-4">
+                    <h1 className="text-4xl font-bold pb-12 text-[#0C2B35]">Inventory Viewing</h1>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="#EE7200"
+                        className="w-6 h-6 absolute m-2 ml-4"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                    <input
+                        onInput={handleSearch}
+                        value={searchInput}
+                        placeholder="Search for an item"
+                        className="bg-gray-100 placeholder-[#B7B7B7] pl-12 p-2 outline outline-[2px] outline-[#496767] rounded-3xl text-[#0C2B35] w-[268px]"
+                    ></input>
+                </div>
+                <div className="flex flex-col">
+                    <div className="flex flex-row flex-wrap">
+                        <div className="w-[300px]">
+                            <SelectionComponent
+                                tags={locationTags}
+                                setTags={setLocationTags}
+                                selectedTags={selectedTags}
+                                setSelectedTags={setSelectedTags}
+                                category="location"
+                            ></SelectionComponent>
+                        </div>
+                        <div className="w-[300px]">
+                            <SelectionComponent
+                                tags={nonLocationTags}
+                                setTags={setNonLocationTags}
+                                selectedTags={selectedTags}
+                                setSelectedTags={setSelectedTags}
+                                category="color"
+                            ></SelectionComponent>
+                        </div>
+                        <div className="w-[300px]">
+                            <SelectionComponent
+                                tags={nonLocationTags2}
+                                setTags={setNonLocationTags2}
+                                selectedTags={selectedTags}
+                                setSelectedTags={setSelectedTags}
+                                category="material"
+                            ></SelectionComponent>
+                        </div>
+                    </div>
+                    <div className="p-4 border-zinc-950">
+                        <DisplayComponent
+                            selectedTags={selectedTags}
+                            setSelectedTags={setSelectedTags}
+                        ></DisplayComponent>
+                    </div>
+                </div>
+            </div>
+            <div className="bg-[#B4CDCA] w-full h-2 mb-10"></div>
+            <div className="p-10">
+                <div className="px-4">
+                    <Grid
+                        components={filteredResults.map((result) => (
+                                <Item
+                                    title={result.name}
+                                    status={result.status}
+                                    image={result.imageUrl}
+                                    key={result.id}
+                                />
+                        ))}
                     />
-                </svg>
-                <input
-                    onInput={handleSearch}
-                    value={searchInput}
-                    placeholder="Search for an item"
-                    className="bg-gray-100 placeholder-gray-500 pl-12 p-2 outline outline-2px outline-gray-500 rounded-3xl text-black w-[268px]"
-                ></input>
-            </div>
-            <div className="flex flex-col">
-                <div className="flex flex-row flex-wrap">
-                    <div className="w-[300px]">
-                        <SelectionComponent
-                            tags={locationTags}
-                            setTags={setLocationTags}
-                            selectedTags={selectedTags}
-                            setSelectedTags={setSelectedTags}
-                            category="location"
-                        ></SelectionComponent>
-                    </div>
-                    <div className="w-[300px]">
-                        <SelectionComponent
-                            tags={nonLocationTags}
-                            setTags={setNonLocationTags}
-                            selectedTags={selectedTags}
-                            setSelectedTags={setSelectedTags}
-                            category="color"
-                        ></SelectionComponent>
-                    </div>
-                    <div className="w-[300px]">
-                        <SelectionComponent
-                            tags={nonLocationTags2}
-                            setTags={setNonLocationTags2}
-                            selectedTags={selectedTags}
-                            setSelectedTags={setSelectedTags}
-                            category="material"
-                        ></SelectionComponent>
-                    </div>
                 </div>
-                <div className="p-4 border-zinc-950">
-                    <DisplayComponent
-                        selectedTags={selectedTags}
-                        setSelectedTags={setSelectedTags}
-                    ></DisplayComponent>
-                </div>
-            </div>
-
-            <div className="px-4">
-                <Grid
-                    components={filteredResults.map((result) => (
-                            <Item
-                                title={result.name}
-                                status="status"
-                                tags={result.tags}
-                                key={result.id}
-                            />
-                    ))}
-                />
             </div>
         </main>
     );
