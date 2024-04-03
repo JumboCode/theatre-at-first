@@ -2,6 +2,7 @@
 import SelectionComponent from "../../components/collectionViewFilter/selectionComponent";
 import DisplayComponent from "../../components/collectionViewFilter/displayComponent";
 import Item from "../../components/item";
+import ItemWithTags from "@/components/itemWithTags";
 import Grid from "../../components/grid";
 import UserSummary from "@/components/user-summary";
 import { useState, useEffect } from "react";
@@ -121,7 +122,7 @@ export default function Home() {
                 ></input>
             </div>
             <div className="flex flex-col">
-                <div className="flex flex-row">
+                <div className="flex flex-row flex-wrap">
                     <div className="w-[300px]">
                         <SelectionComponent
                             tags={locationTags}
@@ -163,8 +164,8 @@ export default function Home() {
                     components={filteredResults.map((result) => (
                             <Item
                                 title={result.name}
-                                status={result.desc + " " + result.tags}
-                                image="Image1.png"
+                                status="status"
+                                tags={result.tags}
                                 key={result.id}
                             />
                     ))}
