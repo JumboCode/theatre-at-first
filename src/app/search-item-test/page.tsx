@@ -118,7 +118,7 @@ export default function Home() {
                     onInput={handleSearch}
                     value={searchInput}
                     placeholder="Search for an item"
-                    className="bg-gray-100 placeholder-gray-500 pl-12 p-2 outline outline-2px outline-gray-500 rounded-3xl text-black"
+                    className="bg-gray-100 placeholder-gray-500 pl-12 p-2 outline outline-2px outline-gray-500 rounded-3xl text-black w-[268px]"
                 ></input>
             </div>
             <div className="flex flex-col">
