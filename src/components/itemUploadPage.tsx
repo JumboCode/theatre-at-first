@@ -12,13 +12,13 @@ import ImageCapture from "./image-capture-and-upload-component";
 
 interface UploadProps {
     tags: string[];
-    show_camera: boolean;
 }
 
 export default function ItemUpload(props: UploadProps) {
     const [productName, setProductName] = useState("");
     const [description, setDescription] = useState("");
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const [showCamera, setShowCamera] = useState(false);
 
     //info need to store: name, desc, tags, imageUrl (get from components)
 
@@ -27,7 +27,7 @@ export default function ItemUpload(props: UploadProps) {
     // };
 
     const handleImageFile = () => {
-        props.show_camera = true;
+        setShowCamera(true);
     };
 
     // const handleChangeDescription = (desc: string) => {
@@ -76,9 +76,11 @@ export default function ItemUpload(props: UploadProps) {
         }
     };
 
+    const component_x_padding = "px-20 xl:px-80 transition duration-500"
+
     return (
         <div className="bg-white flex flex-col justify-center">
-            <div className="pt-10 pb-5 px-20 grid grid-cols divide-y-2">
+            <div className={`${component_x_padding} pt-10 pb-5 grid grid-cols divide-y-2`}>
                 <div className="flex flex-col gap-2 justify-between">
                     <button className="flex flex-row gap-2">
                         <ChevronLeft />
@@ -92,10 +94,10 @@ export default function ItemUpload(props: UploadProps) {
                 </div>
             </div>
 
-            <div className="px-20 py-4 last:pb-0 flex w-full text-neutral-700 font-extrabold">
+            <div className={`${component_x_padding} py-4 last:pb-0 flex w-full text-neutral-700 font-extrabold`}>
                 Item Information
             </div>
-            <div className="px-20 flex flex-col justify-center md:flex-row gap-5">
+            <div className={`${component_x_padding} flex flex-col justify-center md:flex-row gap-5`}>
                 <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <ItemInput
                         productName={productName}
@@ -113,12 +115,12 @@ export default function ItemUpload(props: UploadProps) {
                 </div>
             </div>
 
-            <div className="px-20 text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full">
+            <div className={`${component_x_padding} text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full`}>
                 Item Image
             </div>
 
-            <div className="flex justify-start px-20">
-                {props.show_camera ? (
+            <div className={`${component_x_padding} flex justify-start`}>
+                {showCamera ? (
                     <ImageCapture imageCallback={(blob) => {}}></ImageCapture>
                 ) : (
                     <button
@@ -143,7 +145,7 @@ export default function ItemUpload(props: UploadProps) {
                 )}
             </div>
 
-            <div className="flex justify-end py-10 px-20">
+            <div className={`${component_x_padding} flex justify-end py-10`}>
                 <button
                     onClick={handleCancel}
                     className="whitespace-nowrap py-1 px-4 h-10 w-22 bg-white rounded-md text-gray-950 text-base border-2 border-solid border-gray-300 mr-4 hover:bg-gray-300 hover: duration-300"
