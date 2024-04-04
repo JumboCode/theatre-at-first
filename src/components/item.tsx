@@ -15,10 +15,14 @@ export default function Item(props: Prop) {
                     <p className="text-[#496767] font-bold text-base mb-2">
                         {props.title}
                     </p>
-                    {(props.status == "In Stock") ? (
-                        <p className="text-sm text-[#11763D] border-[#11763D] border-2 w-fit px-2 rounded-lg">In Stock</p>
+                    {props.status == "In Stock" ? (
+                        <p className="text-sm text-[#11763D] border-[#11763D] border-2 w-fit px-2 rounded-lg">
+                            In Stock
+                        </p>
                     ) : (
-                        <p className="text-sm text-[#DF1642] border-[#DF1642] border-2 w-fit px-2 rounded-lg">Out of Stock</p>
+                        <p className="text-sm text-[#DF1642] border-[#DF1642] border-2 w-fit px-2 rounded-lg">
+                            Out of Stock
+                        </p>
                     )}
                 </div>
             </div>
