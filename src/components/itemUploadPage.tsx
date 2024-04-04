@@ -77,28 +77,26 @@ export default function ItemUpload(props: UploadProps) {
     };
 
     return (
-        <div className="bg-white h-24 overflow-auto overscroll-y-auto overscroll-x-auto min-h-screen">
-            <div className="grid grid-cols divide-y-2 ml-20 mr-20">
-                <div className="py-10 flex flex-row">
-                    <div>
-                        <button className="flex items-center justify-center rounded-full h-10 w-10 bg-transparent">
-                            <ChevronLeft></ChevronLeft>
-                        </button>
-                    </div>
+        <div className="bg-white flex flex-col justify-center">
+            <div className="pt-10 pb-5 px-20 grid grid-cols divide-y-2">
+                <div className="flex flex-col gap-2 justify-between">
+                    <button className="flex flex-row gap-2">
+                        <ChevronLeft />
+                        <span className="text-black">Back to inventory list</span>
+                    </button>
                     <div className="first:pt-0 text-left text-sm text-neutral-700">
-                        Back to inventory list
                         <div className="first:pt-0 text-left text-4xl text-neutral-700 font-bold">
                             Add New Item
                         </div>
                     </div>
                 </div>
-                <div className=" py-8 last:pb-0 flex w-full text-neutral-700 font-extrabold">
-                    Item Information
-                </div>
             </div>
 
-            <div className="flex w-full mt-4 ml-20 mr-20 h-[370px] pe-5">
-                <div className="border rounded-xl border-solid border-amber-500 w-[400px] bg-orange-50 shadow-xl">
+            <div className="px-20 py-4 last:pb-0 flex w-full text-neutral-700 font-extrabold">
+                Item Information
+            </div>
+            <div className="px-20 flex flex-col justify-center md:flex-row gap-5">
+                <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <ItemInput
                         productName={productName}
                         setProductName={setProductName}
@@ -106,7 +104,7 @@ export default function ItemUpload(props: UploadProps) {
                         setDescription={setDescription}
                     ></ItemInput>
                 </div>
-                <div className="ml-10 border rounded-xl border-solid border-amber-500 w-[400px] bg-orange-50 h-[370px] shadow-xl">
+                <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <TagDropdown
                         tags={props.tags}
                         selectedTags={selectedTags}
@@ -115,16 +113,16 @@ export default function ItemUpload(props: UploadProps) {
                 </div>
             </div>
 
-            <div className="ml-20 text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full">
+            <div className="px-20 text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full">
                 Item Image
             </div>
 
-            <div className="flex justify-start ml-20 pe-5">
+            <div className="flex justify-start px-20">
                 {props.show_camera ? (
                     <ImageCapture imageCallback={(blob) => {}}></ImageCapture>
                 ) : (
                     <button
-                        className="border-dashed border-2 font-bold w-[840px] h-[500px] bg-orange-50 rounded-2xl border-amber-500 shadow-xl flex flex-col justify-center items-center "
+                        className="border-dashed border-2 font-bold w-full h-[500px] bg-orange-50 rounded-2xl border-amber-500 shadow-xl flex flex-col justify-center items-center "
                         onClick={handleImageFile}
                     >
                         <div>
@@ -145,7 +143,7 @@ export default function ItemUpload(props: UploadProps) {
                 )}
             </div>
 
-            <div className="flex mt-20 mb-10 ml-[610px]">
+            <div className="flex justify-end py-10 px-20">
                 <button
                     onClick={handleCancel}
                     className="whitespace-nowrap py-1 px-4 h-10 w-22 bg-white rounded-md text-gray-950 text-base border-2 border-solid border-gray-300 mr-4 hover:bg-gray-300 hover: duration-300"

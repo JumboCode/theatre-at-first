@@ -13,7 +13,7 @@ export default function testPage() {
     ];
 
     return (
-        <main>
+        <main className="w-screen min-h-screen bg-white">
             <ItemUpload tags={allTags}></ItemUpload>
         </main>
     );
