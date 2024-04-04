@@ -82,7 +82,9 @@ export default function ItemUpload(props: UploadProps) {
                 <div className="flex flex-col gap-2 justify-between">
                     <button className="flex flex-row gap-2">
                         <ChevronLeft />
-                        <span className="text-black">Back to inventory list</span>
+                        <span className="text-black">
+                            Back to inventory list
+                        </span>
                     </button>
                     <div className="first:pt-0 text-left text-sm text-neutral-700">
                         <div className="first:pt-0 text-left text-4xl text-neutral-700 font-bold">
