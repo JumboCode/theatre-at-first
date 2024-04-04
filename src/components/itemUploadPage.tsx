@@ -3,10 +3,16 @@ import { useState } from "react";
 import ItemInput from "./itemInputForm";
 import TagDropdown from "./TagDropdown";
 import { InsertItem } from "@/db/schema";
+import { ChevronLeft } from "./Button-Graphics";
+import { Image } from "./Button-Graphics";
+
+import ImageCapture from "./image-capture-and-upload-component";
+
 // import "@/components/ImageCapture"
 
 interface UploadProps {
     tags: string[];
+    show_camera: boolean;
 }
 
 export default function ItemUpload(props: UploadProps) {
@@ -19,6 +25,10 @@ export default function ItemUpload(props: UploadProps) {
     // const handleChangeName = (name: string) => {
     //     setProductName(name);
     // };
+
+    const handleImageFile = () => {
+        props.show_camera = true;
+    };
 
     // const handleChangeDescription = (desc: string) => {
     //     setDescription(desc);
@@ -67,19 +77,26 @@ export default function ItemUpload(props: UploadProps) {
     };
 
     return (
-        <div className="bg-white h-24 overflow-auto overscroll-y-auto overscroll-x-auto min-h-screen">
-            <div className="grid grid-cols divide-y-2 ml-20 mr-20">
-                <div className="py-10 first:pt-0 text-left text-4xl text-neutral-700 font-bold mt-8">
-                    Add New Product
-                </div>
-                <div className="py-8 last:pb-0 flex w-full text-xl text-neutral-700 font-bold">
-                    Description
-                    <div className="ml-[570px]">Category</div>
+        <div className="bg-white flex flex-col justify-center">
+            <div className="pt-10 pb-5 px-20 grid grid-cols divide-y-2">
+                <div className="flex flex-col gap-2 justify-between">
+                    <button className="flex flex-row gap-2">
+                        <ChevronLeft />
+                        <span className="text-black">Back to inventory list</span>
+                    </button>
+                    <div className="first:pt-0 text-left text-sm text-neutral-700">
+                        <div className="first:pt-0 text-left text-4xl text-neutral-700 font-bold">
+                            Add New Item
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div className="flex w-full mt-4 ml-20 mr-20 h-[370px]">
-                <div className="border-2 rounded-lg border-solid border-gray-200 w-[600px]">
+            <div className="px-20 py-4 last:pb-0 flex w-full text-neutral-700 font-extrabold">
+                Item Information
+            </div>
+            <div className="px-20 flex flex-col justify-center md:flex-row gap-5">
+                <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <ItemInput
                         productName={productName}
                         setProductName={setProductName}
@@ -87,7 +104,7 @@ export default function ItemUpload(props: UploadProps) {
                         setDescription={setDescription}
                     ></ItemInput>
                 </div>
-                <div className="ml-20 border-2 rounded-lg border-solid border-gray-200 w-[600px]">
+                <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <TagDropdown
                         tags={props.tags}
                         selectedTags={selectedTags}
@@ -96,27 +113,49 @@ export default function ItemUpload(props: UploadProps) {
                 </div>
             </div>
 
-            <div className="ml-20 mt-12 text-xl text-neutral-700 font-bold">
-                Product Image
+            <div className="px-20 text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full">
+                Item Image
             </div>
 
-            <div className="mt-4 ml-20 w-[1280px] h-[370px]">
-                <div className="border-2 rounded-lg border-solid border-gray-200 w-full"></div>
+            <div className="flex justify-start px-20">
+                {props.show_camera ? (
+                    <ImageCapture imageCallback={(blob) => {}}></ImageCapture>
+                ) : (
+                    <button
+                        className="border-dashed border-2 font-bold w-full h-[500px] bg-orange-50 rounded-2xl border-amber-500 shadow-xl flex flex-col justify-center items-center "
+                        onClick={handleImageFile}
+                    >
+                        <div>
+                            <Image></Image>
+                        </div>
+                        <div className="flex flex-row mt-1">
+                            <div className="text-amber-700 pr-1">
+                                Upload a file
+                            </div>
+                            <div className="text-brown_color">
+                                or drag and drop
+                            </div>
+                        </div>
+                        <div className="text-brown_color font-light flex flex-col 2 mt-1">
+                            PNG, JPG, GIF files are allowed
+                        </div>
+                    </button>
+                )}
             </div>
 
-            <div className="flex mt-16 mb-20 ml-[610px]">
+            <div className="flex justify-end py-10 px-20">
                 <button
                     onClick={handleCancel}
-                    className="whitespace-nowrap py-1 px-3 h-10 w-20 bg-white rounded font-medium text-gray-950 text-base border-2 border-solid border-gray-300 mr-4 hover:bg-gray-300 hover: duration-300"
+                    className="whitespace-nowrap py-1 px-4 h-10 w-22 bg-white rounded-md text-gray-950 text-base border-2 border-solid border-gray-300 mr-4 hover:bg-gray-300 hover: duration-300"
                 >
                     {"Cancel"}
                 </button>
 
                 <button
-                    className="whitespace-nowrap py-1 px-4 h-10 w-32 bg-gray-600 rounded font-medium text-white-950 text-base hover:bg-gray-500 hover: duration-300"
+                    className="whitespace-nowrap py-1 px-4 h-10 w-[80px] bg-teal-800 rounded-xl font-medium text-white text-base hover:bg-gray-800 hover: duration-300"
                     onClick={handleAdd}
                 >
-                    {"Add Product"}
+                    {"Save"}
                 </button>
             </div>
         </div>
