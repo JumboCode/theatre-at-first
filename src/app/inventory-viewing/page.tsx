@@ -2,14 +2,9 @@
 import SelectionComponent from "../../components/collectionViewFilter/selectionComponent";
 import DisplayComponent from "../../components/collectionViewFilter/displayComponent";
 import Item from "../../components/item";
-import ItemWithTags from "@/components/itemWithTags";
 import Grid from "../../components/grid";
-import UserSummary from "@/components/user-summary";
 import { useState, useEffect } from "react";
 import { SelectItem } from "@/db/schema";
-import CuteDog1 from "../../../public/images/cute_dog4.jpg";
-import { StaticImageData } from "next/image";
-
 
 async function getMyData() {
     console.log("getting data");
@@ -101,7 +96,9 @@ export default function Home() {
         <main className="min-h-max bg-white flex flex-col">
             <div className="px-10 pt-10">
                 <div className="p-4">
-                    <h1 className="text-4xl font-bold pb-12 text-[#0C2B35]">Inventory Viewing</h1>
+                    <h1 className="text-4xl font-bold pb-12 text-[#0C2B35]">
+                        Inventory Viewing
+                    </h1>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -164,12 +161,15 @@ export default function Home() {
                 <div className="px-4">
                     <Grid
                         components={filteredResults.map((result) => (
-                                <Item
-                                    title={result.name}
-                                    status={result.status}
-                                    image={result.imageUrl}
-                                    key={result.id}
-                                />
+                            <Item
+                                title={result.name}
+                                status={result.status || "Unknown"}
+                                image={
+                                    result.imageUrl ||
+                                    "/images/imageNotFound.jpg"
+                                }
+                                key={result.id}
+                            />
                         ))}
                     />
                 </div>
