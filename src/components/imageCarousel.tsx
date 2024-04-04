@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import ResizeableIMG from "./resizeableIMG";
+import ResizeableIMG from "@/components/resizeableIMG";
 import { StaticImageData } from "next/image";
+import ImageNotFound from "@/../public/images/imageNotFound.jpg";
 
 export default function ImageCarousel(props: { imageList: StaticImageData[] }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -57,7 +58,11 @@ export default function ImageCarousel(props: { imageList: StaticImageData[] }) {
             <ResizeableIMG
                 width={600}
                 height={400}
-                src={props.imageList[currentImageIndex].src}
+                src={
+                    props.imageList.length > 0
+                        ? props.imageList[currentImageIndex].src
+                        : ImageNotFound
+                }
                 alt="pics of cookies"
             />
             <button

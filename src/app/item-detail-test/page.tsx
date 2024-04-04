@@ -1,4 +1,4 @@
-import ItemDetailTest from "@/components/ItemDetail";
+import ItemDetail from "@/components/ItemDetail";
 
 export default function testPage() {
     const name = "Item Name";
@@ -9,12 +9,12 @@ export default function testPage() {
 
     return (
         <main>
-            <ItemDetailTest
+            <ItemDetail
                 name={name}
                 tags={tags}
                 description={description}
                 status={status}
-            ></ItemDetailTest>
+            ></ItemDetail>
         </main>
     );
 }

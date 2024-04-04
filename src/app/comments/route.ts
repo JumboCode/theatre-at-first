@@ -45,11 +45,7 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
     const req_data = await req.json();
 
-    const itemId = req_data.itemId;
-    const text = req_data.message;
-    const userId = req_data.user;
     const id = req_data.id;
-    const timestamp = req_data.timestamp;
 
     const result = await db.query.comments.findFirst({
         with: {

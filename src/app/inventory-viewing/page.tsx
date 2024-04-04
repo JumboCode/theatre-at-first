@@ -169,6 +169,7 @@ export default function Home() {
                                     "/images/imageNotFound.jpg"
                                 }
                                 key={result.id}
+                                id={result.id}
                             />
                         ))}
                     />
