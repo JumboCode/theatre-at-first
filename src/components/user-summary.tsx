@@ -1,6 +1,4 @@
 "use client";
-import { useState } from "react";
-import Image from "next/image";
 import ResizeableIMG from "./resizeableIMG";
 import { StaticImageData } from "next/image";
 
@@ -14,20 +12,20 @@ interface UserProps {
 
 export default function UserSummary(props: UserProps) {
     return (
-        <div className="flex flex-row items-center gap-10 p-5 bg-white w-[35%] text-black">
+        <div className="flex flex-row items-center gap-4 p-5 text-black">
             <ResizeableIMG
-                width={125}
-                height={125}
+                width={50}
+                height={50}
                 className="
                 rounded-full ...
-                border-4
+                border-2
                 w-1/2
                 my-4
                 md: w-4/12
-                border-white
+                border-amber-600
                 drop-shadow-lg
                 ring-1
-                ring-gray-400	
+                ring-amber-500	
                 backdrop-blur-lg
                 outline-[8px]
                 "
