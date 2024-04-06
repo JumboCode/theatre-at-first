@@ -1,14 +1,12 @@
 "use client";
 import { useState } from "react";
-import ItemInput from "./itemInputForm";
-import TagDropdown from "./TagDropdown";
+import ItemInput from "@/components/itemInputForm";
+import TagDropdown from "@/components/TagDropdown";
 import { InsertItem } from "@/db/schema";
-import { ChevronLeft } from "./Button-Graphics";
-import { Image } from "./Button-Graphics";
+import { ChevronLeft } from "@/components/Button-Graphics";
+import { Image } from "@/components/Button-Graphics";
 
-import ImageCapture from "./image-capture-and-upload-component";
-
-// import "@/components/ImageCapture"
+import ImageCapture from "@/components/image-capture-and-upload-component";
 
 interface UploadProps {
     tags: string[];
@@ -76,15 +74,19 @@ export default function ItemUpload(props: UploadProps) {
         }
     };
 
-    const component_x_padding = "px-20 xl:px-80 transition duration-500"
+    const component_x_padding = "px-20 xl:px-80 transition duration-500";
 
     return (
         <div className="bg-white flex flex-col justify-center">
-            <div className={`${component_x_padding} pt-10 pb-5 grid grid-cols divide-y-2`}>
+            <div
+                className={`${component_x_padding} pt-10 pb-5 grid grid-cols divide-y-2`}
+            >
                 <div className="flex flex-col gap-2 justify-between">
                     <button className="flex flex-row gap-2">
                         <ChevronLeft />
-                        <span className="text-black">Back to inventory list</span>
+                        <span className="text-black">
+                            Back to inventory list
+                        </span>
                     </button>
                     <div className="first:pt-0 text-left text-sm text-neutral-700">
                         <div className="first:pt-0 text-left text-4xl text-neutral-700 font-bold">
@@ -94,10 +96,14 @@ export default function ItemUpload(props: UploadProps) {
                 </div>
             </div>
 
-            <div className={`${component_x_padding} py-4 last:pb-0 flex w-full text-neutral-700 font-extrabold`}>
+            <div
+                className={`${component_x_padding} py-4 last:pb-0 flex w-full text-neutral-700 font-extrabold`}
+            >
                 Item Information
             </div>
-            <div className={`${component_x_padding} flex flex-col justify-center md:flex-row gap-5`}>
+            <div
+                className={`${component_x_padding} flex flex-col justify-center md:flex-row gap-5`}
+            >
                 <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <ItemInput
                         productName={productName}
@@ -115,7 +121,9 @@ export default function ItemUpload(props: UploadProps) {
                 </div>
             </div>
 
-            <div className={`${component_x_padding} text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full`}>
+            <div
+                className={`${component_x_padding} text-neutral-700 font-extrabold mt-6 py-2 last:pb-0 flex w-full`}
+            >
                 Item Image
             </div>
 
