@@ -16,17 +16,13 @@ export default function ItemUpload(props: UploadProps) {
     const [productName, setProductName] = useState("");
     const [description, setDescription] = useState("");
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
-    const [showCamera, setShowCamera] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
 
     //info need to store: name, desc, tags, imageUrl (get from components)
 
     // const handleChangeName = (name: string) => {
     //     setProductName(name);
     // };
-
-    const handleImageFile = () => {
-        setShowCamera(true);
-    };
 
     // const handleChangeDescription = (desc: string) => {
     //     setDescription(desc);
@@ -74,6 +70,32 @@ export default function ItemUpload(props: UploadProps) {
         }
     };
 
+    const handleImageCapture = async (blob: Blob) => {
+        const { presignedUrl, imageUrl } = await (
+            await fetch("/upload-presigned-url", {
+                method: "POST",
+            })
+        ).json();
+
+        await fetch(presignedUrl, {
+            method: "PUT",
+            body: blob,
+            headers: {
+                "Content-Type": blob.type,
+            },
+        })
+            .then(async (response) => {
+                if (!response.ok) {
+                    alert("Upload failed: " + (await response.text()));
+                }
+
+                setImageUrl(imageUrl);
+            })
+            .catch((error: Error) => {
+                alert(`Upload error: ${error}`);
+            });
+    };
+
     const component_x_padding = "px-20 xl:px-80 transition duration-500";
 
     return (
@@ -110,14 +132,14 @@ export default function ItemUpload(props: UploadProps) {
                         setProductName={setProductName}
                         description={description}
                         setDescription={setDescription}
-                    ></ItemInput>
+                    />
                 </div>
                 <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <TagDropdown
                         tags={props.tags}
                         selectedTags={selectedTags}
                         setSelectedTags={setSelectedTags}
-                    ></TagDropdown>
+                    />
                 </div>
             </div>
 
@@ -128,28 +150,20 @@ export default function ItemUpload(props: UploadProps) {
             </div>
 
             <div className={`${component_x_padding} flex justify-start`}>
-                {showCamera ? (
-                    <ImageCapture imageCallback={(blob) => {}}></ImageCapture>
+                {imageUrl ? (
+                    <div>
+                        <div className="border border-amber-500 p-2 bg-orange-50 rounded-xl">
+                            <img src={imageUrl} alt="" className="rounded-lg" />
+                        </div>
+                        <button
+                            className="block border border-amber-500 bg-orange-50 text-sm font-medium px-2 py-1 rounded-xl mx-auto mt-3 text-orange-700"
+                            onClick={() => setImageUrl("")}
+                        >
+                            Retake
+                        </button>
+                    </div>
                 ) : (
-                    <button
-                        className="border-dashed border-2 font-bold w-full h-[500px] bg-orange-50 rounded-2xl border-amber-500 shadow-xl flex flex-col justify-center items-center "
-                        onClick={handleImageFile}
-                    >
-                        <div>
-                            <Image></Image>
-                        </div>
-                        <div className="flex flex-row mt-1">
-                            <div className="text-amber-700 pr-1">
-                                Upload a file
-                            </div>
-                            <div className="text-brown_color">
-                                or drag and drop
-                            </div>
-                        </div>
-                        <div className="text-brown_color font-light flex flex-col 2 mt-1">
-                            PNG, JPG, GIF files are allowed
-                        </div>
-                    </button>
+                    <ImageCapture imageCallback={handleImageCapture} />
                 )}
             </div>
 
