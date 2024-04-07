@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    
     "worker-deploy": "wrangler deploy",
     "worker-dev": "wrangler dev",
     "worker-start": "wrangler dev"
