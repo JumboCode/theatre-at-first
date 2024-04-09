@@ -18,21 +18,12 @@ export default function ItemUpload(props: UploadProps) {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [imageUrl, setImageUrl] = useState("");
 
-    //info need to store: name, desc, tags, imageUrl (get from components)
-
-    // const handleChangeName = (name: string) => {
-    //     setProductName(name);
-    // };
-
-    // const handleChangeDescription = (desc: string) => {
-    //     setDescription(desc);
-    // };
-
     const handleCancel = () => {
         //clear stored info
         setProductName("");
         setDescription("");
         setSelectedTags([]);
+        setImageUrl("");
     };
 
     const handleAdd = async () => {
