@@ -6,11 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    
-    "worker-deploy": "wrangler deploy",
-    "worker-dev": "wrangler dev",
-    "worker-start": "wrangler dev"
+    "lint": "next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.7",
@@ -35,7 +31,6 @@
     "postcss": "^8",
     "prettier": "3.1.0",
     "tailwindcss": "^3",
-    "typescript": "^5",
-    "wrangler": "^3.0.0"
+    "typescript": "^5"
   }
 }
