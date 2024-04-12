@@ -7,13 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-
     "worker-deploy": "wrangler deploy",
     "worker-dev": "wrangler dev",
     "worker-start": "wrangler dev"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.7",
+    "@clerk/themes": "^1.7.12",
     "@neondatabase/serverless": "^0.6.0",
     "dotenv": "^16.3.1",
     "drizzle-orm": "^0.28.6",
