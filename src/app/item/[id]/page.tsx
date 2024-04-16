@@ -38,6 +38,7 @@ export default async function Page({ params }: { params: { id: number } }) {
 
     let images;
     if (itemData?.imageUrl) {
+        // TODO: load images properly
         images = [CuteDog1];
     } else {
         images = [ImageNotFound];
