@@ -15,9 +15,7 @@ export async function POST(req: Request) {
     if (
         name == undefined ||
         desc == undefined ||
-        tags == undefined ||
-        imageUrl == undefined ||
-        status == undefined
+        tags == undefined
     ) {
         return NextResponse.json(
             {
@@ -43,36 +41,6 @@ export async function POST(req: Request) {
             },
             {
                 status: 200,
-            }
-        );
-    }
-}
-
-export async function GET(req: Request) {
-    const req_data = await req.json();
-    const id = req_data.item_id;
-    const result = await db.query.items.findFirst({
-        with: {
-            id: id,
-        },
-    });
-
-    if (result) {
-        return NextResponse.json(
-            {
-                message: result,
-            },
-            {
-                status: 200,
-            }
-        );
-    } else {
-        return NextResponse.json(
-            {
-                message: `item ${id} is not found in the database`,
-            },
-            {
-                status: 400,
             }
         );
     }

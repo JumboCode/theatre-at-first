@@ -1,49 +1,47 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import ImageCarousel from "@/components/imageCarousel";
 import ItemDetail from "@/components/ItemDetail";
 import CommentComp from "@/components/comment-comp-single-view";
 
 import { Edit2 } from "@/components/Button-Graphics";
-import { PlusCircle } from "@/components/Button-Graphics";
 import { ArrowLeftCircle } from "@/components/Button-Graphics";
-
-//how do we import our get and post handlers
-//and allow the image carousel image data to be pulled from the schem
-//(potentially using image api routes)
 
 import CuteDog1 from "@/../public/images/cute_dog1.jpg";
 import ImageNotFound from "@/../public/images/imageNotFound.jpg";
 
-import { SelectItem } from "@/db/schema";
-import { StaticImageData } from "next/image";
+import { items } from "@/db/schema";
+import db from "@/db/drizzle";
+import { eq } from "drizzle-orm";
+import { redirect } from "next/navigation";
 
-async function getItemData(id: number): Promise<SelectItem> {
-    console.log("getting data");
-    return await fetch(`/item?item_id=${id}`, {
-        method: "GET",
-    })
-        .then((response) => {
-            console.log(response);
-            return response.json();
-        })
-        .then((json) => json.results);
-}
+export default async function Page({ params }: { params: { id: number } }) {
+    /* WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
+    *  This component is a server component. That means that none of the code
+    *  in this file executes on the client -- it is all executed on the server
+    *  the resulting markdown is all that is sent to the client. This means that
+    *  we can safely make database requests (and perform other backend
+    *  operations) here without a problem.
+    *                                                                - Amitav
+    */
+    const itemData = await db.query.items.findFirst({ where: eq(items.id, params.id) });
 
-export default function Page({ params }: { params: { id: number } }) {
-    const [itemData, setItemData] = useState<SelectItem | null>(null);
-    const [images, setImages] = useState<StaticImageData[]>([]);
+    if (!itemData) {
+        // TODO: make a proper not found page
+        // redirect("/");
+        return (
+            <main>
+                <div className="w-screen h-screen flex flex-row justify-center items-center">
+                    <h1 className="text-4xl font-serif">Item Not Found</h1>
+                </div>
+            </main>
+        );
+    }
 
-    useEffect(() => {
-        getItemData(params.id).then((data) => {
-            setItemData(data);
-            if (data.imageUrl != null) {
-                setImages([CuteDog1]);
-            } else {
-                setImages([ImageNotFound]);
-            }
-        });
-    }, [params.id]);
+    let images;
+    if (itemData?.imageUrl) {
+        images = [CuteDog1];
+    } else {
+        images = [ImageNotFound];
+    }
 
     return (
         <main className="bg-white">
