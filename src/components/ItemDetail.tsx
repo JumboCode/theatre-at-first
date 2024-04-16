@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-interface ItemDetailTestProps {
+interface ItemDetailProps {
     name: string;
     tags: string[];
     description: string;
@@ -11,7 +11,7 @@ interface ItemDetailTestProps {
 // make request to API to get list of updates
 const updates: string[] = ["Update One", "Update Two", "Update Three"];
 
-export default function ItemDetail(props: ItemDetailTestProps) {
+export default function ItemDetail(props: ItemDetailProps) {
     const [display, setDisplay] = useState(false);
 
     const handleMouseEnter = () => {
@@ -22,15 +22,16 @@ export default function ItemDetail(props: ItemDetailTestProps) {
         setDisplay(false);
     };
 
+    const status_color = props.status == "In Stock" ? "[#11763D]" : "[#DF1642]";
+
     return (
-        <div className="flex flex-col gap-10 items-left p-10 bg-white w-[50%] text-black">
+        <div className="flex flex-col gap-5 items-left text-black">
             <div className="text-4xl font-bold">{props.name}</div>
-            <div
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+            <p
+                className={`text-sm text-${status_color} border-${status_color} border-2 w-fit px-2 rounded-lg`}
             >
                 {props.status}
-            </div>
+            </p>
             <div>
                 {display && (
                     <div className="">
