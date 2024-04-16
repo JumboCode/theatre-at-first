@@ -6,15 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-
-    "worker-deploy": "wrangler deploy",
-    "worker-dev": "wrangler dev",
-    "worker-start": "wrangler dev"
+    "lint": "next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.7",
     "@neondatabase/serverless": "^0.6.0",
+    "aws-sdk": "^2.1594.0",
     "dotenv": "^16.3.1",
     "drizzle-orm": "^0.28.6",
     "next": "13.5.5",
@@ -34,7 +31,6 @@
     "postcss": "^8",
     "prettier": "3.1.0",
     "tailwindcss": "^3",
-    "typescript": "^5",
-    "wrangler": "^3.0.0"
+    "typescript": "^5"
   }
 }
