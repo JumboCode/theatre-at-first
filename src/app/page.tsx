@@ -8,7 +8,7 @@ export default function Home() {
         <div className="bg-white text-[#0C1D1D]">
             <div className="px-24">
                 <div className="flex flex-col justify-center align-middle py-32 gap-8">
-                    <p className="text-center mx-auto max-w-[786px] text-[90px] leading-tight font-bold">All Your Inventory In One Place</p>
+                    <p className="text-center mx-auto max-w-[786px] text-[60px] lg:text-[90px] leading-tight font-bold">All Your Inventory In One Place</p>
                     <Image alt="JumboCode x Theatre@First" src="/images/landing_icons.png" width="251" height="113" className="mx-auto"></Image>
                     <div>
                         <p className="text-center text-[#839996]">Your one-stop inventory management system designed by JumboCode specifically for Theatre@First.</p>
@@ -19,10 +19,10 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col justify-center mx-auto mb-[100px]">
                     <div className="flex flex-col gap-5">
-                        <p className="text-[60px] font-bold text-center">Our Key Features</p>
+                        <p className="text-[40px] lg:text-[60px] font-bold text-center">Our Key Features</p>
                         <p className="text-center text-[#839996]">Our platform helps Theatre@First better manage their inventory system</p>
                     </div>
-                    <div className="flex flex-row align-middle justify-center items-center gap-12 pt-12">
+                    <div className="flex flex-row align-middle justify-center items-center gap-12 pt-12 flex-wrap md:flex-nowrap">
                         <div className="w-[1/2] flex flex-col gap-6 py-12">
                             <div className="flex flex-row align-top justify-start gap-8">
                                 <Image alt="Inventory tracking icon" src="/images/landing_key_features_icon.svg" width="51" height="51" className=""></Image>
@@ -52,8 +52,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="h-[570px] flex flex-row gap-10 align-bottom justify-center items-end pl-24">
-                <div className="flex flex-col gap-10 w-[1/2] pb-28">
+            <div className="h-[570px] flex flex-row gap-10 align-bottom justify-center items-end pl-24 flex-wrap md:flex-nowrap">
+                <div className="flex flex-col gap-12 w-[1/2] pb-48">
                     <p className="text-[40px] font-[700] leading-tight">Start Tracking Your Theatrical Inventory System Today</p>
                     <p className="text-[#839996]">Sign up or log in to start using our platform.</p>
                     <div className="flex flex-row gap-4 justify-start align-middle items-start w-fit">
