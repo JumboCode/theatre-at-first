@@ -15,9 +15,7 @@ export async function GET(
             lastname: true,
             email: true,
         },
-
     });
-
 
     return Response.json({
         results: results,

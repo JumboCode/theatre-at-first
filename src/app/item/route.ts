@@ -12,11 +12,7 @@ export async function POST(req: Request) {
     let status: string = data.status;
 
     //check for missing fields
-    if (
-        name == undefined ||
-        desc == undefined ||
-        tags == undefined
-    ) {
+    if (name == undefined || desc == undefined || tags == undefined) {
         return NextResponse.json(
             {
                 message: "Missing fields!",
