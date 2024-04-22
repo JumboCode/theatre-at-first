@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function Home() {
     return (
-        <div className="bg-white text-[#0C1D1D] h-max">
-            <div className="px-[2rem] sm:px-[4rem] lg:px-[6rem]">
+        <div className="bg-white bg-gradient-to-br to-[#ffae453f] from-white from-[1%] text-[#0C1D1D]">
+            <div className="px-[2rem] sm:px-[4rem] lg:px-[6rem] ">
                 <div className="flex flex-col justify-center align-middle py-32 gap-8">
                     <p className="text-center  text-[30px] sm:text-[40px] md:text-[60px] lg:text-[90px] leading-tight font-bold">All Your Inventory In One Place</p>
                     <Image alt="JumboCode x Theatre@First" src="/images/landing_icons.png" width="251" height="113" className="mx-auto"></Image>
@@ -17,7 +17,7 @@ export default function Home() {
                     <a href="" className="mx-auto py-4 px-10 bg-[#0C2B35] hover:bg-[#496767] text-white text-center rounded-3xl">Get Started</a>
                     <Image alt="Add New Product page" src="/images/landing_1.png" width="1108" height="496" className="mx-auto"></Image>
                 </div>
-                <div className="flex flex-col justify-center mx-auto mb-[100px]">
+                <div className="flex flex-col justify-center mx-auto pb-[100px]">
                     <div className="flex flex-col gap-5">
                         <p className="text-[40px] lg:text-[60px] font-bold text-center">Our Key Features</p>
                         <p className="text-center text-[#839996]">Our platform helps Theatre@First better manage their inventory system</p>
@@ -52,16 +52,16 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="h-[570px] flex flex-row gap-10 align-bottom justify-center items-end pl-[2rem] md:pl-[4rem] lg:pl-[6rem] flex-wrap md:flex-nowrap">
-                <div className="flex flex-col gap-12 w-[1/2] pb-48">
-                    <p className="text-[40px] font-[700] leading-tight text-center sm:text-left">Start Tracking Your Theatrical Inventory System Today</p>
-                    <p className="text-[#839996]">Sign up or log in to start using our platform.</p>
-                    <div className="flex flex-row gap-4 justify-start align-middle items-start w-fit">
-                        <a href="" className="mx-auto py-4 px-10 bg-[#496767] text-white text-center rounded-3xl">Sign Up</a>
-                        <a href="" className="mx-auto py-4 px-10 bg-[#0C2B35] hover:bg-[#496767] text-white text-center rounded-3xl">Log In</a>
+            <div className="h-[570px] flex flex-row flex-wrap md:flex-nowrap align-middle justify-center items-center gap pb-48">
+                <div className="flex flex-col gap-12 basis-1/2 flex-auto p-8 md:p-24 justify-center items-center md:items-start">
+                    <p className="text-[30px] md:text-[40px] font-[700] leading-tight text-center md:text-left flex-auto">Start Tracking Your Theatrical Inventory System Today</p>
+                    <p className="text-[#839996] text-center md:text-left">Sign up or log in to start using our platform.</p>
+                    <div className="flex flex-row gap-4 align-middle w-fit">
+                        <a href="" className="mx-auto py-4 px-10 bg-[#496767] text-white text-center rounded-3xl min-w-max">Sign Up</a>
+                        <a href="" className="mx-auto py-4 px-10 bg-[#0C2B35] hover:bg-[#496767] text-white text-center rounded-3xl min-w-max">Log In</a>
                     </div>
                 </div>
-                <div className="basics-1/2">
+                <div className="basis-1/2 flex-initial">
                     <Image alt="Inventory View" src="/images/landing_inventory.png" width="1000" height="478"></Image>
                 </div>
             </div>
