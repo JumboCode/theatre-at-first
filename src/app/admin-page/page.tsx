@@ -39,7 +39,7 @@ export default function Home() {
     return (
         <main className="min-h-max bg-white">
             <div className="p-4 w-10/12 mx-auto">
-                <h1 className="text-4xl font-bold pb-12">Inventory Viewing</h1>
+                <h1 className="text-4xl font-bold pb-12">Admin Dashboard</h1>
                 <DataTable columns={columns} data={data} />
             </div>
         </main>
