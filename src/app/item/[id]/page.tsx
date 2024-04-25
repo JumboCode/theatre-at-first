@@ -15,14 +15,16 @@ import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { id: number } }) {
     /* WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
-    *  This component is a server component. That means that none of the code
-    *  in this file executes on the client -- it is all executed on the server
-    *  the resulting markdown is all that is sent to the client. This means that
-    *  we can safely make database requests (and perform other backend
-    *  operations) here without a problem.
-    *                                                                - Amitav
-    */
-    const itemData = await db.query.items.findFirst({ where: eq(items.id, params.id) });
+     *  This component is a server component. That means that none of the code
+     *  in this file executes on the client -- it is all executed on the server
+     *  the resulting markdown is all that is sent to the client. This means that
+     *  we can safely make database requests (and perform other backend
+     *  operations) here without a problem.
+     *                                                                - Amitav
+     */
+    const itemData = await db.query.items.findFirst({
+        where: eq(items.id, params.id),
+    });
 
     if (!itemData) {
         // TODO: make a proper not found page
