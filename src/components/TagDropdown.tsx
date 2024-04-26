@@ -99,7 +99,11 @@ export default function TagDropdown(props: TagDropdownProps) {
             // console.log("pushed tag");
             // console.log(props.tags);
         }
-        props.setSelectedTags([...props.selectedTags, tag]);
+
+        if (!props.selectedTags.includes(tag)) {
+            props.setSelectedTags([...props.selectedTags, tag].sort());
+        }
+
         // clear search bar
         setSearchInput("");
     }
