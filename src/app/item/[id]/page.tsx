@@ -5,9 +5,6 @@ import CommentComp from "@/components/comment-comp-single-view";
 import { Edit2 } from "@/components/Button-Graphics";
 import { ArrowLeftCircle } from "@/components/Button-Graphics";
 
-import CuteDog1 from "@/../public/images/cute_dog1.jpg";
-import ImageNotFound from "@/../public/images/imageNotFound.jpg";
-
 import { items } from "@/db/schema";
 import db from "@/db/drizzle";
 import { eq } from "drizzle-orm";
@@ -37,12 +34,11 @@ export default async function Page({ params }: { params: { id: number } }) {
         );
     }
 
-    let images;
-    if (itemData?.imageUrl) {
-        // TODO: load images properly
-        images = [CuteDog1];
+    let images: string[];
+    if (itemData.imageUrl) {
+        images = [itemData.imageUrl];
     } else {
-        images = [ImageNotFound];
+        images = [];
     }
 
     return (
