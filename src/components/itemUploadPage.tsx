@@ -33,7 +33,7 @@ export default function ItemUpload(props: UploadProps) {
             name: productName,
             desc: description,
             tags: selectedTags,
-            imageUrl: "",
+            imageUrl: imageUrl,
             status: "active",
         };
 

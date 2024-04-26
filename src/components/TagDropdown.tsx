@@ -27,7 +27,7 @@ interface TagDropdownProps {
 export default function TagDropdown(props: TagDropdownProps) {
     const [display, setDisplay] = useState(false);
     const [searchInput, setSearchInput] = useState("");
-    const [filteredTags, setFilteredTags] = useState(props.tags);
+    const [filteredTags, setFilteredTags] = useState(props.tags.sort());
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const input_text: string = event.target.value;
@@ -40,7 +40,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                 })
             );
         } else {
-            setFilteredTags(props.tags);
+            setFilteredTags(props.tags.sort());
         }
     };
 
@@ -78,7 +78,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                 ...props.selectedTags.slice(toRemove + 1),
             ]);
         } else {
-            props.setSelectedTags([...props.selectedTags, tag]);
+            props.setSelectedTags([...props.selectedTags, tag].sort());
         }
     }
 
@@ -96,10 +96,15 @@ export default function TagDropdown(props: TagDropdownProps) {
         // ?? QUESTION: do we actually want a New tag to be added every time someone hits enter
         if (!props.tags.includes(tag)) {
             props.tags.push(tag);
+            props.tags.sort();
             // console.log("pushed tag");
             // console.log(props.tags);
         }
-        props.setSelectedTags([...props.selectedTags, tag]);
+        
+        if (!props.selectedTags.includes(tag)) {
+            props.setSelectedTags([...props.selectedTags, tag].sort());
+        }
+
         // clear search bar
         setSearchInput("");
     }
