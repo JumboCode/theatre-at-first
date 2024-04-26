@@ -6,9 +6,18 @@ import Grid from "../../components/grid";
 import { useState, useEffect } from "react";
 import { SelectItem } from "@/db/schema";
 
-async function getMyData() {
+async function getTableData() : Promise<SelectItem[]> {
     console.log("getting data");
     return await fetch("/search-item", {
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((json) => json.results);
+}
+
+async function getTagData(): Promise<string[]> {
+    console.log("getting data");
+    return await fetch("/tags", {
         method: "GET",
     })
         .then((response) => response.json())
@@ -33,28 +42,9 @@ const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
 };
 
 export default function Home() {
-    const [locationTags, setLocationTags] = useState([
-        "loc1",
-        "loc2",
-        "loc3",
-        "loc4",
-        "loc5",
-        "loc6",
-    ]);
-    const [nonLocationTags, setNonLocationTags] = useState([
-        "blue",
-        "green",
-        "red",
-        "orange",
-        "purple",
-        "yellow",
-    ]);
-    const [nonLocationTags2, setNonLocationTags2] = useState([
-        "wood",
-        "plastic",
-        "metal",
-        "cotton",
-    ]);
+    const [locationTags, setLocationTags] = useState<string[]>([]);
+    const [nonLocationTags, setNonLocationTags] = useState<string[]>([]);
+    const [nonLocationTags2, setNonLocationTags2] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     const [searchInput, setSearchInput] = useState("");
@@ -62,10 +52,11 @@ export default function Home() {
     const [filteredResults, setFilteredResults] = useState<SelectItem[]>([]);
 
     useEffect(() => {
-        getMyData().then((data) => {
+        getTableData().then((data) => {
             setUnfiltered(data);
             setFilteredResults(data);
         });
+        getTagData().then(setNonLocationTags)
     }, []);
 
     const updateSearchResults = (input_text: string, tags: string[]) => {
