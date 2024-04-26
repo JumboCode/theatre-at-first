@@ -1,4 +1,5 @@
 import ItemUpload from "@/components/itemUploadPage";
+import db from "@/db/drizzle";
 
 export default async function testPage() {
     let result = await db.query.items.findMany({

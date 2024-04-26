@@ -14,7 +14,7 @@ import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { id: number } }) {
-    /* WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
+    /*  WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
      *  This component is a server component. That means that none of the code
      *  in this file executes on the client -- it is all executed on the server
      *  the resulting markdown is all that is sent to the client. This means that
