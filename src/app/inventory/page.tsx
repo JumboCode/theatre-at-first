@@ -1,14 +1,14 @@
 "use client";
-import SelectionComponent from "../../components/collectionViewFilter/selectionComponent";
-import DisplayComponent from "../../components/collectionViewFilter/displayComponent";
-import Item from "../../components/item";
-import Grid from "../../components/grid";
+import SelectionComponent from "@/components/collectionViewFilter/selectionComponent";
+import DisplayComponent from "@/components/collectionViewFilter/displayComponent";
+import Item from "@/components/item";
+import Grid from "@/components/grid";
 import { useState, useEffect } from "react";
 import { SelectItem } from "@/db/schema";
 
-async function getTableData() : Promise<SelectItem[]> {
-    console.log("getting data");
-    return await fetch("/search-item", {
+async function getTableData(): Promise<SelectItem[]> {
+    console.log("getting items");
+    return await fetch("/list-items", {
         method: "GET",
     })
         .then((response) => response.json())
@@ -16,8 +16,8 @@ async function getTableData() : Promise<SelectItem[]> {
 }
 
 async function getTagData(): Promise<string[]> {
-    console.log("getting data");
-    return await fetch("/tags", {
+    console.log("getting tags");
+    return await fetch("/list-tags", {
         method: "GET",
     })
         .then((response) => response.json())
@@ -56,7 +56,7 @@ export default function Home() {
             setUnfiltered(data);
             setFilteredResults(data);
         });
-        getTagData().then(setNonLocationTags)
+        getTagData().then(setNonLocationTags);
     }, []);
 
     const updateSearchResults = (input_text: string, tags: string[]) => {
