@@ -8,7 +8,7 @@ export default function Home() {
         <div className="bg-white bg-gradient-to-br to-[#ffae453f] from-white from-[1%] text-[#0C1D1D]">
             <div className="px-[2rem] sm:px-[4rem] lg:px-[6rem] ">
                 <div className="flex flex-col justify-center align-middle py-32 gap-8">
-                    <p className="text-center  text-[30px] sm:text-[40px] md:text-[60px] lg:text-[90px] leading-tight font-bold">All Your Inventory In One Place</p>
+                    <p className="text-center  text-[30px] sm:text-[40px] md:text-[60px] lg:text-[90px] leading-tight font-bold">All Your Inventory In One Place.</p>
                     <Image alt="JumboCode x Theatre@First" src="/images/landing_icons.png" width="251" height="113" className="mx-auto"></Image>
                     <div>
                         <p className="text-center text-[#839996]">Your one-stop inventory management system designed by JumboCode specifically for Theatre@First.</p>
