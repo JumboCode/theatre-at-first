@@ -7,6 +7,9 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+        'sans': 'Montserrat, Arial',
+    },
     extend: {
       colors: {
           selected_tag: '#C8ECE5',
