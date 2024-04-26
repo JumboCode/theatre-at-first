@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { SelectComment, comments } from "@/db/schema";
+import { PlusCircle } from "./Button-Graphics";
 
 interface CommentCompProps {
     itemId: number;
@@ -45,9 +46,15 @@ export default function CommentComp({ itemId }: CommentCompProps) {
         <>
             <div className="content-start w-full">
                 <hr className="h-px bg-neutral-700 border-0"></hr>
-                <div className="text-left text-3xl text-neutral-700 font-bold p-3">
+
+                <div className="text-left text-3xl text-neutral-700 font-bold p-3 flex flex-row justify-between">
                     Comments
+                    <button className="text-orange-400 text-sm font-normal flex border-orange-400 border-2 p-2 rounded-lg">
+                        <PlusCircle />
+                        <div className="pl-1 pt-0.5">Add Comment</div>
+                    </button>
                 </div>
+
                 <hr className="h-px bg-neutral-700 border-0"></hr>
 
                 {itemComments &&
@@ -63,6 +70,7 @@ export default function CommentComp({ itemId }: CommentCompProps) {
                             <br></br>
                             <p className="text-black">{comment.message}</p>
                             <br></br>
+                            <hr className="h-px bg-neutral-700 border-0"></hr>
                         </div>
                     ))}
             </div>

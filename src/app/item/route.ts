@@ -1,4 +1,4 @@
-import { InsertItem, items } from "@/db/schema";
+import { InsertItem, SelectItem, items } from "@/db/schema";
 import db from "@/db/drizzle";
 import { NextResponse } from "next/server";
 
@@ -12,13 +12,7 @@ export async function POST(req: Request) {
     let status: string = data.status;
 
     //check for missing fields
-    if (
-        name == undefined ||
-        desc == undefined ||
-        tags == undefined ||
-        imageUrl == undefined ||
-        status == undefined
-    ) {
+    if (name == undefined || desc == undefined || tags == undefined) {
         return NextResponse.json(
             {
                 message: "Missing fields!",
@@ -43,36 +37,6 @@ export async function POST(req: Request) {
             },
             {
                 status: 200,
-            }
-        );
-    }
-}
-
-export async function GET(req: Request) {
-    const req_data = await req.json();
-    const id = req_data.item_id;
-    const result = await db.query.items.findFirst({
-        with: {
-            id: id,
-        },
-    });
-
-    if (result) {
-        return NextResponse.json(
-            {
-                message: result,
-            },
-            {
-                status: 200,
-            }
-        );
-    } else {
-        return NextResponse.json(
-            {
-                message: `item ${id} is not found in the database`,
-            },
-            {
-                status: 400,
             }
         );
     }
