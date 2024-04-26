@@ -12,6 +12,9 @@ import { items } from "@/db/schema";
 import db from "@/db/drizzle";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
+import { StaticImageData } from "next/image";
+import Head from "next/head";
+import { revalidatePath } from "next/cache";
 
 export default async function Page({ params }: { params: { id: number } }) {
     /* WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
@@ -38,7 +41,8 @@ export default async function Page({ params }: { params: { id: number } }) {
         );
     }
 
-    let images;
+    revalidatePath(`/edit/${itemData.id}`);
+    let images: StaticImageData[];
     if (itemData?.imageUrl) {
         // TODO: load images properly
         images = [CuteDog1];
@@ -47,6 +51,12 @@ export default async function Page({ params }: { params: { id: number } }) {
     }
 
     return (
+        <>
+        <Head>
+            <meta http-equiv='cache-control' content='no-cache'/>
+            <meta http-equiv='expires' content='0'/>
+            <meta http-equiv='pragma' content='no-cache'/>
+        </Head>
         <main className="bg-white">
             <div className="p-8 w-full h-full flex flex-col lg:flex-row justify-center items-center">
                 <ImageCarousel imageList={images} />
@@ -56,10 +66,11 @@ export default async function Page({ params }: { params: { id: number } }) {
                             <ArrowLeftCircle />
                             <div className="pl-2">Back to inventory list</div>
                         </button>
-                        <button className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg">
+                        <a className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg"
+                           href={`http://localhost:3000/edit/${params.id}`}>
                             <Edit2 />
                             <div className="pl-1">Edit</div>
-                        </button>
+                        </a>
                     </div>
                     {itemData && (
                         <ItemDetail
@@ -75,5 +86,6 @@ export default async function Page({ params }: { params: { id: number } }) {
                 <CommentComp itemId={params.id} />
             </div>
         </main>
+        </>
     );
 }
