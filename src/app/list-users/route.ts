@@ -4,8 +4,8 @@ import { or, like, inArray } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export async function GET(
-    request: Request,
-    { params }: { params: { query: string; tags: string } }
+    _request: Request,
+    _params: any
 ) {
     let results = await db.query.users.findMany({
         columns: {

@@ -1,8 +1,7 @@
 import ItemUpload from "@/components/itemUploadPage";
 import db from "@/db/drizzle";
 
-export default async function testPage() {
-
+export default async function uploadPage() {
     let result = await db.query.items.findMany({
         columns: {
             tags: true,
