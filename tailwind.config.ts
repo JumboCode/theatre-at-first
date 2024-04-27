@@ -10,12 +10,15 @@ const config = {
 	],
   prefix: "",
   theme: {
+    fontFamily: {
+        'sans': 'Montserrat, Arial',
+    },
     container: {
       center: true,
       padding: "2rem",
       screens: {
         "2xl": "1400px",
-      },
+      }, 
     },
     extend: {
       colors: {
