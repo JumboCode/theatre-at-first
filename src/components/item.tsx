@@ -17,7 +17,11 @@ export default function Item(props: Props) {
         <a href={`/item/${props.id}`}>
             <div className="h-80 w-60 rounded-xl shadow-md">
                 <div className="h-full flex flex-col">
-                    <div className="h-4/5 bg-slate-500 rounded-t-xl"></div>
+                    <img
+                        src={props.image}
+                        alt=""
+                        className="h-60 w-60 rounded-t-xl"
+                    />
                     <div className="p-3">
                         <p className="text-[#496767] font-bold text-base mb-2">
                             {props.title}

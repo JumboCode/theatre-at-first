@@ -5,13 +5,9 @@ import CommentComp from "@/components/comment-comp-single-view";
 import { Edit2 } from "@/components/Button-Graphics";
 import { ArrowLeftCircle } from "@/components/Button-Graphics";
 
-import CuteDog1 from "@/../public/images/cute_dog1.jpg";
-import ImageNotFound from "@/../public/images/imageNotFound.jpg";
-
 import { items } from "@/db/schema";
 import db from "@/db/drizzle";
 import { eq } from "drizzle-orm";
-import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { id: number } }) {
     /*  WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
@@ -38,12 +34,11 @@ export default async function Page({ params }: { params: { id: number } }) {
         );
     }
 
-    let images;
-    if (itemData?.imageUrl) {
-        // TODO: load images properly
-        images = [CuteDog1];
+    let images: string[];
+    if (itemData.imageUrl) {
+        images = [itemData.imageUrl];
     } else {
-        images = [ImageNotFound];
+        images = [];
     }
 
     return (
@@ -52,10 +47,14 @@ export default async function Page({ params }: { params: { id: number } }) {
                 <ImageCarousel imageList={images} />
                 <div className="py-10 lg:px-10 bg-white lg:w-[50%] space-y-5">
                     <div className="flex flex-row justify-between">
-                        <button className="text-black flex shrink-0">
-                            <ArrowLeftCircle />
-                            <div className="pl-2">Back to inventory list</div>
-                        </button>
+                        <a href="/inventory">
+                            <button className="text-black flex shrink-0">
+                                <ArrowLeftCircle />
+                                <div className="pl-2">
+                                    Back to inventory list
+                                </div>
+                            </button>
+                        </a>
                         <button className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg">
                             <Edit2 />
                             <div className="pl-1">Edit</div>
