@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { SelectItem } from "@/db/schema";
 import { User, columns } from "./columns";
-import { DataTable } from "./data-table";
+import { DataTable } from "./dataTable";
 
 async function getMyData(): Promise<User[]> {
     console.log("getting data");
