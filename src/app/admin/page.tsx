@@ -1,6 +1,5 @@
 "use client";
-import Item from "../../components/item";
-import Grid from "../../components/grid";
+
 import { useState, useEffect } from "react";
 import { SelectItem } from "@/db/schema";
 import { User, columns } from "./columns";

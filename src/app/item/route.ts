@@ -1,4 +1,4 @@
-import { InsertItem, SelectItem, items } from "@/db/schema";
+import { InsertItem, items } from "@/db/schema";
 import db from "@/db/drizzle";
 import { NextResponse } from "next/server";
 

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { SelectComment, comments } from "@/db/schema";
-import { PlusCircle } from "./Button-Graphics";
+import { SelectComment } from "@/db/schema";
+import { PlusCircle } from "./buttonGraphics";
 
 interface CommentCompProps {
     itemId: number;

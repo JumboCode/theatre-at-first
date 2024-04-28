@@ -1,5 +1,5 @@
 // https://feathericons.dev/?search=edit2&iconset=feather&format=strict-jsx
-export function Edit2(props) {
+export function Edit2(props: any) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ export function Edit2(props) {
 }
 
 // https://feathericons.dev/?search=plus-circle&iconset=feather&format=strict-jsx
-export function PlusCircle(props) {
+export function PlusCircle(props: any) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export function PlusCircle(props) {
 }
 
 // https://feathericons.dev/?search=arrow-left-circle&iconset=feather&format=strict-jsx
-export function ArrowLeftCircle(props) {
+export function ArrowLeftCircle(props: any) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ export function ArrowLeftCircle(props) {
 }
 
 // https://feathericons.dev/?search=chevron-left&iconset=feather&format=strict-jsx
-export function ChevronLeft(props) {
+export function ChevronLeft(props: any) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ export function ChevronLeft(props) {
 }
 
 // https://feathericons.dev/?search=image&iconset=feather&format=strict-jsx
-export function Image(props) {
+export function Image(props: any) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +122,7 @@ export function Image(props) {
 }
 
 // https://feathericons.dev/?search=camera&iconset=feather&format=strict-jsx
-export function Camera(props) {
+export function Camera(props: any) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -29,6 +29,7 @@ export default function UserSummary(props: UserProps) {
                 backdrop-blur-lg
                 outline-[8px]
                 "
+                alt=""
                 src={props.image.src}
             />
             <div>

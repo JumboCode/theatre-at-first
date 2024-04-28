@@ -12,7 +12,7 @@ export default function Home() {
                     <Image alt="JumboCode x Theatre@First" src="/images/landing_icons.png" width="251" height="113" className="mx-auto"></Image>
                     <div>
                         <p className="text-center text-[#839996]">Your one-stop inventory management system designed by JumboCode specifically for Theatre@First.</p>
-                        <p className="text-center text-[#839996]">Streamline your organization's inventory tracking process, ensuring smooth operations for your productions.</p>
+                        <p className="text-center text-[#839996]">Streamline your organization&apos;s inventory tracking process, ensuring smooth operations for your productions.</p>
                     </div>
                     <a href="" className="mx-auto py-4 px-10 bg-[#0C2B35] hover:bg-[#496767] text-white text-center rounded-3xl">Get Started</a>
                     <Image alt="Add New Product page" src="/images/landing_1.png" width="1108" height="496" className="mx-auto"></Image>

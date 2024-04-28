@@ -1,9 +1,8 @@
 import ImageCarousel from "@/components/imageCarousel";
-import ItemDetail from "@/components/ItemDetail";
-import CommentComp from "@/components/comment-comp-single-view";
+import ItemDetail from "@/components/itemDetail";
+import CommentComp from "@/components/commentCompSingleView";
 
-import { Edit2 } from "@/components/Button-Graphics";
-import { ArrowLeftCircle } from "@/components/Button-Graphics";
+import { Edit2, ArrowLeftCircle } from "@/components/buttonGraphics";
 
 import { items } from "@/db/schema";
 import db from "@/db/drizzle";
@@ -23,8 +22,6 @@ export default async function Page({ params }: { params: { id: number } }) {
     });
 
     if (!itemData) {
-        // TODO: make a proper not found page
-        // redirect("/");
         return (
             <main>
                 <div className="w-screen h-screen flex flex-row justify-center items-center">
