@@ -2,8 +2,7 @@ import ImageCarousel from "@/components/imageCarousel";
 import ItemDetail from "@/components/ItemDetail";
 import CommentComp from "@/components/commentCompSingleView";
 
-import { Edit2 } from "@/components/Button-Graphics";
-import { ArrowLeftCircle } from "@/components/Button-Graphics";
+import { Edit2, ArrowLeftCircle } from "@/components/buttonGraphics";
 
 import { items } from "@/db/schema";
 import db from "@/db/drizzle";

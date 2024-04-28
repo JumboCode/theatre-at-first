@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import logo from "./taf-logo.png";
+import logo from "@/../public/taf-logo.png";
 import { Home, Bell, Search, User } from "./Icons";
 
 import { UserButton } from "@clerk/nextjs";

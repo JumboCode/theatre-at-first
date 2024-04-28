@@ -1,6 +1,6 @@
 //GET request
 export async function GET(
-    request: Request,
+    _request: Request,
     { params }: { params: { filepath: string } }
 ) {
     let r2response: {
