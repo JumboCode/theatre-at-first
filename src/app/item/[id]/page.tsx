@@ -1,5 +1,5 @@
 import ImageCarousel from "@/components/imageCarousel";
-import ItemDetail from "@/components/ItemDetail";
+import ItemDetail from "@/components/itemDetail";
 import CommentComp from "@/components/commentCompSingleView";
 
 import { Edit2, ArrowLeftCircle } from "@/components/buttonGraphics";
