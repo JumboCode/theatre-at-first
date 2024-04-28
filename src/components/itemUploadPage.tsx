@@ -1,12 +1,11 @@
 "use client";
 import { useState } from "react";
 import ItemInput from "@/components/itemInputForm";
-import TagDropdown from "@/components/TagDropdown";
+import TagDropdown from "@/components/tagDropdown";
 import { InsertItem } from "@/db/schema";
 import { ChevronLeft } from "@/components/Button-Graphics";
-import { Image } from "@/components/Button-Graphics";
 
-import ImageCapture from "@/components/image-capture-and-upload-component";
+import ImageCapture from "@/components/imageCaptureAndUploadComponent";
 
 interface UploadProps {
     tags: string[];
