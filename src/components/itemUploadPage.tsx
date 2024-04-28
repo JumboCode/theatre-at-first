@@ -124,7 +124,7 @@ export default function ItemUpload(props: UploadProps) {
                         setDescription={setDescription}
                     />
                 </div>
-                <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
+                <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl max-w-[50%]">
                     <TagDropdown
                         tags={props.tags}
                         selectedTags={selectedTags}
