@@ -23,8 +23,6 @@ export default async function Page({ params }: { params: { id: number } }) {
     });
 
     if (!itemData) {
-        // TODO: make a proper not found page
-        // redirect("/");
         return (
             <main>
                 <div className="w-screen h-screen flex flex-row justify-center items-center">
