@@ -1,10 +1,12 @@
 "use client";
-import Item from "../../components/item";
-import Grid from "../../components/grid";
+
 import { useState, useEffect } from "react";
 import { SelectItem } from "@/db/schema";
 import { User, columns } from "./columns";
-import { DataTable } from "./data-table";
+import { DataTable } from "./dataTable";
+
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 async function getMyData(): Promise<User[]> {
     console.log("getting data");
@@ -38,10 +40,12 @@ export default function Home() {
 
     return (
         <main className="min-h-max bg-white">
+            <Header />
             <div className="p-4 w-10/12 mx-auto">
                 <h1 className="text-4xl font-bold pb-12">Admin Dashboard</h1>
                 <DataTable columns={columns} data={data} />
             </div>
+            <Footer />
         </main>
     );
 }

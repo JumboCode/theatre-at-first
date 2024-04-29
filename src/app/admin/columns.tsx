@@ -1,8 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 export type User = {
     id: string;
@@ -28,8 +26,8 @@ export const columns: ColumnDef<User>[] = [
             );
         },
         cell: ({ row }) => {
-            const email = row.getValue("userinfo")[1];
-            const name = row.getValue("userinfo")[0];
+            const email = row.getValue<string>("userinfo")[1];
+            const name = row.getValue<string>("userinfo")[0];
 
             return (
                 <div>

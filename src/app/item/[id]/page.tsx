@@ -1,9 +1,11 @@
 import ImageCarousel from "@/components/imageCarousel";
-import ItemDetail from "@/components/ItemDetail";
-import CommentComp from "@/components/comment-comp-single-view";
+import ItemDetail from "@/components/itemDetail";
+import CommentComp from "@/components/commentCompSingleView";
 
-import { Edit2 } from "@/components/Button-Graphics";
-import { ArrowLeftCircle } from "@/components/Button-Graphics";
+import { Edit2, ArrowLeftCircle } from "@/components/buttonGraphics";
+
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 import { items } from "@/db/schema";
 import db from "@/db/drizzle";
@@ -27,8 +29,6 @@ export default async function Page({ params }: { params: { id: number } }) {
     });
 
     if (!itemData) {
-        // TODO: make a proper not found page
-        // redirect("/");
         return (
             <main>
                 <div className="w-screen h-screen flex flex-row justify-center items-center">
@@ -54,6 +54,7 @@ export default async function Page({ params }: { params: { id: number } }) {
             <meta http-equiv='pragma' content='no-cache'/>
         </Head>
         <main className="bg-white">
+            <Header />
             <div className="p-8 w-full h-full flex flex-col lg:flex-row justify-center items-center">
                 <ImageCarousel imageList={images} />
                 <div className="py-10 lg:px-10 bg-white lg:w-[50%] space-y-5">
@@ -85,6 +86,7 @@ export default async function Page({ params }: { params: { id: number } }) {
             <div className="flex p-8 justify-left space-x-4">
                 <CommentComp itemId={params.id} />
             </div>
+            <Footer />
         </main>
         </>
     );

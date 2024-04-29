@@ -1,20 +1,12 @@
 "use client";
 import React from "react";
-import logo from "./taf-logo.png";
+import logo from "@/../public/taf-logo.png";
 import { Home, Bell, Search, User } from "./Icons";
 
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 
-interface HeaderProp {
-    id: number;
-    status: string;
-    firstname: string;
-    lastname: string;
-    access: string;
-}
-
-export default function Header(props: HeaderProp) {
+export default function Header() {
     return (
         <div className="flex flex-row relative bg-emerald-900 h-107px w-1440px gap-5 justify-between items-center p-5">
             <div>Menu</div>

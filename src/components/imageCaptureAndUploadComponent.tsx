@@ -7,7 +7,7 @@ import {
     useState,
 } from "react";
 import Webcam from "react-webcam";
-import { Camera } from "./Button-Graphics";
+import { Camera } from "./buttonGraphics";
 
 interface ImageCaptureProps {
     imageCallback: (imageBlob: Blob) => void;

@@ -6,6 +6,9 @@ import Grid from "@/components/grid";
 import { useState, useEffect } from "react";
 import { SelectItem } from "@/db/schema";
 
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+
 async function getTableData(): Promise<SelectItem[]> {
     console.log("getting items");
     return await fetch("/list-items", {
@@ -33,7 +36,7 @@ const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
             " " +
             result.desc.toLowerCase() +
             " " +
-            result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase());
+            result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase(), "");
         console.log(text);
         //Find matches one word at a time
         return searchWords.every((word) => text.includes(word));
@@ -85,6 +88,7 @@ export default function Home() {
 
     return (
         <main className="min-h-max bg-white flex flex-col">
+            <Header />
             <div className="px-10 pt-10">
                 <div className="p-4">
                     <h1 className="text-4xl font-bold pb-12 text-[#0C2B35]">
@@ -166,6 +170,7 @@ export default function Home() {
                     />
                 </div>
             </div>
+            <Footer />
         </main>
     );
 }
