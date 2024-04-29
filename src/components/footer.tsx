@@ -20,7 +20,7 @@ export default function Footer() {
                 <Twitter className="w-6 h-6" />
                 <Phone className="rounded-full ring-1 border-2 w-6 h-6" />
             </div>
-            <p>
+            <p className="text-center">
                 Theatre@First is part of the Massachusetts Community Theatre
                 Corporation, a non-profit arts organization recognized by the
                 Commonwealth of Massachusetts and by the Internal Revenue

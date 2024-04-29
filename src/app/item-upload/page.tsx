@@ -1,6 +1,10 @@
 import ItemUpload from "@/components/itemUploadPage";
 import db from "@/db/drizzle";
 
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+
+
 export default async function uploadPage() {
     let result = await db.query.items.findMany({
         columns: {
@@ -12,7 +16,9 @@ export default async function uploadPage() {
 
     return (
         <main className="w-screen min-h-screen bg-white">
+            <Header />
             <ItemUpload tags={allTags}></ItemUpload>
+            <Footer />
         </main>
     );
 }
