@@ -42,12 +42,11 @@ export default async function Page({ params }: { params: { id: number } }) {
         );
     }
 
-    let images: StaticImageData[];
-    if (itemData?.imageUrl) {
-        // TODO: load images properly
-        images = [CuteDog1];
+    let images: string[];
+    if (itemData.imageUrl) {
+        images = [itemData.imageUrl];
     } else {
-        images = [ImageNotFound];
+        images = [];
     }
 
     async function updateItem(formData: FormData) {

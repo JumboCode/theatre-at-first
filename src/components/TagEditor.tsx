@@ -5,11 +5,11 @@ import { MouseEventHandler } from "react";
 import TagDropdown from "./TagDropdown";
 
 export default function TagEditor({ itemId }: { itemId: number }) {
-    const tags: string[] = [];
+    const tags: string[] = fetch("/list-tags").then((response) => response.json())
+                                              .then((json) => json.results)
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [editing, setEditing] = useState(false);
 
-    fetch("/list-tags").then(tags => tags = tags);
 
     const btnClick: MouseEventHandler = (e) => {
         e.preventDefault();
