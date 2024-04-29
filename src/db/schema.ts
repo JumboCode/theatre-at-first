@@ -45,7 +45,7 @@ export const users = inventoryPostgresTable("users", {
 
 export const comments = inventoryPostgresTable("comments", {
     id: serial("id").primaryKey(),
-    userId: integer("user_id").references(() => users.id),
+    userId: text("user_id").references(() => users.id),
     timestamp: date("timestamp").notNull(),
     message: text("message").notNull(),
     itemId: integer("item_id")
