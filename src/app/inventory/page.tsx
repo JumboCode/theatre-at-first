@@ -33,7 +33,7 @@ const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
             " " +
             result.desc.toLowerCase() +
             " " +
-            result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase());
+            result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase(), "");
         console.log(text);
         //Find matches one word at a time
         return searchWords.every((word) => text.includes(word));

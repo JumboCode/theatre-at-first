@@ -17,7 +17,7 @@ export default authMiddleware({
         "/test-grid",
         "/user-summary",
         "/userSandbox",
-        "/"
+        "/",
     ],
     // Routes that can always be accessed, and have
     // no authentication information
@@ -35,7 +35,7 @@ export default authMiddleware({
         "/test-grid",
         "/user-summary",
         "/userSandbox",
-        "/"
+        "/",
     ],
 });
 

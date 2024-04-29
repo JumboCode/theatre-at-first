@@ -2,8 +2,7 @@
 
 import React from "react";
 
-
-export default function Grid({ components } : { components: any[]}) {
+export default function Grid({ components }: { components: any[] }) {
     // Receive components (elements) as a prop
     return (
         <div className="flex flex-wrap gap-10">

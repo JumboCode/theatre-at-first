@@ -169,7 +169,9 @@ export default function TagDropdown(props: TagDropdownProps) {
                             key={selectedTag}
                             className="pl-2 pr-2 py-1 border-2 border-teal-800 bg-white rounded-lg w-auto flex flex-row gap-2 items-center text-black overflow-scroll"
                         >
-                            <span className="overflow-scroll"><p className="">{selectedTag}</p></span>
+                            <span className="overflow-scroll">
+                                <p className="">{selectedTag}</p>
+                            </span>
                             <svg
                                 onClick={() => deselectTag(selectedTag)}
                                 width="22"
