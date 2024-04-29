@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { primaryColor } from "./style.css"
@@ -8,6 +8,7 @@ import { dark, neobrutalism, shadesOfPurple } from '@clerk/themes';
 
 
 const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -64,21 +65,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-  }: {
+}: {
     children: React.ReactNode
-  }) {
+}) {
     return (
         <ClerkProvider
             appearance={{
                 variables: {
-                colorPrimary: "blue",
-                colorText: "black"
+                    colorPrimary: "blue",
+                    colorText: "black"
                 }
             }}
         >
-        <html lang="en">
-          <body>{children}</body>
-        </html>
-      </ClerkProvider>
+            <html lang="en">
+                <body>{children}</body>
+            </html>
+        </ClerkProvider>
     )
-  }
+}
