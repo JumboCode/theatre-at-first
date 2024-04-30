@@ -1,21 +1,22 @@
 import ImageCarousel from "@/components/imageCarousel";
-import ItemDetail from "@/components/ItemDetail";
-import CommentComp from "@/components/comment-comp-single-view";
-
-import { ArrowLeftCircle } from "@/components/Button-Graphics";
-
-import CuteDog1 from "@/../public/images/cute_dog1.jpg";
-import ImageNotFound from "@/../public/images/imageNotFound.jpg";
-
+import { ArrowLeftCircle } from "@/components/buttonGraphics";
 import { items } from "@/db/schema";
 import db from "@/db/drizzle";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
-import { StaticImageData } from "next/image";
-import TagDropdown from "@/components/TagDropdown";
-
 import { revalidatePath } from "next/cache";
-import TagEditor from "@/components/TagEditor";
+import TagEditor from "@/components/tagEditor";
+
+async function getAllTags() {
+    let results = await db.query.items.findMany({
+        columns: {
+            tags: true,
+        },
+    });
+
+    let allTags = [...new Set(results.flatMap((e) => e.tags))];
+    return allTags;
+}
 
 export default async function Page({ params }: { params: { id: number } }) {
     /* WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
@@ -29,6 +30,8 @@ export default async function Page({ params }: { params: { id: number } }) {
     const itemData = await db.query.items.findFirst({
         where: eq(items.id, params.id),
     });
+
+    const tags = await getAllTags();
 
     if (!itemData) {
         // TODO: make a proper not found page
@@ -84,17 +87,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                                name="name"
                                defaultValue={itemData.name}
                                placeholder="Name"/>                        
-                        <div className="w-full flex flex-row gap-3 flex-wrap">
-                        {itemData.tags.map((tag) => (
-                            <span
-                                key={tag}
-                                className="border-2 border-black rounded-lg px-6 py-2 bg-gray-50"
-                            >
-                                <p>{tag}</p>
-                            </span>
-                        ))}
-                        </div>
-                        <TagEditor itemId={itemData.id}/>
+                        <TagEditor itemId={itemData.id} tags={tags} initialTags={itemData.tags}/>
 
                         <textarea
                             className="text-gray-950 rounded-lg border border-amber-400 font-light pl-3 pr-3 py-3 focus:placeholder-gray-800 focus:outline-none"

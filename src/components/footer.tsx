@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { Facebook } from "./Icons";
-import { Mail } from "./Icons";
-import { Instagram } from "./Icons";
-import { YouTube } from "./Icons";
-import { Twitter } from "./Icons";
-import { Phone } from "./Icons";
+import { Facebook } from "./icons";
+import { Mail } from "./icons";
+import { Instagram } from "./icons";
+import { YouTube } from "./icons";
+import { Twitter } from "./icons";
+import { Phone } from "./icons";
 
 export default function Footer() {
     return (
