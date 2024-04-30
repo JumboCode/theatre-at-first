@@ -10,6 +10,10 @@ import Footer from "@/components/footer";
 import { items } from "@/db/schema";
 import db from "@/db/drizzle";
 import { eq } from "drizzle-orm";
+import { StaticImageData } from "next/image";
+import Head from "next/head";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { id: number } }) {
     /*  WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
@@ -34,6 +38,7 @@ export default async function Page({ params }: { params: { id: number } }) {
         );
     }
 
+    revalidatePath(`/edit/${itemData.id}`);
     let images: string[];
     if (itemData.imageUrl) {
         images = [itemData.imageUrl];
@@ -42,6 +47,12 @@ export default async function Page({ params }: { params: { id: number } }) {
     }
 
     return (
+        <>
+        <Head>
+            <meta http-equiv='cache-control' content='no-cache'/>
+            <meta http-equiv='expires' content='0'/>
+            <meta http-equiv='pragma' content='no-cache'/>
+        </Head>
         <main className="bg-white">
             <Header />
             <div className="p-8 w-full h-full flex flex-col lg:flex-row justify-center items-center">
@@ -56,10 +67,11 @@ export default async function Page({ params }: { params: { id: number } }) {
                                 </div>
                             </button>
                         </a>
-                        <button className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg">
+                        <a className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg"
+                           href={`http://localhost:3000/edit/${params.id}`}>
                             <Edit2 />
                             <div className="pl-1">Edit</div>
-                        </button>
+                        </a>
                     </div>
                     {itemData && (
                         <ItemDetail
@@ -76,5 +88,6 @@ export default async function Page({ params }: { params: { id: number } }) {
             </div>
             <Footer />
         </main>
+        </>
     );
 }
