@@ -10,7 +10,6 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 async function getTableData(): Promise<SelectItem[]> {
-    console.log("getting items");
     return await fetch("/list-items", {
         method: "GET",
     })
@@ -19,7 +18,6 @@ async function getTableData(): Promise<SelectItem[]> {
 }
 
 async function getTagData(): Promise<string[]> {
-    console.log("getting tags");
     return await fetch("/list-tags", {
         method: "GET",
     })
@@ -89,10 +87,10 @@ export default function Home() {
     return (
         <main className="min-h-max bg-white flex flex-col">
             <Header />
-            <div className="px-10 pt-10">
+            <div className="px-5 md:px-10 pt-10">
                 <div className="p-4">
-                    <h1 className="text-4xl font-bold pb-12 text-[#0C2B35]">
-                        Inventory Viewing
+                    <h1 className="text-4xl font-bold pb-8 text-[#0C2B35]">
+                        Inventory
                     </h1>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -110,12 +108,12 @@ export default function Home() {
                         onInput={handleSearch}
                         value={searchInput}
                         placeholder="Search for an item"
-                        className="bg-gray-100 placeholder-[#B7B7B7] pl-12 p-2 outline outline-[2px] outline-[#496767] rounded-3xl text-[#0C2B35] w-[268px]"
+                        className="bg-gray-100 w-full placeholder-[#B7B7B7] pl-12 p-2 outline outline-[2px] outline-[#496767] rounded-3xl text-[#0C2B35] w-[268px]"
                     ></input>
                 </div>
                 <div className="flex flex-col">
                     <div className="flex flex-row flex-wrap">
-                        <div className="w-[300px]">
+                        <div className="w-full md:w-[300px]">
                             <SelectionComponent
                                 tags={locationTags}
                                 setTags={setLocationTags}
@@ -124,22 +122,13 @@ export default function Home() {
                                 category="location"
                             ></SelectionComponent>
                         </div>
-                        <div className="w-[300px]">
+                        <div className="w-full md:w-[300px]">
                             <SelectionComponent
                                 tags={nonLocationTags}
                                 setTags={setNonLocationTags}
                                 selectedTags={selectedTags}
                                 setSelectedTags={setSelectedTags}
                                 category="color"
-                            ></SelectionComponent>
-                        </div>
-                        <div className="w-[300px]">
-                            <SelectionComponent
-                                tags={nonLocationTags2}
-                                setTags={setNonLocationTags2}
-                                selectedTags={selectedTags}
-                                setSelectedTags={setSelectedTags}
-                                category="material"
                             ></SelectionComponent>
                         </div>
                     </div>
@@ -151,24 +140,22 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="bg-[#B4CDCA] w-full h-2 mb-10"></div>
-            <div className="p-10">
-                <div className="px-4">
-                    <Grid
-                        components={filteredResults.map((result) => (
-                            <Item
-                                title={result.name}
-                                status={result.status || "Unknown"}
-                                image={
-                                    result.imageUrl ||
-                                    "/images/imageNotFound.jpg"
-                                }
-                                key={result.id}
-                                id={result.id}
-                            />
-                        ))}
-                    />
-                </div>
+            <div className="bg-[#B4CDCA] w-full h-2 mb-5 md:mb-10"></div>
+            <div className="px-4 md:px-14">
+                <Grid
+                    components={filteredResults.map((result) => (
+                        <Item
+                            title={result.name}
+                            status={result.status || "Unknown"}
+                            image={
+                                result.imageUrl ||
+                                "/images/imageNotFound.jpg"
+                            }
+                            key={result.id}
+                            id={result.id}
+                        />
+                    ))}
+                />
             </div>
             <Footer />
         </main>

@@ -86,20 +86,16 @@ export default function ItemUpload(props: UploadProps) {
             });
     };
 
-    const component_x_padding = "px-20 xl:px-80 transition duration-500";
+    const component_x_padding = "p-5 md:px-20 xl:px-80 transition duration-500";
 
     return (
         <div className="bg-white flex flex-col justify-center">
-            <div
-                className={`${component_x_padding} pt-10 pb-5 grid grid-cols divide-y-2`}
-            >
+            <div className={`${component_x_padding} pt-10 pb-5 grid grid-cols divide-y-2`}>
                 <div className="flex flex-col gap-2 justify-between">
-                    <button className="flex flex-row gap-2">
+                    <a href="/inventory" className="flex flex-row gap-2 text-black">
                         <ChevronLeft />
-                        <span className="text-black">
-                            Back to inventory list
-                        </span>
-                    </button>
+                        Back to inventory list
+                    </a>
                     <div className="first:pt-0 text-left text-sm text-neutral-700">
                         <div className="first:pt-0 text-left text-4xl text-neutral-700 font-bold">
                             Add New Item
@@ -108,14 +104,10 @@ export default function ItemUpload(props: UploadProps) {
                 </div>
             </div>
 
-            <div
-                className={`${component_x_padding} py-4 last:pb-0 flex w-full text-neutral-700 font-extrabold`}
-            >
+            <div className={`${component_x_padding} py-4 last:pb-0 flex w-full text-neutral-700 font-extrabold`}>
                 Item Information
             </div>
-            <div
-                className={`${component_x_padding} flex flex-col justify-center md:flex-row gap-5`}
-            >
+            <div className={`${component_x_padding} flex flex-col md:flex-row justify-center gap-5`}>
                 <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <ItemInput
                         productName={productName}
@@ -124,7 +116,7 @@ export default function ItemUpload(props: UploadProps) {
                         setDescription={setDescription}
                     />
                 </div>
-                <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl max-w-[50%]">
+                <div className="border rounded-xl border-solid border-amber-500 w-full bg-orange-50 shadow-xl">
                     <TagDropdown
                         tags={props.tags}
                         selectedTags={selectedTags}
