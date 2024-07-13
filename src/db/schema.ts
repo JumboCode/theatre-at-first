@@ -29,12 +29,22 @@ const inventoryPostgresTable = pgTableCreator((name) => `inventory_${name}`);
 export const accessLevel = pgEnum("access_level", ["admin", "user", "viewer"]);
 export const updateType = pgEnum("update_type", ["location", "other"]);
 
-/*
- * Defining the shape of the `users` table, which holds all the info about users:
- * Their name, emmil, and what type of user they are. The `.notNull()` function
- * indicates that this value must be assigned (it can't be what you might think
- * of as an empty cell in the table).
- */
+export const items = inventoryPostgresTable("items", {
+    id: serial("id").primaryKey(),
+    name: text("name").notNull(),
+    desc: text("description").notNull(),
+    tags: text("tags").array().notNull(),
+    category: text("category"),
+    imageUrl: text("image_url"),
+    status: text("status"),
+});
+
+/* {{{
+* NOTE: the users table is not currently used, but exists as an artifact of when
+*  we started implementing comments. Since comments as a feature does not
+*  currently exist, the following two tables are unnecessary for the production
+*  application to run.
+*/
 export const users = inventoryPostgresTable("users", {
     id: serial("id").primaryKey(),
     access: accessLevel("access").notNull(),
@@ -52,34 +62,13 @@ export const comments = inventoryPostgresTable("comments", {
         .references(() => items.id)
         .notNull(),
 });
-
-export const updates = inventoryPostgresTable("updates", {
-    id: serial("id").primaryKey(),
-    timestamp: date("timestamp").notNull(),
-    message: text("message").notNull(),
-    itemId: integer("item_id")
-        .references(() => items.id)
-        .notNull(),
-    updateType: updateType("updateType").notNull(),
-});
-
-export const items = inventoryPostgresTable("items", {
-    id: serial("id").primaryKey(),
-    name: text("name").notNull(),
-    desc: text("description").notNull(),
-    tags: text("tags").array().notNull(),
-    imageUrl: text("image_url"),
-    status: text("status"),
-});
+/* }}} */
 
 export type InsertUser = InferInsertModel<typeof users>;
 export type SelectUser = InferSelectModel<typeof users>;
 
 export type InsertComment = InferInsertModel<typeof comments>;
 export type SelectComment = InferSelectModel<typeof comments>;
-
-export type InsertUpdate = InferInsertModel<typeof updates>;
-export type SelectUpdate = InferSelectModel<typeof updates>;
 
 export type InsertItem = InferInsertModel<typeof items>;
 export type SelectItem = InferSelectModel<typeof items>;

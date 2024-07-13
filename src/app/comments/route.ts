@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 // add-comment (POST)
 export async function POST(req: Request) {
     const data = await req.json();
-    console.log(data);
 
     //check for missing fields
     if (

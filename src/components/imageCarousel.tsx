@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ResizeableIMG from "@/components/resizeableIMG";
 import ImageNotFound from "@/../public/images/imageNotFound.jpg";
 
-export default function ImageCarousel(props: { imageList: string[] }) {
+export default function ImageCarousel(props: { imageList: string[], className?: string }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const nextImage = () => {
@@ -21,7 +21,7 @@ export default function ImageCarousel(props: { imageList: string[] }) {
     };
 
     return (
-        <div className="slider-container flex flex-row items-center">
+        <div className={`slider-container flex flex-row items-center ${props.className || ""}`}>
             <button
                 className="cursor-pointer text-white translate-x-16"
                 onClick={prevImage}

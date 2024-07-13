@@ -1,8 +1,9 @@
 import ImageCarousel from "@/components/imageCarousel";
+import Image from "next/image";
 import ItemDetail from "@/components/itemDetail";
-import CommentComp from "@/components/commentCompSingleView";
 
-import { Edit2, ArrowLeftCircle } from "@/components/buttonGraphics";
+import { ArrowLeftCircle } from "@/components/buttonGraphics";
+import ImageNotFound from "@/../public/images/imageNotFound.jpg";
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -10,10 +11,19 @@ import Footer from "@/components/footer";
 import { items } from "@/db/schema";
 import db from "@/db/drizzle";
 import { eq } from "drizzle-orm";
-import { StaticImageData } from "next/image";
-import Head from "next/head";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import EditButton from "@/components/editButton";
+
+async function getAllTags() {
+    let results = await db.query.items.findMany({
+        columns: {
+            tags: true,
+        },
+    });
+
+    let allTags = [...new Set(results.flatMap((e) => e.tags))];
+    return allTags;
+}
 
 export default async function Page({ params }: { params: { id: number } }) {
     /*  WHY AM I MAKING A DB QUERY DIRECTLY IN THE COMPONENT?
@@ -39,6 +49,7 @@ export default async function Page({ params }: { params: { id: number } }) {
     }
 
     revalidatePath(`/edit/${itemData.id}`);
+
     let images: string[];
     if (itemData.imageUrl) {
         images = [itemData.imageUrl];
@@ -46,17 +57,19 @@ export default async function Page({ params }: { params: { id: number } }) {
         images = [];
     }
 
+    const allTags = await getAllTags();
+
     return (
-        <>
-        <Head>
-            <meta http-equiv='cache-control' content='no-cache'/>
-            <meta http-equiv='expires' content='0'/>
-            <meta http-equiv='pragma' content='no-cache'/>
-        </Head>
-        <main className="bg-white">
+        <main className="bg-white min-h-screen flex flex-col justify-between">
             <Header />
             <div className="p-8 w-full h-full flex flex-col lg:flex-row justify-center items-center">
-                <ImageCarousel imageList={images} />
+                <Image
+                    src={ itemData.imageUrl || ImageNotFound}
+                    className="overflow-hidden object-cover rounded-lg"
+                    alt=""
+                    width={400}
+                    height={600}
+                />
                 <div className="py-10 lg:px-10 bg-white lg:w-[50%] space-y-5">
                     <div className="flex flex-row justify-between">
                         <a href="/inventory">
@@ -67,27 +80,23 @@ export default async function Page({ params }: { params: { id: number } }) {
                                 </div>
                             </button>
                         </a>
-                        <a className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg"
-                           href={`http://localhost:3000/edit/${params.id}`}>
-                            <Edit2 />
-                            <div className="pl-1">Edit</div>
-                        </a>
+
+                        <EditButton id={params.id}/>
                     </div>
                     {itemData && (
                         <ItemDetail
+                            id={itemData.id}
                             name={itemData.name}
                             tags={itemData.tags}
+                            allTags={allTags}
+                            category={itemData.category || "Uncategorized"}
                             description={itemData.desc}
                             status={itemData.status || "Unknown"}
                         ></ItemDetail>
                     )}
                 </div>
             </div>
-            <div className="flex p-8 justify-left space-x-4">
-                <CommentComp itemId={params.id} />
-            </div>
             <Footer />
         </main>
-        </>
     );
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MouseEventHandler } from "react";
 import TagDropdown from "./tagDropdown";
+import { revalidatePaths } from "@/app/actions";
 
 export default function TagEditor({ itemId, tags, initialTags }: { itemId: number, tags: string[], initialTags: string[] }) {
     const [selectedTags, setSelectedTags] = useState(initialTags);
@@ -28,7 +29,8 @@ export default function TagEditor({ itemId, tags, initialTags }: { itemId: numbe
             //@ts-ignore
             setSelectedTags(json.tags);
             setEditing(!editing);
-        });
+            revalidatePaths([`/item/${itemId}`]).then(() => {});
+        })
     }
 
     return (<>
@@ -46,7 +48,7 @@ export default function TagEditor({ itemId, tags, initialTags }: { itemId: numbe
                 onClick={btnClick}>
             Edit Tags</button> }
         { editing &&
-            <div className="border border-orange-400 rounded-lg">
+            <div className="w-full border border-orange-400 rounded-lg">
             <TagDropdown tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags}/>
             <span className="w-full flex flex-row justify-end"><button onClick={saveChanges}>Save Changes</button></span>
             </div>

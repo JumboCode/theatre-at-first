@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
     const data = await req.json();
-    console.log(data);
     let name: string = data.name;
     let desc: string = data.desc;
     let tags: string[] = data.tags;
