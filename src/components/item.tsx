@@ -3,12 +3,12 @@
 interface Props {
     title: string;
     image: string;
-    status: string;
+    category: string;
     id: number;
 }
 
 function DesktopItem(props: Props) {
-    const status_color = props.status == "In Stock" ? "[#11763D]" : "[#DF1642]";
+    const status_color = "[#DF1642]";
 
     return (
         <a href={`/item/${props.id}`}>
@@ -26,7 +26,7 @@ function DesktopItem(props: Props) {
                         <p
                             className={`text-sm text-${status_color} border-${status_color} border-2 w-fit px-2 rounded-lg`}
                         >
-                            {props.status}
+                            {props.category}
                         </p>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ function DesktopItem(props: Props) {
 }
 
 function MobileItem(props: Props) {
-    const status_color = props.status == "In Stock" ? "[#11763D]" : "[#DF1642]";
+    const status_color = "[#DF1642]";
 
     return (
         <a href={`/item/${props.id}`} className="px-5">
@@ -53,7 +53,7 @@ function MobileItem(props: Props) {
                     <p
                         className={`text-sm text-${status_color} border-${status_color} border-2 w-fit px-2 rounded-lg`}
                     >
-                        {props.status}
+                        {props.category}
                     </p>
                 </div>
             </div>

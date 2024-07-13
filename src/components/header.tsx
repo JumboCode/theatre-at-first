@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function Header() {
     return (
-        <div className="flex flex-row relative bg-emerald-900 h-107px w-1440px gap-5 justify-between items-center p-5">
+        <div className="flex flex-row relative bg-emerald-900 gap-5 justify-between items-center px-5">
             <div>
                 <Image
                     width={57}

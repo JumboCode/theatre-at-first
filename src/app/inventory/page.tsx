@@ -8,6 +8,8 @@ import { SelectItem } from "@/db/schema";
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { revalidatePath } from "next/cache";
+import { revalidatePaths } from "../actions";
 
 async function getTableData(): Promise<SelectItem[]> {
     return await fetch("/list-items", {
@@ -25,6 +27,14 @@ async function getTagData(): Promise<string[]> {
         .then((json) => json.results);
 }
 
+async function getCategoryData(): Promise<string[]> {
+    return await fetch("/list-categories", {
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((json) => json.results);
+}
+
 const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
     const searchWords = searchText.toLowerCase().split(" ");
 
@@ -32,10 +42,11 @@ const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
         const text: string =
             result.name.toLowerCase() +
             " " +
+            result.category?.toLowerCase() +
+            " " +
             result.desc.toLowerCase() +
             " " +
             result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase(), "");
-        console.log(text);
         //Find matches one word at a time
         return searchWords.every((word) => text.includes(word));
     });
@@ -43,9 +54,8 @@ const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
 };
 
 export default function Home() {
-    const [locationTags, setLocationTags] = useState<string[]>([]);
-    const [nonLocationTags, setNonLocationTags] = useState<string[]>([]);
-    const [nonLocationTags2, setNonLocationTags2] = useState<string[]>([]);
+    const [categories, setCategories] = useState<string[]>([]);
+    const [tags, setTags] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     const [searchInput, setSearchInput] = useState("");
@@ -53,16 +63,18 @@ export default function Home() {
     const [filteredResults, setFilteredResults] = useState<SelectItem[]>([]);
 
     useEffect(() => {
-        getTableData().then((data) => {
-            setUnfiltered(data);
-            setFilteredResults(data);
+        revalidatePaths(["/list-items"]).then(() => {
+            getTableData().then((data) => {
+                setUnfiltered(data);
+                setFilteredResults(data);
+            });
+            getTagData().then(setTags);
+            getCategoryData().then(setCategories);
         });
-        getTagData().then(setNonLocationTags);
     }, []);
 
     const updateSearchResults = (input_text: string, tags: string[]) => {
         let search_term = input_text + " " + tags.join(" ");
-        console.log(search_term);
 
         if (input_text.length > 0 || tags.length > 0) {
             setFilteredResults(filterData(unfiltered, search_term));
@@ -115,20 +127,20 @@ export default function Home() {
                     <div className="flex flex-row flex-wrap">
                         <div className="w-full md:w-[300px]">
                             <SelectionComponent
-                                tags={locationTags}
-                                setTags={setLocationTags}
+                                tags={categories}
+                                setTags={setCategories}
                                 selectedTags={selectedTags}
                                 setSelectedTags={setSelectedTags}
-                                category="location"
+                                category="category"
                             ></SelectionComponent>
                         </div>
                         <div className="w-full md:w-[300px]">
                             <SelectionComponent
-                                tags={nonLocationTags}
-                                setTags={setNonLocationTags}
+                                tags={tags}
+                                setTags={setTags}
                                 selectedTags={selectedTags}
                                 setSelectedTags={setSelectedTags}
-                                category="color"
+                                category="Tags"
                             ></SelectionComponent>
                         </div>
                     </div>
@@ -146,7 +158,7 @@ export default function Home() {
                     components={filteredResults.map((result) => (
                         <Item
                             title={result.name}
-                            status={result.status || "Unknown"}
+                            category={result.category || "Uncategorized"}
                             image={
                                 result.imageUrl ||
                                 "/images/imageNotFound.jpg"

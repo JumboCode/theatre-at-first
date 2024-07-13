@@ -10,16 +10,8 @@ import { Phone } from "./icons";
 
 export default function Footer() {
     return (
-        <div className="flex items-center flex-col py-10 bg-emerald-900 h-107px w-1440px gap-16 text-stone-50 font-sans">
+        <div className="flex items-center flex-col py-2 bg-emerald-900 gap-2 text-stone-50 font-sans">
             <p>Copyright ©2023. Theatre@First Inc.</p>
-            <div className="absolute left-0 w-full flex flex-row justify-center items-center py-10 p-10 gap-5">
-                <Facebook className="rounded-full ring-1 border-2 w-6 h-6" />
-                <Mail className="w-6 h-6" />
-                <Instagram className="w-6 h-6" />
-                <YouTube className="w-6 h-6" />
-                <Twitter className="w-6 h-6" />
-                <Phone className="rounded-full ring-1 border-2 w-6 h-6" />
-            </div>
             <p className="text-center">
                 Theatre@First is part of the Massachusetts Community Theatre
                 Corporation, a non-profit arts organization recognized by the

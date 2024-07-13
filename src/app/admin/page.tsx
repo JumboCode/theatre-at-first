@@ -9,7 +9,6 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 async function getMyData(): Promise<User[]> {
-    console.log("getting data");
     return fetch("/list-users", {
         method: "GET",
     })

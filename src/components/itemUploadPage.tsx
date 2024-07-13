@@ -6,6 +6,7 @@ import { InsertItem } from "@/db/schema";
 import { ChevronLeft } from "@/components/buttonGraphics";
 
 import ImageCapture from "@/components/imageCaptureAndUploadComponent";
+import { revalidatePaths } from "@/app/actions";
 
 interface UploadProps {
     tags: string[];
@@ -13,6 +14,7 @@ interface UploadProps {
 
 export default function ItemUpload(props: UploadProps) {
     const [productName, setProductName] = useState("");
+    const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [imageUrl, setImageUrl] = useState("");
@@ -30,6 +32,7 @@ export default function ItemUpload(props: UploadProps) {
 
         const newItem: InsertItem = {
             name: productName,
+            category: category,
             desc: description,
             tags: selectedTags,
             imageUrl: imageUrl,
@@ -48,6 +51,7 @@ export default function ItemUpload(props: UploadProps) {
 
             if (response.ok) {
                 // Clear the components if the item was successfully added
+                revalidatePaths(["/list-items", "/list-tags", "/list-categories"]);
                 setProductName("");
                 setDescription("");
                 setSelectedTags([]);
@@ -112,6 +116,8 @@ export default function ItemUpload(props: UploadProps) {
                     <ItemInput
                         productName={productName}
                         setProductName={setProductName}
+                        category={category}
+                        setCategory={setCategory}
                         description={description}
                         setDescription={setDescription}
                     />

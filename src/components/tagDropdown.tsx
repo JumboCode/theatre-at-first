@@ -93,12 +93,9 @@ export default function TagDropdown(props: TagDropdownProps) {
     function addTag(tag: string) {
         // If tag is in props.tags, add tag to selectedTags array
         // Else (new tag), add tag to props.tags (large tag array), probably requires request to db, then add tag to selectedTags
-        // ?? QUESTION: do we actually want a New tag to be added every time someone hits enter
         if (!props.tags.includes(tag)) {
             props.tags.push(tag);
             props.tags.sort();
-            // console.log("pushed tag");
-            // console.log(props.tags);
         }
 
         if (!props.selectedTags.includes(tag)) {

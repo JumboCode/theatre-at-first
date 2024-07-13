@@ -2,6 +2,8 @@
 import { Dispatch, SetStateAction } from "react";
 
 interface Props {
+    category: string;
+    setCategory: Dispatch<SetStateAction<string>>;
     productName: string;
     setProductName: Dispatch<SetStateAction<string>>;
     description: string;
@@ -21,6 +23,16 @@ export default function ItemInput(props: Props) {
                     placeholder="Enter Text Here..."
                     value={props.productName}
                     onChange={(e) => props.setProductName(e.target.value)}
+                />
+                <div className="text-amber-700 font-bold mt-4 mb-3 text-sm">
+                    Category
+                </div>
+                <input
+                    className="text-gray-950 rounded-lg border border-amber-400 text-xs font-light pl-3 pr-3 py-3 focus:placeholder-gray-800 focus:outline-none"
+                    style={{ width: "100%" }}
+                    placeholder="Enter Text Here..."
+                    value={props.category}
+                    onChange={(e) => props.setCategory(e.target.value)}
                 />
                 <div className="mt-4 text-amber-700 font-bold mb-3 text-sm">
                     Description

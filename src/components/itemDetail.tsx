@@ -1,9 +1,13 @@
 "use client";
 import { useState } from "react";
+import TagEditor from "./tagEditor";
 
 interface ItemDetailProps {
+    id: number;
     name: string;
+    category: string;
     tags: string[];
+    allTags: string[];
     description: string;
     status: string;
 }
@@ -30,7 +34,7 @@ export default function ItemDetail(props: ItemDetailProps) {
             <p
                 className={`text-sm text-${status_color} border-${status_color} border-2 w-fit px-2 rounded-lg`}
             >
-                {props.status}
+                {props.category}
             </p>
             <div>
                 {display && (
@@ -44,14 +48,7 @@ export default function ItemDetail(props: ItemDetailProps) {
                 )}
             </div>
             <div className="flex flex-row gap-6 flex-wrap">
-                {props.tags.map((tag) => (
-                    <div
-                        key={tag}
-                        className="border-2 border-black rounded-lg px-6 py-2 bg-gray-50"
-                    >
-                        <p>{tag}</p>
-                    </div>
-                ))}
+                <TagEditor itemId={props.id} tags={props.allTags} initialTags={props.tags} />
             </div>
             <hr style={{ borderTop: "1px solid #888888" }} />
             <div>
