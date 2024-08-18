@@ -3,7 +3,7 @@ import SelectionComponent from "@/components/collectionViewFilter/selectionCompo
 import DisplayComponent from "@/components/collectionViewFilter/displayComponent";
 import Item from "@/components/item";
 import Grid from "@/components/grid";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { SelectItem } from "@/db/schema";
 
 import Header from "@/components/header";
@@ -73,7 +73,7 @@ export default function Home() {
         });
     }, []);
 
-    const updateSearchResults = (input_text: string, tags: string[]) => {
+    const updateSearchResults = useCallback((input_text: string, tags: string[]) => {
         let search_term = input_text + " " + tags.join(" ");
 
         if (input_text.length > 0 || tags.length > 0) {
@@ -81,7 +81,7 @@ export default function Home() {
         } else {
             setFilteredResults(unfiltered);
         }
-    };
+    }, [unfiltered]);
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const input_text: string = event.target.value;
@@ -94,7 +94,7 @@ export default function Home() {
         // Call the updateSearchResults function whenever selectedTags changes.
         // Use the current search input along with the updated tags.
         updateSearchResults(searchInput, selectedTags);
-    }, [selectedTags, searchInput]);
+    }, [selectedTags, searchInput, updateSearchResults]);
 
     return (
         <main className="min-h-max bg-white flex flex-col">

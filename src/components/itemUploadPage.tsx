@@ -7,6 +7,7 @@ import { ChevronLeft } from "@/components/buttonGraphics";
 
 import ImageCapture from "@/components/imageCaptureAndUploadComponent";
 import { revalidatePaths } from "@/app/actions";
+import { useRouter } from "next/navigation";
 
 interface UploadProps {
     tags: string[];
@@ -18,6 +19,7 @@ export default function ItemUpload(props: UploadProps) {
     const [description, setDescription] = useState("");
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [imageUrl, setImageUrl] = useState("");
+    const router = useRouter();
 
     const handleCancel = () => {
         //clear stored info
@@ -55,6 +57,8 @@ export default function ItemUpload(props: UploadProps) {
                 setProductName("");
                 setDescription("");
                 setSelectedTags([]);
+
+                router.push("/inventory");
             } else {
                 // Handle error scenarios
                 console.error("Failed to add item:", response.statusText);

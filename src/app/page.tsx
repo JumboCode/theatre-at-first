@@ -30,7 +30,7 @@ export default function Home() {
                         </p>
                     </div>
                     <a
-                        href=""
+                        href="/inventory"
                         className="mx-auto py-4 px-10 bg-[#0C2B35] hover:bg-[#496767] text-white text-center rounded-3xl"
                     >
                         Get Started
@@ -134,13 +134,13 @@ export default function Home() {
                     </p>
                     <div className="flex flex-row gap-4 align-middle w-fit">
                         <a
-                            href=""
+                            href="/inventory"
                             className="mx-auto py-4 px-10 bg-[#496767] text-white text-center rounded-3xl min-w-max"
                         >
                             Sign Up
                         </a>
                         <a
-                            href=""
+                            href="/inventory"
                             className="mx-auto py-4 px-10 bg-[#0C2B35] hover:bg-[#496767] text-white text-center rounded-3xl min-w-max"
                         >
                             Log In

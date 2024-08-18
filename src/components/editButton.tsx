@@ -8,9 +8,9 @@ export default function EditButton({ id }: { id: number }) {
     const { user } = useUser();
     const userIsAdmin = user?.publicMetadata.role === "admin";
 
-    if (!userIsAdmin) return <div></div>;
-
     const router = useRouter();
+
+    if (!userIsAdmin) return <div></div>;
 
     function deleteItem() {
         if (confirm("Are you sure you want to delete this item?")) {
