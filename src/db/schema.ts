@@ -39,36 +39,5 @@ export const items = inventoryPostgresTable("items", {
     status: text("status"),
 });
 
-/* {{{
-* NOTE: the users table is not currently used, but exists as an artifact of when
-*  we started implementing comments. Since comments as a feature does not
-*  currently exist, the following two tables are unnecessary for the production
-*  application to run.
-*/
-export const users = inventoryPostgresTable("users", {
-    id: serial("id").primaryKey(),
-    access: accessLevel("access").notNull(),
-    firstname: text("firstname").notNull(),
-    lastname: text("lastname").notNull(),
-    email: text("email").notNull(),
-});
-
-export const comments = inventoryPostgresTable("comments", {
-    id: serial("id").primaryKey(),
-    userId: text("user_id").references(() => users.id),
-    timestamp: date("timestamp").notNull(),
-    message: text("message").notNull(),
-    itemId: integer("item_id")
-        .references(() => items.id)
-        .notNull(),
-});
-/* }}} */
-
-export type InsertUser = InferInsertModel<typeof users>;
-export type SelectUser = InferSelectModel<typeof users>;
-
-export type InsertComment = InferInsertModel<typeof comments>;
-export type SelectComment = InferSelectModel<typeof comments>;
-
 export type InsertItem = InferInsertModel<typeof items>;
 export type SelectItem = InferSelectModel<typeof items>;
