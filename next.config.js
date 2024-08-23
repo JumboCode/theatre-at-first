@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        serverActions: true,
-    },
+  experimental: {
+      serverActions: true,
+  },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: "pub-c720364b83ff439abecb64d5ff4fe707.r2.dev",
+        hostname: "**",
         port: '',
         pathname: '/image-*.jpeg',
       },

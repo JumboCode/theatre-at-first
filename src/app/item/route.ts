@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
     const data = await req.json();
     let name: string = data.name;
+    let category: string = data.category;
     let desc: string = data.desc;
     let tags: string[] = data.tags;
     let imageUrl: string = data.imageUrl;
@@ -23,6 +24,7 @@ export async function POST(req: Request) {
     } else {
         let item: InsertItem = {
             name,
+            category,
             desc,
             tags,
             status,
