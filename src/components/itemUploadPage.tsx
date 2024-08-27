@@ -46,6 +46,7 @@ export default function ItemUpload(props: UploadProps) {
             const response = await fetch("/item", {
                 method: "POST",
                 headers: {
+                    "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(newItem),
@@ -72,6 +73,9 @@ export default function ItemUpload(props: UploadProps) {
         const { presignedUrl, imageUrl } = await (
             await fetch("/upload-presigned-url", {
                 method: "POST",
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                }
             })
         ).json();
 
@@ -79,6 +83,7 @@ export default function ItemUpload(props: UploadProps) {
             method: "PUT",
             body: blob,
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 "Content-Type": blob.type,
             },
         })
