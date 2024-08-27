@@ -5,6 +5,7 @@ import {
     MutableRefObject,
     useEffect,
     useState,
+    ChangeEventHandler,
 } from "react";
 import Webcam from "react-webcam";
 import { Camera } from "./buttonGraphics";
@@ -15,6 +16,8 @@ interface ImageCaptureProps {
 
 export default function ImageCapture({ imageCallback }: ImageCaptureProps) {
     const [hasPermission, setHasPermission] = useState(true);
+    const [takePhoto, setTakePhoto] = useState(false);
+    const [uploadPhoto, setUploadPhoto] = useState(false);
 
     useEffect(() => {
         navigator.mediaDevices
@@ -50,6 +53,18 @@ export default function ImageCapture({ imageCallback }: ImageCaptureProps) {
         imageCallback(imgBlob);
     }, [webcamRef, imageCallback]);
 
+    const fileUpload: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+        const files = event.target.files;
+        if (!files) return;
+        if (files.length == 0) return;
+
+        const file = files[0];
+        file.arrayBuffer().then(arrBuf => {
+            const imgBlob = new Blob([arrBuf], { type: "iamge/jpeg" });
+            imageCallback(imgBlob);
+        });
+    }, [imageCallback]);
+
     if (!hasPermission) {
         return (
             <p>
@@ -60,7 +75,11 @@ export default function ImageCapture({ imageCallback }: ImageCaptureProps) {
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <Webcam
+            <div className="w-full flex flex-row gap-2 mb-3">
+                <button className="px-3 py-1 border border-amber-500 rounded-lg" onClick={() => { setTakePhoto(true); setUploadPhoto(false); }}>Take Photo</button>
+                <button className="px-3 py-1 border border-amber-500 rounded-lg" onClick={() => { setTakePhoto(false); setUploadPhoto(true); }}>Upload Photo</button>
+            </div>
+            { takePhoto && <><Webcam
                 audio={false}
                 ref={webcamRef}
                 height={1920}
@@ -74,7 +93,11 @@ export default function ImageCapture({ imageCallback }: ImageCaptureProps) {
                 className="mt-2 py-3 pr-3 pl-3 rounded-3xl text-gray-600 bg-gray-100 border-4 border-amber-700 hover:bg-gray-600 hover:text-gray-100"
             >
                 <Camera />
-            </button>
+            </button></> }
+            { uploadPhoto && <>
+                <p>Image uploads must be jpegs.</p>
+                <input type="file" placeholder="Upload file" onChange={fileUpload} />
+            </> }
         </div>
     );
 }
