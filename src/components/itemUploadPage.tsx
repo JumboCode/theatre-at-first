@@ -36,7 +36,7 @@ export default function ItemUpload(props: UploadProps) {
             name: productName,
             category: category,
             desc: description,
-            tags: selectedTags,
+            tags: selectedTags.map(t => t.toLowerCase()),
             imageUrl: imageUrl,
             status: "active",
         };

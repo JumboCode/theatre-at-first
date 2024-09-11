@@ -35,28 +35,38 @@ async function getCategoryData(): Promise<string[]> {
         .then((json) => json.results);
 }
 
-const filterData = (arr: SelectItem[], searchText: string): SelectItem[] => {
-    const searchWords = searchText.toLowerCase().split(" ");
+const filterData = (arr: SelectItem[], searchText: string, searchCategories: string[], searchTags: string[]): SelectItem[] => {
+    const categoryMatches = searchCategories.length > 0 ? arr.filter((item: SelectItem): boolean => {
+        if (item.category) {
+            return searchCategories.includes(item.category.toLowerCase());
+        }
+        return false;
+    }) : arr;
 
-    const data = arr.filter((result: SelectItem): boolean => {
+    const tagMatches = searchTags.length > 0 ? categoryMatches.filter(item =>
+        searchTags.every(tag => item.tags.map(t => t.toLowerCase()).includes(tag))
+    ) : categoryMatches;
+
+    const searchWords = searchText.toLowerCase().split(" ");
+    const results = searchWords.length > 0 ? tagMatches.filter((result: SelectItem): boolean => {
         const text: string =
-            result.name.toLowerCase() +
-            " " +
-            result.category?.toLowerCase() +
-            " " +
-            result.desc.toLowerCase() +
-            " " +
+            result.name.toLowerCase() + " " +
+            result.desc.toLowerCase() + " " +
+            result.category?.toLowerCase() + " " +
             result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase(), "");
+
         //Find matches one word at a time
         return searchWords.every((word) => text.includes(word));
-    });
-    return data;
+    }) : tagMatches;
+
+    return results;
 };
 
 export default function Home() {
     const [categories, setCategories] = useState<string[]>([]);
     const [tags, setTags] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
     const [searchInput, setSearchInput] = useState("");
     const [unfiltered, setUnfiltered] = useState<SelectItem[]>([]);
@@ -73,11 +83,13 @@ export default function Home() {
         });
     }, []);
 
-    const updateSearchResults = useCallback((input_text: string, tags: string[]) => {
-        let search_term = input_text + " " + tags.join(" ");
-
-        if (input_text.length > 0 || tags.length > 0) {
-            setFilteredResults(filterData(unfiltered, search_term));
+    const updateSearchResults = useCallback((searchTerm: string, sTags: string[], sCategories: string[]) => {
+        if (searchTerm.length > 0 || sTags.length > 0 || sCategories.length > 0) {
+            setFilteredResults(
+                filterData(unfiltered,
+                           searchTerm,
+                           sCategories.map(c => c.toLowerCase()),
+                           sTags.map(t => t.toLowerCase())));
         } else {
             setFilteredResults(unfiltered);
         }
@@ -87,14 +99,14 @@ export default function Home() {
         const input_text: string = event.target.value;
         event.preventDefault();
         setSearchInput(input_text);
-        updateSearchResults(input_text, selectedTags);
+        updateSearchResults(input_text, selectedTags, selectedCategories);
     };
 
     useEffect(() => {
         // Call the updateSearchResults function whenever selectedTags changes.
         // Use the current search input along with the updated tags.
-        updateSearchResults(searchInput, selectedTags);
-    }, [selectedTags, searchInput, updateSearchResults]);
+        updateSearchResults(searchInput, selectedTags, selectedCategories);
+    }, [selectedTags, selectedCategories, searchInput, updateSearchResults]);
 
     return (
         <main className="min-h-max bg-white flex flex-col">
@@ -129,8 +141,8 @@ export default function Home() {
                             <SelectionComponent
                                 tags={categories}
                                 setTags={setCategories}
-                                selectedTags={selectedTags}
-                                setSelectedTags={setSelectedTags}
+                                selectedTags={selectedCategories}
+                                setSelectedTags={setSelectedCategories}
                                 category="category"
                             ></SelectionComponent>
                         </div>
@@ -148,6 +160,8 @@ export default function Home() {
                         <DisplayComponent
                             selectedTags={selectedTags}
                             setSelectedTags={setSelectedTags}
+                            selectedCategories={selectedCategories}
+                            setSelectedCategories={setSelectedCategories}
                         ></DisplayComponent>
                     </div>
                 </div>
