@@ -25,7 +25,7 @@ export default function EditButton({ id }: { id: number }) {
                 <div className="pl-1">Delete</div>
             </button>
             <a className="text-orange-400 flex border-orange-400 border-2 p-2 rounded-lg"
-               href={`http://localhost:3000/edit/${id}`}>
+               href={`/edit/${id}`}>
                 <Edit2 />
                 <div className="pl-1">Edit</div>
             </a>
