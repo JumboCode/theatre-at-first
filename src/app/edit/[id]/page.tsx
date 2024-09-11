@@ -70,7 +70,7 @@ export default async function Page({ params }: { params: { id: number } }) {
         revalidatePath("/list-items");
         revalidatePath("list-categories");
         revalidatePath("list-tags");
-        redirect(`http://localhost:3000/item/${itemData.id}`);
+        redirect(`/item/${itemData.id}`);
     }
 
     return (
