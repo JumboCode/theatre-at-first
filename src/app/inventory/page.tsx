@@ -38,13 +38,13 @@ async function getCategoryData(): Promise<string[]> {
 const filterData = (arr: SelectItem[], searchText: string, searchCategories: string[], searchTags: string[]): SelectItem[] => {
     const categoryMatches = searchCategories.length > 0 ? arr.filter((item: SelectItem): boolean => {
         if (item.category) {
-            return searchCategories.includes(item.category.toLowerCase());
+            return searchCategories.includes(item.category.toLowerCase().trim());
         }
         return false;
     }) : arr;
 
     const tagMatches = searchTags.length > 0 ? categoryMatches.filter(item =>
-        searchTags.every(tag => item.tags.map(t => t.toLowerCase()).includes(tag))
+        searchTags.every(tag => item.tags.map(t => t.toLowerCase().trim()).includes(tag))
     ) : categoryMatches;
 
     const searchWords = searchText.toLowerCase().split(" ");
@@ -88,8 +88,8 @@ export default function Home() {
             setFilteredResults(
                 filterData(unfiltered,
                            searchTerm,
-                           sCategories.map(c => c.toLowerCase()),
-                           sTags.map(t => t.toLowerCase())));
+                           sCategories.map(c => c.toLowerCase().trim()),
+                           sTags.map(t => t.toLowerCase().trim())));
         } else {
             setFilteredResults(unfiltered);
         }
