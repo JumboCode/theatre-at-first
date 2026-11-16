@@ -4,10 +4,12 @@ import TagDropdown from "@/components/tagDropdown";
 import ItemInput from "@/components/itemInputForm";
 import { InsertItem } from "@/db/schema";
 import { ChevronLeft } from "@/components/buttonGraphics";
+import { items } from "@/db/schema";
 
 import ImageCapture from "@/components/imageCaptureAndUploadComponent";
 import { revalidatePaths } from "@/app/actions";
 import { useRouter } from "next/navigation";
+import Item from "./item";
 
 interface UploadProps {
     tags: string[];
@@ -31,7 +33,6 @@ export default function ItemUpload(props: UploadProps) {
 
     const handleAdd = async () => {
         //send stored info to database (using "add" api route)
-
         const newItem: InsertItem = {
             name: productName,
             category: category,
@@ -58,8 +59,8 @@ export default function ItemUpload(props: UploadProps) {
                 setProductName("");
                 setDescription("");
                 setSelectedTags([]);
-
-                router.push("/inventory");
+                const createdItem = await response.json();
+                router.push(`/item/${createdItem.id}`);
             } else {
                 // Handle error scenarios
                 console.error("Failed to add item:", response.statusText);
