@@ -14,7 +14,7 @@ assignees: ''
 - [ ] Review the Git command guide: [link]
 - [ ] Review branch naming: `feat/`, `fix/`, `test/`
 - [ ] Review the PR template
-- [ ] Confirm access to required accounts/tools
+- [ ] Confirm access to requiredb accounts/tools
 
 ## Accounts & Access
 <!-- Say HOW to get access. Never paste passwords here. -->

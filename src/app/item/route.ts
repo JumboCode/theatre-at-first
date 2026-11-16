@@ -32,9 +32,11 @@ export async function POST(req: Request) {
         };
 
         let result = await db.insert(items).values(item).returning();
+        const created = result[0];
         return NextResponse.json(
             {
                 message: `Item added to the database: ${result.toString()}`,
+                id: created.id,
             },
             {
                 status: 200,
