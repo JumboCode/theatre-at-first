@@ -47,16 +47,22 @@ const filterData = (arr: SelectItem[], searchText: string, searchCategories: str
         searchTags.every(tag => item.tags.map(t => t.toLowerCase().trim()).includes(tag))
     ) : categoryMatches;
 
-    const searchWords = searchText.toLowerCase().split(" ");
+    const searchWords = searchText.toLowerCase().split(" ").filter(word => word.trim() !== "");
+
     const results = searchWords.length > 0 ? tagMatches.filter((result: SelectItem): boolean => {
-        const text: string =
+        const text =
             result.name.toLowerCase() + " " +
             result.desc.toLowerCase() + " " +
-            result.category?.toLowerCase() + " " +
-            result.tags.reduce((acc, tag) => acc + " " + tag.toLowerCase(), "");
+            (result.category || "").toLowerCase();
 
-        //Find matches one word at a time
-        return searchWords.every((word) => text.includes(word));
+        // convert each tage to lowercase and remove whitespace
+        const normalizedTags = result.tags.map(tag => tag.toLowerCase().trim());
+
+        // checks is searched word appears in description, name or category 
+        // or if the word matches exactly one of the tags
+        return searchWords.every(word =>
+            text.includes(word) || normalizedTags.includes(word)
+        );
     }) : tagMatches;
 
     return results;
