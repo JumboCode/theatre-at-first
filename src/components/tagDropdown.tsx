@@ -6,6 +6,7 @@ import {
     KeyboardEvent,
     KeyboardEventHandler,
 } from "react";
+import { matchExistingTag, sortTags } from "@/lib/utils";
 
 //DROPDOWN:
 //Compenent recieves a list of tags (which is the prop)
@@ -27,7 +28,7 @@ interface TagDropdownProps {
 export default function TagDropdown(props: TagDropdownProps) {
     const [display, setDisplay] = useState(false);
     const [searchInput, setSearchInput] = useState("");
-    const [filteredTags, setFilteredTags] = useState(props.tags.sort());
+    const [filteredTags, setFilteredTags] = useState(sortTags(props.tags));
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const input_text: string = event.target.value;
@@ -35,12 +36,12 @@ export default function TagDropdown(props: TagDropdownProps) {
         setSearchInput(input_text);
         if (input_text.length > 0) {
             setFilteredTags(
-                props.tags.filter((tag) => {
-                    return tag.match(input_text);
+                sortTags(props.tags).filter((tag) => {
+                    return tag.toLowerCase().includes(input_text.trim().toLowerCase());
                 })
             );
         } else {
-            setFilteredTags(props.tags.sort());
+            setFilteredTags(sortTags(props.tags));
         }
     };
 
@@ -78,7 +79,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                 ...props.selectedTags.slice(toRemove + 1),
             ]);
         } else {
-            props.setSelectedTags([...props.selectedTags, tag].sort());
+            props.setSelectedTags(sortTags([...props.selectedTags, tag]));
         }
     }
 
@@ -90,16 +91,25 @@ export default function TagDropdown(props: TagDropdownProps) {
         ]);
     }
 
-    function addTag(tag: string) {
+    function addTag(typedTag: string) {
+        // Reuse the capitalization of an existing tag if there is one
+        // (typing "book" when "Book" exists adds "Book")
+        const tag = matchExistingTag(typedTag, [
+            ...props.tags,
+            ...props.selectedTags,
+        ]);
+        if (tag == "") {
+            return;
+        }
+
         // If tag is in props.tags, add tag to selectedTags array
         // Else (new tag), add tag to props.tags (large tag array), probably requires request to db, then add tag to selectedTags
         if (!props.tags.includes(tag)) {
             props.tags.push(tag);
-            props.tags.sort();
         }
 
         if (!props.selectedTags.includes(tag)) {
-            props.setSelectedTags([...props.selectedTags, tag].sort());
+            props.setSelectedTags(sortTags([...props.selectedTags, tag]));
         }
 
         // clear search bar
@@ -141,7 +151,7 @@ export default function TagDropdown(props: TagDropdownProps) {
                         className="border h-[144px] rounded-xl overflow-auto text-black border-solid border-amber-400 scrollbar-webkit"
                         onMouseLeave={handleMouseLeave}
                     >
-                        {(!searchInput ? props.tags : filteredTags).map(
+                        {(!searchInput ? sortTags(props.tags) : filteredTags).map(
                             (tag) => (
                                 <div
                                     key={tag}
